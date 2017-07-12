@@ -154,7 +154,7 @@ export const expression_data = {
  				payload: "EXPRESSION_ARTWORK2_PART_1"
  			}
  		]
- 	}
+ 	},
 
  	EXPRESSION_ARTWORK1_PART_2: {
  		text: "In describing the work, Victor has said: “Upon closer scrutinity of these eroticised objects of the everyday, \
@@ -177,6 +177,6 @@ export const expression_data = {
  				payload: "DELIVERY"
  			}
  		]
- 	}
+ 	},
 
 }

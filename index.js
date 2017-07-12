@@ -5,7 +5,7 @@
 import express from "express";
 import request from "request";
 import bodyParser from "body-parser";
-import expression_data from "./data/expression/script.js"
+import expression_data from "./data/expression/script";
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
@@ -166,7 +166,7 @@ function processMessage(event) {
         	if (expression_data[message.quick_reply.payload] !== undefined) {
         		sendMessage(senderId, expression_data[message.quick_reply.payload]);
         	}
-        	
+
         } else if (message.attachments) {
             sendMessage(senderId, {text: "Sorry, I don't understand your request."});
         }

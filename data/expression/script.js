@@ -92,7 +92,7 @@ export const expression_data = {
  				content_type: "text",
  				title: "Expense of Spirit in a Waste of Shame",
  				payload: "EXPRESSION_ARTWORK1_PART_1"
- 			}
+ 			},
  			{
  				content_type: "text",
  				title: "Study of Three Thermos Flasks",
@@ -111,7 +111,7 @@ export const expression_data = {
  				content_type: "text",
  				title: "Yellow Field",
  				payload: "EXPRESSION_ARTWORK1_PART_1"
- 			}
+ 			},
  			{
  				content_type: "text",
  				title: "Walks through a Chair",
@@ -129,7 +129,7 @@ export const expression_data = {
  				content_type: "text",
  				title: "Gully Curtains",
  				payload: "EXPRESSION_ARTWORK1_PART_1"
- 			}
+ 			},
  			{
  				content_type: "text",
  				title: "MIKE",

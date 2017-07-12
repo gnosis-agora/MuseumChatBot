@@ -107,7 +107,7 @@ function processPostback(event) {
   			sendMessage(senderId, {text: "you've selected history"});
   			break;
   		case "EXPRESSION_START":
-  			sendMessage(senderId, expression_data.START);
+  			sendMessage(senderId, expression_data['START']);
   			break;
   		case "POLITICS_START":
   			sendMessage(senderId, {text: "you've selected politics"});

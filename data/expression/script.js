@@ -140,7 +140,7 @@ In this section, we will explore some of the more unorthodox and unique forms th
 
  	EXPRESSION_ARTWORK1_PART_1: {
  		text: "installation by Suzann Victor. The fleeting yet repetitive and mesmerising contact of the bulbs of troubled lovers, \
- 		who seem to be locked in the never-ending cycle of splitting and reconciling, hurting and healing.",
+who seem to be locked in the never-ending cycle of splitting and reconciling, hurting and healing.",
 
  		quick_replies: [
  			{
@@ -168,7 +168,7 @@ But which is stimulating which? What is “pleasuring” what? Who is looking an
  			},
  			{
  				content_type: "text",
- 				title: "Persepctive",
+ 				title: "Perspective",
  				payload: "PERSPECTIVE"
  			},
  			{

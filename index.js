@@ -67,7 +67,7 @@ function processPostback(event) {
         greeting = "Hi " + name + ". ";
       }
       var message = greeting + "My name is SP Movie Bot. I can tell you various details regarding movies. What movie would you like to know about?";
-      sendMessage(senderId, {text: message});
+      sendMessage(senderId, message);
     });
   }
 }
@@ -81,7 +81,7 @@ function sendMessage(recipientId, message) {
     json: {
       recipient: {id: recipientId},
       message: {
-      	text: message.text,
+      	text: message,
       	quick_replies: [
       		{
       			content_type: "text",

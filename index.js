@@ -92,23 +92,20 @@ function processPostback(event) {
       		payload:"INFLUENCES_START",
       	}
       ]
-      sendMessage(senderId, message, quick_reply_buttons);
+      sendMessage(senderId, {text: message, quick_replies: quick_reply_buttons});
     });
   }
 }
 
 // sends message to user
-function sendMessage(recipientId, message, quick_reply_buttons = []) {
+function sendMessage(recipientId, message) {
   request({
     url: "https://graph.facebook.com/v2.6/me/messages",
     qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
     method: "POST",
     json: {
       recipient: {id: recipientId},
-      message: {
-      	text: message,
-      	quick_replies: quick_reply_buttons 
-      }
+      message: message
     }
   }, function(error, response, body) {
     if (error) {

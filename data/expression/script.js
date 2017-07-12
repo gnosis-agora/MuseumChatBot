@@ -1,8 +1,8 @@
 export const data = {
 	START: {
-		text: "In the 1970s, artists started to question the existing role \
-		of art and moved on from modes of representation to modes of production and consumption. \
-		The explosion of biennales internationally and a growing interest in art from Asia led local artists to explore performance, \
+		text: "In the 1970s, artists started to question the existing role\
+		of art and moved on from modes of representation to modes of production and consumption.\
+		The explosion of biennales internationally and a growing interest in art from Asia led local artists to explore performance,\
 	 	installation and video as art expression.",
 	 	quick_replies: [
     	{

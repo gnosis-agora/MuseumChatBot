@@ -123,7 +123,7 @@ function processPostback(event) {
   else if (payload.indexOf("EXPRESSION") !== -1) {
   	switch (payload){
   		case "EXPRESSION_ARTWORK1_PART_1":
-  			sendMessage(senderId, expression_data.EXPRESSION_ARTWORK1_PART_1);
+  			sendMessage(senderId, expression.data.EXPRESSION_ARTWORK1_PART_1);
   			break;
   		case "EXPRESSION_ARTWORK2_PART_1":
   			sendMessage(senderId, {text: "sorry, this option is under construction"});

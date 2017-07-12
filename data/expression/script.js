@@ -1,9 +1,9 @@
 export const data = {
 	START: {
-		text: "In the 1970s, artists started to question the existing role\
-		of art and moved on from modes of representation to modes of production and consumption.\
-		The explosion of biennales internationally and a growing interest in art from Asia led local artists to explore performance,\
-	 	installation and video as art expression.",
+		text: "In the 1970s, artists started to question the existing role \
+of art and moved on from modes of representation to modes of production and consumption. \
+The explosion of biennales internationally and a growing interest in art from Asia led local artists to explore performance, \
+installation and video as art expression.",
 	 	quick_replies: [
     	{
     		content_type: "text",
@@ -85,8 +85,8 @@ export const data = {
 
  	CONTEMPORARY: {
  		text: "Questions concerning the art object and its relationship to everyday life are constantly under scrutiny \
- 		by contemporary artists. Many early conceptual art works like “Sculpture” and “The Picnic” have critiqued on the \
- 		estrangement between art and everyday life. Hence, artists have started to explore new ways to define art and make art “live” again. ",
+by contemporary artists. Many early conceptual art works like “Sculpture” and “The Picnic” have critiqued on the \
+estrangement between art and everyday life. Hence, artists have started to explore new ways to define art and make art “live” again. ",
  		quick_replies: [
  			{
  				content_type: "text",
@@ -103,9 +103,9 @@ export const data = {
 
  	PERSPECTIVE: {
  		text: "Art is in the eye of the beholder, and everyone will have their own interpretation. \
- 		Often of times, conceptual art works convey much more meaning that what is being seen. \
- 		The artist’s message may even be convoluted by the viewer’s own interpretation. \
- 		That is the beauty of art; a medium that breeds creation.",
+Often of times, conceptual art works convey much more meaning that what is being seen. \
+The artist’s message may even be convoluted by the viewer’s own interpretation. \
+That is the beauty of art; a medium that breeds creation.",
  		quick_replies: [
  			{
  				content_type: "text",
@@ -122,8 +122,8 @@ export const data = {
 
  	DELIVERY: {
  		text: "Experimentation with new mediums to create art has expanded the creativity of artists. \
- 		Every conceptual artist possesses their own perspective on what medium is the best form to build their works on. \
- 		In this section, we will explore some of the more unorthodox and unique forms that art works have been delivered.",
+Every conceptual artist possesses their own perspective on what medium is the best form to build their works on. \
+In this section, we will explore some of the more unorthodox and unique forms that art works have been delivered.",
  		quick_replies: [
  			{
  				content_type: "text",
@@ -158,8 +158,8 @@ export const data = {
 
  	EXPRESSION_ARTWORK1_PART_2: {
  		text: "In describing the work, Victor has said: “Upon closer scrutinity of these eroticised objects of the everyday, \
- 		these fat-bottomed globes mimic the gesture of clitoral stimulation on its own reflected image. \
- 		But which is stimulating which? What is “pleasuring” what? Who is looking and who is being looked at? Who is the seer and who is seen?”",
+these fat-bottomed globes mimic the gesture of clitoral stimulation on its own reflected image. \
+But which is stimulating which? What is “pleasuring” what? Who is looking and who is being looked at? Who is the seer and who is seen?”",
  		quick_replies: [
  			{
  				content_type: "text",

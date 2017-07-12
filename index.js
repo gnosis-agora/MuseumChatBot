@@ -67,7 +67,7 @@ function processPostback(event) {
         greeting = "Hi " + name + ". ";
       }
       var message = greeting + "My name is SP Movie Bot. I can tell you various details regarding movies. What movie would you like to know about?";
-      sendMessage(senderId, message);
+      sendMessage(senderId, {text: message});
     });
   }
 }
@@ -80,21 +80,7 @@ function sendMessage(recipientId, message) {
     method: "POST",
     json: {
       recipient: {id: recipientId},
-      message: {
-      	text: message,
-      	quick_replies: [
-      		{
-      			content_type: "text",
-      			title: "Button 1",
-      			payload: "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-      		},
-      		{
-      			content_type: "text",
-      			title: "Button 2",
-      			payload: "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_Button2"      			
-      		}
-      	]
-      }
+      message: message,
     }
   }, function(error, response, body) {
     if (error) {

@@ -5,7 +5,7 @@
 import express from "express";
 import request from "request";
 import bodyParser from "body-parser";
-import * as expression_data from "./data/expression/script";
+import * as expression from "./data/expression/script";
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
@@ -14,7 +14,7 @@ app.listen((process.env.PORT || 5000));
 
 // Server index page
 app.get("/", function (req, res) {
-  res.send(JSON.stringify(expression_data.START));
+  res.send(JSON.stringify(expression.data.START));
 });
 
 // Facebook Webhook
@@ -107,7 +107,7 @@ function processPostback(event) {
   			sendMessage(senderId, {text: "you've selected history"});
   			break;
   		case "EXPRESSION_START":
-  			sendMessage(senderId, expression_data.START);
+  			sendMessage(senderId, expression.data.START);
   			break;
   		case "POLITICS_START":
   			sendMessage(senderId, {text: "you've selected politics"});
@@ -164,7 +164,7 @@ function processMessage(event) {
         if (message.text) {
         	// deal with all cases here
         	if (expression_data[message.quick_reply.payload] !== undefined) {
-        		sendMessage(senderId, expression_data[message.quick_reply.payload]);
+        		sendMessage(senderId, expression.data[message.quick_reply.payload]);
         	}
 
         } else if (message.attachments) {

@@ -5,7 +5,7 @@
 import express from "express";
 import request from "request";
 import bodyParser from "body-parser";
-import * as expression_data from "./data/expression";
+import * as expression_data from "./data/expression/script";
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));

@@ -81,7 +81,7 @@ function sendMessage(recipientId, message) {
     json: {
       recipient: {id: recipientId},
       message: {
-      	text: message,
+      	text: message.text,
       	quick_replies: [
       		{
       			content_type: "text",

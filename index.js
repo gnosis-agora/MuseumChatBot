@@ -5,6 +5,7 @@
 import express from "express";
 import request from "request";
 import bodyParser from "body-parser";
+import expression_data from "./data/expression/script.js"
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
@@ -99,14 +100,14 @@ function processPostback(event) {
       sendMessage(senderId, {text: message, quick_replies: quick_reply_buttons});
     });
   }
-  else {
+  else if (payload.indexOf("START") !== -1) {
   	// if they click on any of the themes in the persistent menu
   	switch (payload) {
   		case "HISTORY_START":
   			sendMessage(senderId, {text: "you've selected history"});
   			break;
   		case "EXPRESSION_START":
-  			sendMessage(senderId, {text: "you've selected expression"});
+  			sendMessage(senderId, expression_data.START);
   			break;
   		case "POLITICS_START":
   			sendMessage(senderId, {text: "you've selected politics"});
@@ -118,6 +119,19 @@ function processPostback(event) {
   			// should not reach here
   			sendMessage(senderId, {text: "sorry, that is an invalid choice"});
   	}
+  }
+  else if (payload.indexOf("EXPRESSION") !== -1) {
+  	switch (payload){
+  		case "EXPRESSION_ARTWORK1_PART_1":
+  			sendMessage(senderId, expression_data.EXPRESSION_ARTWORK1_PART_1);
+  			break;
+  		case "EXPRESSION_ARTWORK2_PART_1":
+  			sendMessage(senderId, {text: "sorry, this option is under construction"});
+  			break;
+  		case "EXPRESSION_ARTWORK3_PART_1":
+  			sendMessage(senderId, {text: "sorry, this option is under construction"});
+  			break;
+  	}  
   }
 }
 
@@ -148,8 +162,11 @@ function processMessage(event) {
 
         // You may get a text or attachment but not both
         if (message.text) {
-          sendMessage(senderId, {text: "you've selected " + message.text})
-         
+        	// deal with all cases here
+        	if (expression_data[message.quick_reply.payload] !== undefined) {
+        		sendMessage(senderId, expression_data[message.quick_reply.payload]);
+        	}
+        	
         } else if (message.attachments) {
             sendMessage(senderId, {text: "Sorry, I don't understand your request."});
         }

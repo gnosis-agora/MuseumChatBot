@@ -24,7 +24,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
               "payload":"POLITICS_START"
             },
             {
-              "title":"Politics",
+              "title":"Influences",
               "type":"postback",
               "payload":"INFLUENCES_START"
             }

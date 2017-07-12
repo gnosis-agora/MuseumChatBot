@@ -1,0 +1,36 @@
+curl -X POST -H "Content-Type: application/json" -d '{
+  "persistent_menu":[
+    {
+      "locale":"default",
+      "composer_input_disabled":true,
+      "call_to_actions":[
+        {
+          "title":"Get Started",
+          "type":"nested",
+          "call_to_actions":[
+            {
+              "title":"History",
+              "type":"postback",
+              "payload":"HISTORY_START"
+            },
+            {
+              "title":"Expression",
+              "type":"postback",
+              "payload":"EXPRESSION_START"
+            },
+            {
+              "title":"Politics",
+              "type":"postback",
+              "payload":"POLITICS_START"
+            },
+            {
+              "title":"Politics",
+              "type":"postback",
+              "payload":"INFLUENCES_START"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=PAGE_ACCESS_TOKEN"

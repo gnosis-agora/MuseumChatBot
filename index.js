@@ -95,6 +95,26 @@ function processPostback(event) {
       sendMessage(senderId, {text: message, quick_replies: quick_reply_buttons});
     });
   }
+  else {
+  	// if they click on any of the themes in the persistent menu
+  	switch (payload) {
+  		case "HISTORY_START":
+  			sendMessage(senderId, {text: "you've selected " + message.text});
+  			break;
+  		case "EXPRESSION_START":
+  			sendMessage(senderId, {text: "you've selected " + message.text});
+  			break;
+  		case "POLITICS_START":
+  			sendMessage(senderId, {text: "you've selected " + message.text});
+  			break;
+  		case "INFLUENCES_START":
+  			sendMessage(senderId, {text: "you've selected " + message.text});
+  			break;			
+  		default:
+  			// should not reach here
+  			sendMessage(senderId, {text: "sorry, that is an invalid choice"});
+  	}
+  }
 }
 
 // sends message to user
@@ -124,7 +144,7 @@ function processMessage(event) {
 
         // You may get a text or attachment but not both
         if (message.text) {
-          sendMessage(senderId, {text: "you've selected" + message.text})
+          sendMessage(senderId, {text: "you've selected " + message.text})
          
         } else if (message.attachments) {
             sendMessage(senderId, {text: "Sorry, I don't understand your request."});

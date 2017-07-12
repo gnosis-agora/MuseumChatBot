@@ -14,7 +14,7 @@ app.listen((process.env.PORT || 5000));
 
 // Server index page
 app.get("/", function (req, res) {
-  res.send(JSON.stringify(expression_data));
+  res.send(JSON.stringify(expression_data.START));
 });
 
 // Facebook Webhook

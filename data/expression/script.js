@@ -8,7 +8,7 @@ export const expression_data = {
     	{
     		content_type: "text",
     		title: "Tell me more",
-    		payload: "TELL_ME_MORE_EXPRESSION",
+    		payload: "TELL_ME_MORE_EXPRESSION"
     	},
     	{
     		content_type: "text",

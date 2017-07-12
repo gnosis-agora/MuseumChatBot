@@ -35,6 +35,9 @@ app.post("/webhook", function (req, res) {
       entry.messaging.forEach(function(event) {
         if (event.postback) {
           processPostback(event);
+        } 
+        else if (event.message) {
+        	processMessage(event);
         }
       });
     });
@@ -44,8 +47,8 @@ app.post("/webhook", function (req, res) {
 });
 
 function processPostback(event) {
-  var senderId = event.sender.id;
-  var payload = event.postback.payload;
+  let senderId = event.sender.id;
+  let payload = event.postback.payload;
 
   if (payload === "Greeting") {
     // Get user's first name from the User Profile API
@@ -58,22 +61,44 @@ function processPostback(event) {
       },
       method: "GET"
     }, function(error, response, body) {
-      var greeting = "";
+      let greeting = "";
       if (error) {
         console.log("Error getting user's name: " +  error);
       } else {
-        var bodyObj = JSON.parse(body);
+        let bodyObj = JSON.parse(body);
         name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
-      var message = greeting + "My name is SP Movie Bot. I can tell you various details regarding movies. What movie would you like to know about?";
-      sendMessage(senderId, message);
+      let message = greeting + "My name is Cura and I'll be your virtual tour guide for today. Click on any one of the themes below to get started!";
+      let quick_reply_buttons = [
+      	{
+      		content_type:"text",
+      		title: "History",
+      		payload:"HISTORY_START",
+      	},
+      	{
+      		content_type:"text",
+      		title: "Expression",
+      		payload:"EXPRESSION_START",
+      	},
+      	{
+      		content_type:"text",
+      		title: "Politics",
+      		payload:"POLITICS_START",
+      	},
+      	{
+      		content_type:"text",
+      		title: "Influences",
+      		payload:"INFLUENCES_START",
+      	}
+      ]
+      sendMessage(senderId, message, quick_reply_buttons);
     });
   }
 }
 
 // sends message to user
-function sendMessage(recipientId, message) {
+function sendMessage(recipientId, message, quick_reply_buttons = []) {
   request({
     url: "https://graph.facebook.com/v2.6/me/messages",
     qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
@@ -82,18 +107,7 @@ function sendMessage(recipientId, message) {
       recipient: {id: recipientId},
       message: {
       	text: message,
-      	quick_replies: [
-      		{
-      			content_type: "text",
-      			title: "Button 1",
-      			payload: "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-      		},
-      		{
-      			content_type: "text",
-      			title: "Button 2",
-      			payload: "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_Button2"      			
-      		}
-      	]
+      	quick_replies: quick_reply_buttons 
       }
     }
   }, function(error, response, body) {
@@ -101,4 +115,22 @@ function sendMessage(recipientId, message) {
       console.log("Error sending message: " + response.error);
     }
   });
+}
+
+function processMessage(event) {
+    if (!event.message.is_echo) {
+        var message = event.message;
+        var senderId = event.sender.id;
+
+        console.log("Received message from senderId: " + senderId);
+        console.log("Message is: " + JSON.stringify(message));
+
+        // You may get a text or attachment but not both
+        if (message.text) {
+          sendMessage(senderId, {text: "you've selected" + message.text})
+         
+        } else if (message.attachments) {
+            sendMessage(senderId, {text: "Sorry, I don't understand your request."});
+        }
+    }
 }

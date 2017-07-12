@@ -1,4 +1,4 @@
-export const expression_data = {
+export default const expression_data = {
 	START: {
 		text: "In the 1970s, artists started to question the existing role \
 		of art and moved on from modes of representation to modes of production and consumption. \

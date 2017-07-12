@@ -96,19 +96,21 @@ function processPostback(event) {
     });
   }
   else {
+  	let payload = event.postback.message.quick_reply.payload;
+  	let message = event.postback.message.text;
   	// if they click on any of the themes in the persistent menu
   	switch (payload) {
   		case "HISTORY_START":
-  			sendMessage(senderId, {text: "you've selected " + message.text});
+  			sendMessage(senderId, {text: "you've selected " + message});
   			break;
   		case "EXPRESSION_START":
-  			sendMessage(senderId, {text: "you've selected " + message.text});
+  			sendMessage(senderId, {text: "you've selected " + message});
   			break;
   		case "POLITICS_START":
-  			sendMessage(senderId, {text: "you've selected " + message.text});
+  			sendMessage(senderId, {text: "you've selected " + message});
   			break;
   		case "INFLUENCES_START":
-  			sendMessage(senderId, {text: "you've selected " + message.text});
+  			sendMessage(senderId, {text: "you've selected " + message});
   			break;			
   		default:
   			// should not reach here

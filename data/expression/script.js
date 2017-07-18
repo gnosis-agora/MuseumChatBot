@@ -146,7 +146,7 @@ who seem to be locked in the never-ending cycle of splitting and reconciling, hu
             payload: {
                 url: "http://i.imgur.com/ykVgu6G.jpg"
             }
-        }
+        },
  		quick_replies: [
  			{
  				content_type: "text",

@@ -141,7 +141,12 @@ In this section, we will explore some of the more unorthodox and unique forms th
  	EXPRESSION_ARTWORK1_PART_1: {
  		text: "installation by Suzann Victor. The fleeting yet repetitive and mesmerising contact of the bulbs of troubled lovers, \
 who seem to be locked in the never-ending cycle of splitting and reconciling, hurting and healing.",
-
+        attachment: {
+            type: "image",
+            payload: {
+                url: "http://i.imgur.com/ykVgu6G.jpg"
+            }
+        }
  		quick_replies: [
  			{
  				content_type: "text",
@@ -158,7 +163,7 @@ who seem to be locked in the never-ending cycle of splitting and reconciling, hu
 
  	EXPRESSION_ARTWORK1_PART_2: {
  		text: "In describing the work, Victor has said: “Upon closer scrutinity of these eroticised objects of the everyday, \
-these fat-bottomed globes mimic the gesture of clitoral stimulation on its own reflected image. \
+these fat-bottomed globes mimic the gesture of clitoral stimulation on its own reflecected image. \
 But which is stimulating which? What is “pleasuring” what? Who is looking and who is being looked at? Who is the seer and who is seen?”",
  		quick_replies: [
  			{

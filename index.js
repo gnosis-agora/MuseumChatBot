@@ -151,18 +151,27 @@ function processPostback(event) {
 //   });
 // }
 
+// sends messages to user using request-promise
 function sendMessage(recipientId, messages) {
-  messages.forEach(message => {
+  let nextMessage = true;
+  let index = 0;
+  while (nextMessage && index < messages.length) {
+    nextMessage = false;
     rp({
       url: "https://graph.facebook.com/v2.6/me/messages",
       qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
       method: "POST",
       json: {
         recipient: {id: recipientId},
-        message: message
+        message: messages[index]
       }
-    }).then(() => {console.log("Finished sending: " + JSON.stringify(message))}).catch((err) => {console.log("Error sending message: " + err)});
-  });
+    }).then(() => {
+      nextMessage = true;
+      index += 1;
+    }).catch((err) => {
+      console.log("Error sending message: " + err)
+    });    
+  }
 }
 
 function processMessage(event) {

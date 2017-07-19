@@ -1,5 +1,5 @@
 export const data = {
-	START: {
+	START: [{
 		text: "In the 1970s, artists started to question the existing role \
 of art and moved on from modes of representation to modes of production and consumption. \
 The explosion of biennales internationally and a growing interest in art from Asia led local artists to explore performance, \
@@ -16,9 +16,9 @@ installation and video as art expression.",
     		payload: "NOTABLE_ARTWORKS_EXPRESSION"
     	}
 	 	]
- 	},
+ 	}],
 
- 	TELL_ME_MORE_EXPRESSION: {
+ 	TELL_ME_MORE_EXPRESSION: [{
  		text: "Please choose which category you would like to know more about.",
  		quick_replies: [
  			{
@@ -37,9 +37,9 @@ installation and video as art expression.",
  				payload: "DELIVERY"
  			} 			
  		]
- 	},
+ 	}],
 
- 	NOTABLE_ARTWORKS_EXPRESSION: {
+ 	NOTABLE_ARTWORKS_EXPRESSION: [{
  		attachment: {
  			type: "template",
  			payload: {
@@ -81,9 +81,9 @@ installation and video as art expression.",
  				]
  			}
  		}
- 	},
+ 	}],
 
- 	CONTEMPORARY: {
+ 	CONTEMPORARY: [{
  		text: "Questions concerning the art object and its relationship to everyday life are constantly under scrutiny \
 by contemporary artists. Many early conceptual art works like “Sculpture” and “The Picnic” have critiqued on the \
 estrangement between art and everyday life. Hence, artists have started to explore new ways to define art and make art “live” again. ",
@@ -99,9 +99,9 @@ estrangement between art and everyday life. Hence, artists have started to explo
  				payload: "EXPRESSION_ARTWORK2_PART_1"
  			}
  		]
- 	},
+ 	}],
 
- 	PERSPECTIVE: {
+ 	PERSPECTIVE: [{
  		text: "Art is in the eye of the beholder, and everyone will have their own interpretation. \
 Often of times, conceptual art works convey much more meaning that what is being seen. \
 The artist’s message may even be convoluted by the viewer’s own interpretation. \
@@ -118,9 +118,9 @@ That is the beauty of art; a medium that breeds creation.",
  				payload: "EXPRESSION_ARTWORK2_PART_1"
  			}
  		] 		
- 	},
+ 	}],
 
- 	DELIVERY: {
+ 	DELIVERY: [{
  		text: "Experimentation with new mediums to create art has expanded the creativity of artists. \
 Every conceptual artist possesses their own perspective on what medium is the best form to build their works on. \
 In this section, we will explore some of the more unorthodox and unique forms that art works have been delivered.",
@@ -136,9 +136,18 @@ In this section, we will explore some of the more unorthodox and unique forms th
  				payload: "EXPRESSION_ARTWORK2_PART_1"
  			}
  		] 		
- 	}, 	
+ 	}], 	
 
- 	EXPRESSION_ARTWORK1_PART_1: {
+ 	EXPRESSION_ARTWORK1_PART_1: [
+    {
+      attachment: {
+        type: "image",
+        payload: {
+          url: "http://i.imgur.com/ykVgu6G.jpg"
+        }
+      }
+    },
+    {
  		text: "installation by Suzann Victor. The fleeting yet repetitive and mesmerising contact of the bulbs of troubled lovers, \
 who seem to be locked in the never-ending cycle of splitting and reconciling, hurting and healing.",
  		quick_replies: [
@@ -153,9 +162,9 @@ who seem to be locked in the never-ending cycle of splitting and reconciling, hu
  				payload: "EXPRESSION_ARTWORK2_PART_1"
  			}
  		]
- 	},
+ 	}],
 
- 	EXPRESSION_ARTWORK1_PART_2: {
+ 	EXPRESSION_ARTWORK1_PART_2: [{
  		text: "In describing the work, Victor has said: “Upon closer scrutinity of these eroticised objects of the everyday, \
 these fat-bottomed globes mimic the gesture of clitoral stimulation on its own reflecected image. \
 But which is stimulating which? What is “pleasuring” what? Who is looking and who is being looked at? Who is the seer and who is seen?”",
@@ -176,6 +185,6 @@ But which is stimulating which? What is “pleasuring” what? Who is looking an
  				payload: "DELIVERY"
  			}
  		]
- 	},
+ 	}],
 
 }

@@ -161,7 +161,7 @@ function sendMessage(recipientId, messages) {
         recipient: {id: recipientId},
         message: message
       }
-    }).then(() => {console.log("Finished sending: " + JSON.stringify(message))}).catch((err) => {console.log("Error sending message: " + err)};
+    }).then(() => {console.log("Finished sending: " + JSON.stringify(message))}).catch((err) => {console.log("Error sending message: " + err)});
   });
 }
 

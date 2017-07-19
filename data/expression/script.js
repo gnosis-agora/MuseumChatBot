@@ -148,21 +148,22 @@ In this section, we will explore some of the more unorthodox and unique forms th
       }
     },
     {
- 		text: "installation by Suzann Victor. The fleeting yet repetitive and mesmerising contact of the bulbs of troubled lovers, \
-who seem to be locked in the never-ending cycle of splitting and reconciling, hurting and healing.",
- 		quick_replies: [
- 			{
- 				content_type: "text",
- 				title: "Continue",
- 				payload: "EXPRESSION_ARTWORK1_PART_2"
- 			},
- 			{
- 				content_type: "text",
- 				title: "Study of Three Thermos Flasks",
- 				payload: "EXPRESSION_ARTWORK2_PART_1"
- 			}
- 		]
- 	}],
+   		text: "installation by Suzann Victor. The fleeting yet repetitive and mesmerising contact of the bulbs of troubled lovers, \
+  who seem to be locked in the never-ending cycle of splitting and reconciling, hurting and healing.",
+   		quick_replies: [
+   			{
+   				content_type: "text",
+   				title: "Continue",
+   				payload: "EXPRESSION_ARTWORK1_PART_2"
+   			},
+   			{
+   				content_type: "text",
+   				title: "Study of Three Thermos Flasks",
+   				payload: "EXPRESSION_ARTWORK2_PART_1"
+   			}
+   		]
+ 	  } 
+  ],
 
  	EXPRESSION_ARTWORK1_PART_2: [{
  		text: "In describing the work, Victor has said: “Upon closer scrutinity of these eroticised objects of the everyday, \

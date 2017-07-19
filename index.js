@@ -166,10 +166,10 @@ function sendMessage(recipientId, messages) {
         message: messages[index]
       }
     }).then(() => {
+      console.log("Finished sending: " + JSON.stringify(messages[index]));
       nextMessage = true;
       index += 1;
       console.log("index: " + index + " nextMessage: " + nextMessage + " messages length: " + messages.length);
-      console.log("Finished sending: " + JSON.stringify(messages[index]));
     }).catch((err) => {
       console.log("Error sending message: " + err)
     });    

@@ -75,22 +75,22 @@ function processPostback(event) {
       	{
       		content_type:"text",
       		title: "History",
-      		payload:"HISTORY_START",
+      		payload:"START",
       	},
       	{
       		content_type:"text",
       		title: "Expression",
-      		payload:"EXPRESSION_START",
+      		payload:"START",
       	},
       	{
       		content_type:"text",
       		title: "Politics",
-      		payload:"POLITICS_START",
+      		payload:"START",
       	},
       	{
       		content_type:"text",
       		title: "Influences",
-      		payload:"INFLUENCES_START",
+      		payload:"START",
       	}
       ]
       sendMessage(senderId, [{text: message, quick_replies: quick_reply_buttons}]);
@@ -164,6 +164,9 @@ function processMessage(event) {
         	if (expression.data[message.quick_reply.payload] !== undefined) {
         		sendMessage(senderId, expression.data[message.quick_reply.payload]);
         	}
+          else {
+            sendMessage(senderId, [{text: "Sorry, I don't understand your request."}]);
+          }
 
         } else if (message.attachments) {
             sendMessage(senderId, [{text: "Sorry, I don't understand your request."}]);

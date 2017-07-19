@@ -133,7 +133,7 @@ function processPostback(event) {
 }
 
 // sends messages to user
-function fireMessage(recipientId, message, callback()) {
+function fireMessage(recipientId, message, callback) {
   request({
     url: "https://graph.facebook.com/v2.6/me/messages",
     qs: {access_token: process.env.PAGE_ACCESS_TOKEN},

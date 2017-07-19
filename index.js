@@ -155,27 +155,24 @@ function processPostback(event) {
 function sendMessage(recipientId, messages) {
   let nextMessage = true;
   let index = 0;
-  while (index < messages.length) {
-    if (nextMessage) {
-      rp({
-        url: "https://graph.facebook.com/v2.6/me/messages",
-        qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-        method: "POST",
-        json: {
-          recipient: {id: recipientId},
-          message: messages[index]
-        }
-      }).then(() => {
-        console.log("Finished sending: " + JSON.stringify(messages[index]));
-        nextMessage = true;
-        index += 1;
-        console.log("index: " + index + " nextMessage: " + nextMessage + " messages length: " + messages.length);
-      }).catch((err) => {
-        console.log("Error sending message: " + err)
-      });       
-    }
+  while (nextMessage && index < messages.length) {
     nextMessage = false;
-    console.log("Still in loop");
+    rp({
+      url: "https://graph.facebook.com/v2.6/me/messages",
+      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+      method: "POST",
+      json: {
+        recipient: {id: recipientId},
+        message: messages[index]
+      }
+    }).then(() => {
+      console.log("Finished sending: " + JSON.stringify(messages[index]));
+      nextMessage = true;
+      index += 1;
+      console.log("index: " + index + " nextMessage: " + nextMessage + " messages length: " + messages.length);
+    }).catch((err) => {
+      console.log("Error sending message: " + err)
+    });    
   }
 }
 

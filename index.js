@@ -93,27 +93,27 @@ function processPostback(event) {
       		payload:"INFLUENCES_START",
       	}
       ]
-      sendMessage(senderId, {text: message, quick_replies: quick_reply_buttons});
+      sendMessage(senderId, [{text: message, quick_replies: quick_reply_buttons}]);
     });
   }
   else if (payload.indexOf("START") !== -1) {
   	// if they click on any of the themes in the persistent menu
   	switch (payload) {
   		case "HISTORY_START":
-  			sendMessage(senderId, {text: "you've selected history"});
+  			sendMessage(senderId, [{text: "you've selected history"}]);
   			break;
   		case "EXPRESSION_START":
   			sendMessage(senderId, expression.data.START);
   			break;
   		case "POLITICS_START":
-  			sendMessage(senderId, {text: "you've selected politics"});
+  			sendMessage(senderId, [{text: "you've selected politics"}]);
   			break;
   		case "INFLUENCES_START":
-  			sendMessage(senderId, {text: "you've selected influences"});
+  			sendMessage(senderId, [{text: "you've selected influences"}]);
   			break;			
   		default:
   			// should not reach here
-  			sendMessage(senderId, {text: "sorry, that is an invalid choice"});
+  			sendMessage(senderId, [{text: "sorry, that is an invalid choice"}]);
   	}
   }
   else if (payload.indexOf("EXPRESSION") !== -1) {
@@ -122,10 +122,10 @@ function processPostback(event) {
   			sendMessage(senderId, expression.data.EXPRESSION_ARTWORK1_PART_1);
   			break;
   		case "EXPRESSION_ARTWORK2_PART_1":
-  			sendMessage(senderId, {text: "sorry, this option is under construction"});
+  			sendMessage(senderId, [{text: "sorry, this option is under construction"}]);
   			break;
   		case "EXPRESSION_ARTWORK3_PART_1":
-  			sendMessage(senderId, {text: "sorry, this option is under construction"});
+  			sendMessage(senderId, [{text: "sorry, this option is under construction"}]);
   			break;
   	}  
   }

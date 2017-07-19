@@ -133,47 +133,35 @@ function processPostback(event) {
 }
 
 // sends messages to user
-// function sendMessage(recipientId, messages) {
-//   messages.forEach(message => {
-//     request({
-//       url: "https://graph.facebook.com/v2.6/me/messages",
-//       qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-//       method: "POST",
-//       json: {
-//         recipient: {id: recipientId},
-//         message: message
-//       }
-//     }, function(error, response, body) {
-//       if (error) {
-//         console.log("Error sending message: " + response.error);
-//       }
-//     });
-//   });
-// }
+function fireMessage(recipientId, message, callback()) {
+  request({
+    url: "https://graph.facebook.com/v2.6/me/messages",
+    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+    method: "POST",
+    json: {
+      recipient: {id: recipientId},
+      message: message
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log("Error sending message: " + response.error);
+    }
+  });
+  callback();
+}
 
 // sends messages to user using request-promise
+var index = 0;
 function sendMessage(recipientId, messages) {
-  let nextMessage = true;
-  let index = 0;
-  while (nextMessage && index < messages.length) {
-    nextMessage = false;
-    rp({
-      url: "https://graph.facebook.com/v2.6/me/messages",
-      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-      method: "POST",
-      json: {
-        recipient: {id: recipientId},
-        message: messages[index]
-      }
-    }).then(() => {
-      console.log("Finished sending: " + JSON.stringify(messages[index]));
-      nextMessage = true;
-      index += 1;
-      console.log("index: " + index + " nextMessage: " + nextMessage + " messages length: " + messages.length);
-    }).catch((err) => {
-      console.log("Error sending message: " + err)
-    });    
-  }
+  fireMessage(recipientId, messages[index], () => {
+    index += 1;
+    if (index < messages.length) {
+      sendMessage(recipientId, message);
+    }
+    else {
+      index = 0;
+    }
+  });
 }
 
 function processMessage(event) {

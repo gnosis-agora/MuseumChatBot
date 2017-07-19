@@ -138,18 +138,19 @@ In this section, we will explore some of the more unorthodox and unique forms th
  		] 		
  	}], 	
 
- 	EXPRESSION_ARTWORK1_PART_1: [
-    {
-      attachment: {
-        type: "image",
-        payload: {
-          url: "http://i.imgur.com/ykVgu6G.jpg"
-        }
-      }
-    },
-    {
+ 	EXPRESSION_ARTWORK1_PART_1: [{
  		text: "installation by Suzann Victor. The fleeting yet repetitive and mesmerising contact of the bulbs of troubled lovers, \
 who seem to be locked in the never-ending cycle of splitting and reconciling, hurting and healing.",
+    attachments: [
+      {
+        attachment: {
+          type: "image",
+          payload: {
+            url: "http://i.imgur.com/ykVgu6G.jpg"
+          }
+        }
+      }
+    ],
  		quick_replies: [
  			{
  				content_type: "text",

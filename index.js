@@ -67,7 +67,7 @@ function processPostback(event) {
         console.log("Error getting user's name: " +  error);
       } else {
         let bodyObj = JSON.parse(body);
-        name = bodyObj.first_name;
+        let name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
       let message = greeting + "My name is Cura and I'll be your virtual tour guide for today. Click on any one of the themes below to get started!";
@@ -166,7 +166,7 @@ function processMessage(event) {
         	}
 
         } else if (message.attachments) {
-            sendMessage(senderId, {text: "Sorry, I don't understand your request."});
+            sendMessage(senderId, [{text: "Sorry, I don't understand your request."}]);
         }
     }
 }

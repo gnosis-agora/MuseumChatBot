@@ -161,7 +161,7 @@ function processMessage(event) {
         // You may get a text or attachment but not both
         if (message.text) {
         	// deal with all cases here
-        	if (message.hasOwnProperty(quick_reply)) {
+        	if (message.hasOwnProperty("quick_reply")) {
         		sendMessage(senderId, expression.data[message.quick_reply.payload]);
         	}
           else {

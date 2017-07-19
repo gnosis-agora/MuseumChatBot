@@ -143,11 +143,9 @@ In this section, we will explore some of the more unorthodox and unique forms th
 who seem to be locked in the never-ending cycle of splitting and reconciling, hurting and healing.",
     attachments: [
       {
-        attachment: {
-          type: "image",
-          payload: {
-            url: "http://i.imgur.com/ykVgu6G.jpg"
-          }
+        type: "image",
+        payload: {
+          url: "http://i.imgur.com/ykVgu6G.jpg"
         }
       }
     ],

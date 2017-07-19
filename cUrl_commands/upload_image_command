@@ -1,0 +1,11 @@
+curl -X POST -H "Content-Type: application/json" -d '{
+  "message":{
+    "attachment":{
+      "type":"image", 
+      "payload":{
+        "url":"http://i.imgur.com/ykVgu6G.jpg", 
+        "is_reusable":true,
+      }
+    }
+  }
+}' "https://graph.facebook.com/v2.6/me/message_attachments?access_token=EAABzDnEfZAlQBANUb5YamqxPwOwZACsBIl12Rde47renGwIMHs7miMd71OOFCGxOwQbLj20KBRXxZBKUWrQMYHFf9bUKDtDETL0BrF4qVdWNhqtShpCSyYeg13u577Dd1UOAc9ZCEbz7U34j9GJ0JhHIxg5kehvuL0qMkjyohaTNjBmfwOp1JxUjIhRSCUQZD"

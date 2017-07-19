@@ -157,7 +157,6 @@ function sendMessage(recipientId, messages) {
   let index = 0;
   while (index < messages.length) {
     if (nextMessage) {
-      nextMessage = false;
       rp({
         url: "https://graph.facebook.com/v2.6/me/messages",
         qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
@@ -175,6 +174,8 @@ function sendMessage(recipientId, messages) {
         console.log("Error sending message: " + err)
       });       
     }
+    nextMessage = false;
+    console.log("Still in loop");
   }
 }
 

@@ -168,6 +168,8 @@ function sendMessage(recipientId, messages) {
     }).then(() => {
       nextMessage = true;
       index += 1;
+      console.log("index: " + index + " nextMessage: " + nextMessage);
+      console.log("Finished sending: " + JSON.stringify(message));
     }).catch((err) => {
       console.log("Error sending message: " + err)
     });    

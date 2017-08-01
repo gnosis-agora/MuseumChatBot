@@ -3,10 +3,10 @@ import request from "request";
 import bodyParser from "body-parser";
 import rp from "request-promise";
 import * as expression from "./data/expression/script";
-import http from "http";
+import https from "https";
 
 setInterval(() => {
-  http.get("https://pacific-lake-62804.herokuapp.com/");
+  https.get("https://pacific-lake-62804.herokuapp.com/");
 }, 300000);
 
 var app = express();

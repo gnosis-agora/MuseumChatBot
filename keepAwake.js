@@ -1,5 +1,5 @@
-import http from "http";
+import https from "https";
 
 setInterval(() => {
-  http.get("https://pacific-lake-62804.herokuapp.com/");
+  https.get("https://pacific-lake-62804.herokuapp.com/");
 }, 300000);

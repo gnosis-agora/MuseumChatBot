@@ -2,35 +2,35 @@ curl -X POST -H "Content-Type: application/json" -d '{
   "persistent_menu":[
     {
       "locale":"default",
-      "composer_input_disabled":true,
+      "composer_input_disabled": false,
       "call_to_actions":[
         {
-          "title":"Get Started",
+          "type":"postback",
+          "title":"Art",
+          "payload":"ART_START"
+        },
+        {
+          "title":"Things to do",
           "type":"nested",
           "call_to_actions":[
             {
-              "title":"History",
+              "title":"Instagram Impressions",
               "type":"postback",
-              "payload":"HISTORY_START"
+              "payload":"INSTAGRAM_START"
             },
             {
-              "title":"Expression",
+              "title":"Pick a Card",
               "type":"postback",
-              "payload":"EXPRESSION_START"
-            },
-            {
-              "title":"Politics",
-              "type":"postback",
-              "payload":"POLITICS_START"
-            },
-            {
-              "title":"Influences",
-              "type":"postback",
-              "payload":"INFLUENCES_START"
+              "payload":"PROMPT_START"
             }
           ]
+        },
+        {
+          "type":"postback",
+          "title":"Choose Another Exhibition",
+          payload:"ANOTHER_EXHIBTION_START"
         }
       ]
     }
   ]
-}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=PAGE_ACCESS_TOKEN"
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAABzDnEfZAlQBANUb5YamqxPwOwZACsBIl12Rde47renGwIMHs7miMd71OOFCGxOwQbLj20KBRXxZBKUWrQMYHFf9bUKDtDETL0BrF4qVdWNhqtShpCSyYeg13u577Dd1UOAc9ZCEbz7U34j9GJ0JhHIxg5kehvuL0qMkjyohaTNjBmfwOp1JxUjIhRSCUQZD"

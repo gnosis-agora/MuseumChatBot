@@ -2,7 +2,7 @@ import express from "express";
 import request from "request";
 import bodyParser from "body-parser";
 import rp from "request-promise";
-import * as expression from "./data/expression/script";
+import {art_data} from "./data/art_data";
 import https from "https";
 
 setInterval(() => {
@@ -16,7 +16,7 @@ app.listen((process.env.PORT || 5000));
 
 // Server index page
 app.get("/", function (req, res) {
-  res.send(JSON.stringify(expression.data.START));
+  res.send(JSON.stringify(art_data));
 });
 
 // Facebook Webhook
@@ -103,6 +103,9 @@ function processPostback(event) {
       sendMessage(senderId, [{text: message, quick_replies: quick_reply_buttons}]);
     });
   }
+  else if (payload === "ART_START") {
+    sendMessage(senderId, art_data["ART_START"]);
+  }
   else if (payload.indexOf("START") !== -1) {
   	// if they click on any of the themes in the persistent menu
   	switch (payload) {
@@ -139,35 +142,27 @@ function processPostback(event) {
 }
 
 // sends messages to user
-function fireMessage(recipientId, message, callback) {
-  request({
-    url: "https://graph.facebook.com/v2.6/me/messages",
-    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-    method: "POST",
-    json: {
-      recipient: {id: recipientId},
-      message: message
-    }
-  }, function(error, response, body) {
-    if (error) {
-      console.log("Error sending message: " + response.error);
-    }
-  });
-  callback();
-}
-
-// sends messages to user using request-promise
-var index = 0;
-function sendMessage(recipientId, messages) {
-  fireMessage(recipientId, messages[index], () => {
-    index += 1;
-    if (index < messages.length) {
-      sendMessage(recipientId, message);
-    }
-    else {
-      index = 0;
-    }
-  });
+var sendMessage = (recipientId, messages, index=0) => {
+  if (index < messages.length) {
+    request({
+      url: "https://graph.facebook.com/v2.6/me/messages",
+      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+      method: "POST",
+      json: {
+        recipient: {id: recipientId},
+        message: messages[index]
+      }
+    }, (error, response, body) => {
+      if (error) {
+        console.log("Error sending message: " + response.error);
+      }
+      console.log(body);
+      sendMessage(recipientId,messages,index+1);
+    });
+  }
+  else {
+    return;
+  }  
 }
 
 function processMessage(event) {

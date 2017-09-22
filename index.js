@@ -2,7 +2,7 @@ import express from "express";
 import request from "request";
 import bodyParser from "body-parser";
 import rp from "request-promise";
-import {art_data} from "./data/art_data";
+import {art_data} from "./data/art_decision";
 import https from "https";
 
 setInterval(() => {

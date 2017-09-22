@@ -106,39 +106,6 @@ function processPostback(event) {
   else if (payload === "ART_START") {
     sendMessage(senderId, art_data["ART_START"]);
   }
-  else if (payload.indexOf("START") !== -1) {
-  	// if they click on any of the themes in the persistent menu
-  	switch (payload) {
-  		case "HISTORY_START":
-  			sendMessage(senderId, [{text: "you've selected history"}]);
-  			break;
-  		case "EXPRESSION_START":
-  			sendMessage(senderId, expression.data.START);
-  			break;
-  		case "POLITICS_START":
-  			sendMessage(senderId, [{text: "you've selected politics"}]);
-  			break;
-  		case "INFLUENCES_START":
-  			sendMessage(senderId, [{text: "you've selected influences"}]);
-  			break;			
-  		default:
-  			// should not reach here
-  			sendMessage(senderId, [{text: "sorry, that is an invalid choice"}]);
-  	}
-  }
-  else if (payload.indexOf("EXPRESSION") !== -1) {
-  	switch (payload){
-  		case "EXPRESSION_ARTWORK1_PART_1":
-  			sendMessage(senderId, expression.data.EXPRESSION_ARTWORK1_PART_1);
-  			break;
-  		case "EXPRESSION_ARTWORK2_PART_1":
-  			sendMessage(senderId, [{text: "sorry, this option is under construction"}]);
-  			break;
-  		case "EXPRESSION_ARTWORK3_PART_1":
-  			sendMessage(senderId, [{text: "sorry, this option is under construction"}]);
-  			break;
-  	}  
-  }
 }
 
 // sends messages to user
@@ -176,13 +143,6 @@ function processMessage(event) {
         // You may get a text or attachment but not both
         if (message.text) {
         	// deal with all cases here
-        	if (message.hasOwnProperty("quick_reply") && expression.data[message.quick_reply.payload] !== undefined) {
-        		sendMessage(senderId, expression.data[message.quick_reply.payload]);
-        	}
-          else {
-            sendMessage(senderId, [{text: "Sorry, I don't understand your request."}]);
-          }
-
         } else if (message.attachments) {
             sendMessage(senderId, [{text: "Sorry, I don't understand your request."}]);
         }

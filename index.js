@@ -105,8 +105,9 @@ function processPostback(event) {
     });
   }
   else {
+    console.log(payload);
     let schema = JSON.parse(payload);
-
+    console.log(schema);
     if (schema.category == "art_data") {
       sendMessage(senderId, art_data[schema.branch]);
     }

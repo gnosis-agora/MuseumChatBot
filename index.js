@@ -106,6 +106,9 @@ function processPostback(event) {
   else if (payload === "ART_START") {
     sendMessage(senderId, art_data["ART_START"]);
   }
+  else if (payload === "ARTWORK_1") {
+    sendMessage(senderId, art_data["ARTWORK_1"]);
+  }
 }
 
 // sends messages to user
@@ -143,6 +146,7 @@ function processMessage(event) {
         // You may get a text or attachment but not both
         if (message.text) {
         	// deal with all cases here
+          sendMessage(senderId, [{text: "Sorry, I don't understand your request."}]);
         } else if (message.attachments) {
             sendMessage(senderId, [{text: "Sorry, I don't understand your request."}]);
         }

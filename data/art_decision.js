@@ -23,30 +23,49 @@ export const art_data = {
               ]
             },
             {
-              title: "Generic image 2",
-              image_url: "http://i.imgur.com/lZKq2uA.jpg",
+              title: "La serveuse de bocks",
+              subtitle: "Édouard Manet\nPhoto © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt",
+              image_url: "http://i.imgur.com/sj7QjSU.jpg",
               buttons: [
                 {
                   type: "postback",
                   title: "Learn more",
-                  payload: "EXPRESSION_ARTWORK2_PART_1"
+                  payload: "ARTWORK_2",
                 }
               ]
-            },
-            {
-              title: "Generic image 3",
-              image_url: "http://i.imgur.com/ykVgu6G.jpg",
-              buttons: [
-                {
-                  type: "postback",
-                  title: "Learn more",
-                  payload: "EXPRESSION_ARTWORK3_PART_1"
-                }
-              ]
-            },          
+            },         
           ]
         }
       }    
     }
   ],
+
+  ARTWORK_1: [
+    {
+      text: "Manet’s friend and fellow painter Alfred Stevens kept this painting in his Paris studio for a few years."
+    },
+    {
+      text: "Paul Durand-Ruel discovered it there and loved it so much that he bought 20 works by Manet 😱"
+    },
+    {
+      text: "Durand-Ruel ended up becoming the main art dealer for Manet and other Impressionist artists!",
+      quick_replies: [
+        {
+          content_type: "text",
+          title: "🖼 Next Artwork",
+          payload: "ARTWORK_2",
+        },
+        {
+          content_type: "text",
+          title: "🎧 Audio guide",
+          payload: "AUDIO_GUIDE",          
+        },
+        {
+          content_type: "text",
+          title: "🙋 Next tour timing",
+          payload: "NEXT_TOUR",            
+        }
+      ]
+    }
+  ]
 }

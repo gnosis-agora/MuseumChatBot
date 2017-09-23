@@ -18,7 +18,10 @@ export const art_data = {
                 {
                   type: "postback",
                   title: "Learn more",
-                  payload: "ARTWORK_1",
+                  payload: JSON.stringify({
+                    category: "art_data",
+                    branch: "ARTWORK_1"
+                  }),
                 }
               ]
             },
@@ -53,19 +56,28 @@ export const art_data = {
         {
           content_type: "text",
           title: "🖼 Next Artwork",
-          payload: "ARTWORK_2",
+          payload: JSON.stringify({
+            category: "art_data",
+            branch: "ARTWORK_2"
+          }),
         },
         {
           content_type: "text",
           title: "🎧 Audio guide",
-          payload: "AUDIO_GUIDE",          
+          payload: JSON.stringify({
+            category: "faq_helpers",
+            branch: "AUDIO_GUIDE"
+          }),          
         },
         {
           content_type: "text",
           title: "🙋 Next tour timing",
-          payload: "NEXT_TOUR",            
+          payload: JSON.stringify({
+            category: "faq_helpers",
+            branch: "NEXT_TOUR"
+          }),
         }
       ]
     }
-  ]
+  ],
 }

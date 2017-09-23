@@ -2,7 +2,8 @@ import express from "express";
 import request from "request";
 import bodyParser from "body-parser";
 import rp from "request-promise";
-import {art_data} from "./data/art_decision";
+import {art_data} from "./data/art_data";
+import {faq_helpers} from "./data/faq_helpers";
 import https from "https";
 
 setInterval(() => {
@@ -103,11 +104,26 @@ function processPostback(event) {
       sendMessage(senderId, [{text: message, quick_replies: quick_reply_buttons}]);
     });
   }
-  else if (payload === "ART_START") {
-    sendMessage(senderId, art_data["ART_START"]);
-  }
-  else if (payload === "ARTWORK_1") {
-    sendMessage(senderId, art_data["ARTWORK_1"]);
+  else {
+    let schema = JSON.parse(payload);
+
+    if (schema.category == "art_data") {
+      sendMessage(senderId, art_data[schema.branch]);
+    }
+    else if (schema.category == "faq_helpers") {
+      if (schema.branch == "NEXT_TOUR") {
+        let timeNow = new moment().add(8,'hours'); // offset the timezone difference on server and SG
+        if (timeNow.hours() < 14) {
+          sendMessage(senderId, faq_helpers["NEXT_TOUR_AVAILABLE"]);
+        }
+        else {
+          sendMessage(senderId, faq_helpers["NEXT_TOUR_UNAVAILABLE"]);
+        }
+      }
+      else {
+        sendMessage(senderId, faq_helpers[schema.branch]);
+      }
+    }
   }
 }
 
@@ -140,11 +156,26 @@ function processMessage(event) {
         var message = event.message;
         var senderId = event.sender.id;
 
-        console.log("Received message from senderId: " + senderId);
-        console.log("Message is: " + JSON.stringify(message));
-
         // You may get a text or attachment but not both
-        if (message.text) {
+        if (message.quick_reply) {
+          let schema = JSON.parse(message.quick_reply.payload);
+
+          if (schema.category == "faq_helpers") {
+            if (schema.branch == "NEXT_TOUR") {
+              let timeNow = new moment().add(8,'hours'); // offset the timezone difference on server and SG
+              if (timeNow.hours() < 14) {
+                sendMessage(senderId, faq_helpers["NEXT_TOUR_AVAILABLE"]);
+              }
+              else {
+                sendMessage(senderId, faq_helpers["NEXT_TOUR_UNAVAILABLE"]);
+              }
+            }
+            else {
+              sendMessage(senderId, faq_helpers[schema.branch]);
+            }
+          }          
+        }
+        else if (message.text) {
         	// deal with all cases here
           sendMessage(senderId, [{text: "Sorry, I don't understand your request."}]);
         } else if (message.attachments) {

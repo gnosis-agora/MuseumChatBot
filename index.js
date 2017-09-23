@@ -9,6 +9,7 @@ import {exhibition_start} from "./data/exhibition_start";
 import https from "https";
 import moment from "moment";
 import Chance from "chance";
+var chance = new Chance();
 
 setInterval(() => {
   https.get("https://pacific-lake-62804.herokuapp.com/");

@@ -16,7 +16,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
             {
               "title":"Instagram Impressions",
               "type":"postback",
-              "payload":""{\"category\":\"instagram_impressions\",\"branch\":\"instagram_impressions\"}"
+              "payload":"{\"category\":\"instagram_impressions\",\"branch\":\"instagram_impressions\"}"
             },
             {
               "title":"Pick a Card",

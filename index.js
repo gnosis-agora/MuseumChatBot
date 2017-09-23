@@ -84,7 +84,6 @@ function processPostback(event) {
     });
   }
   else {
-    console.log(payload);
     let schema = JSON.parse(payload);
 
     if (schema.category == "art_data") {
@@ -92,7 +91,8 @@ function processPostback(event) {
     }
     else if (schema.category == "pick_a_card") {
       let message = [{text: "Look at the painting in front of you."}];
-      message.push({text: card_questions[chance.integer({min: 0, max: card_questions.length-1})]});
+      let choice = chance.integer({min: 0, max: card_questions.length-1});
+      message.push({text: card_questions[choice]});
       sendMessage(senderId, message);
     }
     else if (schema.category == "instagram_impressions") {
@@ -148,7 +148,8 @@ function processMessage(event) {
 
           else if (schema.category == "pick_a_card") {
             let message = [{text: "Look at the painting in front of you."}];
-            message.push({text: card_questions[chance.integer({min: 0, max: card_questions.length-1})]});
+            let choice = chance.integer({min: 0, max: card_questions.length-1});
+            message.push({text: card_questions[choice]});
             sendMessage(senderId, message);
           }
 

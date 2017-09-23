@@ -84,6 +84,7 @@ function processPostback(event) {
     });
   }
   else {
+    console.log(payload);
     let schema = JSON.parse(payload);
 
     if (schema.category == "art_data") {

@@ -4,12 +4,15 @@ import bodyParser from "body-parser";
 import rp from "request-promise";
 import {art_data} from "./data/art_data";
 import {faq_helpers} from "./data/faq_helpers";
+import {card_questions} from "./data/card_questions";
+import {exhibition_start} from "./data/exhibition_start";
 import https from "https";
 import moment from "moment";
+import chance from "chance";
 
 setInterval(() => {
   https.get("https://pacific-lake-62804.herokuapp.com/");
-}, 300000);
+}, 900000 );
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
@@ -18,7 +21,7 @@ app.listen((process.env.PORT || 5000));
 
 // Server index page
 app.get("/", function (req, res) {
-  res.send(JSON.stringify(art_data));
+  res.send();
 });
 
 // Facebook Webhook
@@ -76,53 +79,31 @@ function processPostback(event) {
       } else {
         let bodyObj = JSON.parse(body);
         let name = bodyObj.first_name;
-        greeting = "Hi " + name + ". ";
       }
-      let message = greeting + "My name is Cura and I'll be your virtual tour guide for today. Click on any one of the themes below to get started!";
-      let quick_reply_buttons = [
-      	{
-      		content_type:"text",
-      		title: "History",
-      		payload:"START",
-      	},
-      	{
-      		content_type:"text",
-      		title: "Expression",
-      		payload:"START",
-      	},
-      	{
-      		content_type:"text",
-      		title: "Politics",
-      		payload:"START",
-      	},
-      	{
-      		content_type:"text",
-      		title: "Influences",
-      		payload:"START",
-      	}
-      ]
-      sendMessage(senderId, [{text: message, quick_replies: quick_reply_buttons}]);
+      sendMessage(senderId, generateWelcomeMessage(name));
     });
   }
   else {
-    console.log(payload);
     let schema = JSON.parse(payload);
-    console.log(schema);
+
     if (schema.category == "art_data") {
       sendMessage(senderId, art_data[schema.branch]);
     }
-    else if (schema.category == "faq_helpers") {
-      if (schema.branch == "NEXT_TOUR") {
-        let timeNow = new moment().add(8,'hours'); // offset the timezone difference on server and SG
-        if (timeNow.hours() < 14) {
-          sendMessage(senderId, faq_helpers["NEXT_TOUR_AVAILABLE"]);
-        }
-        else {
-          sendMessage(senderId, faq_helpers["NEXT_TOUR_UNAVAILABLE"]);
-        }
+    else if (schema.category == "pick_a_card") {
+      let message = [{text: "Look at the painting in front of you."}];
+      message.push({text: card_questions[chance.integer({min: 0, max: card_questions.length-1})]});
+      sendMessage(senderId, message);
+    }
+    else if (schema.category == "instagram_impressions") {
+      // INSTAGRAM API integration here
+      sendMessage(senderId, [{text: "Under construction"}]);
+    }
+    else if (schema.category == "choose_another_exhibition") {
+      if (schema.branch == "exhibition_start") {
+        sendMessage(senderId, exhibition_start[schema.branch])
       }
       else {
-        sendMessage(senderId, faq_helpers[schema.branch]);
+        // send vote to database here
       }
     }
   }
@@ -143,7 +124,6 @@ var sendMessage = (recipientId, messages, index=0) => {
       if (error) {
         console.log("Error sending message: " + response.error);
       }
-      console.log(body);
       sendMessage(recipientId,messages,index+1);
     });
   }
@@ -161,7 +141,31 @@ function processMessage(event) {
         if (message.quick_reply) {
           let schema = JSON.parse(message.quick_reply.payload);
 
-          if (schema.category == "faq_helpers") {
+          if (schema.category == "art_data") {
+            sendMessage(senderId, art_data[schema.branch]);
+          }
+
+          else if (schema.category == "pick_a_card") {
+            let message = [{text: "Look at the painting in front of you."}];
+            message.push({text: card_questions[chance.integer({min: 0, max: card_questions.length-1})]});
+            sendMessage(senderId, message);
+          }
+
+          else if (schema.category == "instagram_impressions") {
+            // INSTAGRAM API integration here
+            sendMessage(senderId, [{text: "Under construction"}]);
+          }
+
+          else if (schema.category == "choose_another_exhibition") {
+            if (schema.branch == "exhibition_start") {
+              sendMessage(senderId, exhibition_start[schema.branch])
+            }
+            else {
+              // send vote to database here
+            }
+          }
+
+          else if (schema.category == "faq_helpers") {
             if (schema.branch == "NEXT_TOUR") {
               let timeNow = new moment().add(8,'hours'); // offset the timezone difference on server and SG
               if (timeNow.hours() < 14) {
@@ -176,11 +180,86 @@ function processMessage(event) {
             }
           }          
         }
+
         else if (message.text) {
-        	// deal with all cases here
-          sendMessage(senderId, [{text: "Sorry, I don't understand your request."}]);
+        	// If user were to restart the conversation
+          let prompts = ["hello","hi","yo","what up","hey","hey there","get started"];
+          let potentialStart = message.text.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+          if (prompts.indexOf(potentialStart) != -1) {
+            // Get user's first name from the User Profile API
+            // and include it in the greeting
+            request({
+              url: "https://graph.facebook.com/v2.6/" + senderId,
+              qs: {
+                access_token: process.env.PAGE_ACCESS_TOKEN,
+                fields: "first_name"
+              },
+              method: "GET"
+            }, function(error, response, body) {
+              let greeting = "";
+              if (error) {
+                console.log("Error getting user's name: " +  error);
+              } else {
+                let bodyObj = JSON.parse(body);
+                let name = bodyObj.first_name;
+              }
+              sendMessage(senderId, generateWelcomeMessage(name));
+            });            
+          }
+          else {
+            sendMessage(senderId, [{text: "Sorry, I don't understand your request."}]);
+          }
+          
         } else if (message.attachments) {
             sendMessage(senderId, [{text: "Sorry, I don't understand your request."}]);
         }
     }
+}
+
+const generateWelcomeMessage = (name) => {
+  let messages = [];
+  messages.push({
+    text: "Hello " + name + ", welcome to the Century of Lights Exhibition!"
+  });
+  messages.push({
+    text: "I'll be your virtual assistant for this exhibition 🤖 I'm here to enhance your experience in this exhibition!"
+  });
+  messages.push({
+    text: "Select an option to begin."
+    quick_replies: [
+      {
+        content_type:"text",
+        title: "Art",
+        payload: JSON.stringify({
+          category: "art_data",
+          branch: "ART_START"
+        }),
+      },
+      {
+        content_type:"text",
+        title: "Instagrammables",
+        payload: JSON.stringify({
+          category: "instagram_impressions",
+          branch: "instagram_impressions"
+        }),
+      },
+      {
+        content_type:"text",
+        title: "Pick a Card",
+        payload: JSON.stringify({
+          category: "pick_a_card",
+          branch: "pick_a_card"
+        }),
+      },
+      {
+        content_type:"text",
+        title: "Other exhibitions",
+        payload: JSON.stringify({
+          category: "choose_another_exhibition",
+          branch: "choose_another_exhibition"
+        }),
+      }
+    ]
+  });  
+  return messages;
 }

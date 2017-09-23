@@ -16,19 +16,19 @@ curl -X POST -H "Content-Type: application/json" -d '{
             {
               "title":"Instagram Impressions",
               "type":"postback",
-              "payload":"INSTAGRAM_START"
+              "payload":""{\"category\":\"instagram_impressions\",\"branch\":\"instagram_impressions\"}"
             },
             {
               "title":"Pick a Card",
               "type":"postback",
-              "payload":"PROMPT_START"
+              "payload":"{\"category\":\"pick_a_card\",\"branch\":\"pick_a_card\"}"
             }
           ]
         },
         {
           "type":"postback",
           "title":"Choose Another Exhibition",
-          payload:"ANOTHER_EXHIBTION_START"
+          "payload":"{\"category\":\"choose_another_exhibition\",\"branch\":\"exhibition_start\"}"
         }
       ]
     }

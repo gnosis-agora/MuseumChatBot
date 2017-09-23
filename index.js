@@ -225,7 +225,7 @@ const generateWelcomeMessage = (name) => {
     text: "I'll be your virtual assistant for this exhibition 🤖 I'm here to enhance your experience in this exhibition!"
   });
   messages.push({
-    text: "Select an option to begin."
+    text: "Select an option to begin.",
     quick_replies: [
       {
         content_type:"text",

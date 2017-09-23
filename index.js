@@ -5,6 +5,7 @@ import rp from "request-promise";
 import {art_data} from "./data/art_data";
 import {faq_helpers} from "./data/faq_helpers";
 import https from "https";
+import moment from "moment";
 
 setInterval(() => {
   https.get("https://pacific-lake-62804.herokuapp.com/");
@@ -36,7 +37,6 @@ app.get("/webhook", function (req, res) {
 app.post("/webhook", function (req, res) {
   // Make sure this is a page subscription
   if (req.body.object == "page") {
-    console.log(req);
     // Iterate over each entry
     // There may be multiple entries if batched
     req.body.entry.forEach(function(entry) {

@@ -7,7 +7,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
         {
           "type":"postback",
           "title":"Art",
-          "payload":"{"category":"art_data","branch":"ART_START"}"
+          "payload":"{\"category\":\"art_data\",\"branch\":\"ART_START\"}"
         },
         {
           "title":"Things to do",

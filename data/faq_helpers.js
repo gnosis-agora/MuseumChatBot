@@ -5,7 +5,7 @@ export const faq_helpers = {
         type: "template",
         payload: {
           template_type: "button",
-          text: "Learn more about this artist and artwork on our Gallery Explorer app. It’s free!"
+          text: "Learn more about this artist and artwork on our Gallery Explorer app. It’s free!",
           buttons: [
             {
               type: "web_url",
@@ -25,7 +25,7 @@ export const faq_helpers = {
 
   NEXT_TOUR_AVAILABLE: [
     {
-      text: "The next docent tour is at 2pm. Head over to the Tours Desk at Level B1 to register."
+      text: "The next docent tour is at 2pm. Head over to the Tours Desk at Level B1 to register.",
     },
     {
       attachment: {

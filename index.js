@@ -8,7 +8,7 @@ import {card_questions} from "./data/card_questions";
 import {exhibition_start} from "./data/exhibition_start";
 import https from "https";
 import moment from "moment";
-import chance from "chance";
+import Chance from "chance";
 
 setInterval(() => {
   https.get("https://pacific-lake-62804.herokuapp.com/");

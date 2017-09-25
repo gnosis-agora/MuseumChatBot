@@ -20,6 +20,43 @@ export const faq_helpers = {
           ]
         }
       }
+    },
+    {
+      text: "Alternatively, you can try one of our other options.",
+      quick_replies: [
+        {
+          content_type:"text",
+          title: "🎨 Art",
+          payload: JSON.stringify({
+            category: "art_data",
+            branch: "ART_START"
+          }),
+        },
+        {
+          content_type:"text",
+          title: "📷 Instagrammables",
+          payload: JSON.stringify({
+            category: "instagram_impressions",
+            branch: "instagram_impressions"
+          }),
+        },
+        {
+          content_type:"text",
+          title: "🎴 Pick a Card",
+          payload: JSON.stringify({
+            category: "pick_a_card",
+            branch: "pick_a_card"
+          }),
+        },
+        {
+          content_type:"text",
+          title: "🖼 Other exhibitions",
+          payload: JSON.stringify({
+            category: "choose_another_exhibition",
+            branch: "choose_another_exhibition"
+          }),
+        }
+      ]
     }
   ],
 
@@ -47,6 +84,43 @@ export const faq_helpers = {
           ]
         }
       }
+    },
+    {
+      text: "Alternatively, you can try one of our other options.",
+      quick_replies: [
+        {
+          content_type:"text",
+          title: "🎨 Art",
+          payload: JSON.stringify({
+            category: "art_data",
+            branch: "ART_START"
+          }),
+        },
+        {
+          content_type:"text",
+          title: "📷 Instagrammables",
+          payload: JSON.stringify({
+            category: "instagram_impressions",
+            branch: "instagram_impressions"
+          }),
+        },
+        {
+          content_type:"text",
+          title: "🎴 Pick a Card",
+          payload: JSON.stringify({
+            category: "pick_a_card",
+            branch: "pick_a_card"
+          }),
+        },
+        {
+          content_type:"text",
+          title: "🖼 Other exhibitions",
+          payload: JSON.stringify({
+            category: "choose_another_exhibition",
+            branch: "choose_another_exhibition"
+          }),
+        }
+      ]
     }
   ],
 
@@ -70,7 +144,44 @@ export const faq_helpers = {
             }
           ]
         }
-      }    
+      }
+    },
+    {
+      text: "Alternatively, you can try one of our other options.",
+      quick_replies: [
+        {
+          content_type:"text",
+          title: "🎨 Art",
+          payload: JSON.stringify({
+            category: "art_data",
+            branch: "ART_START"
+          }),
+        },
+        {
+          content_type:"text",
+          title: "📷 Instagrammables",
+          payload: JSON.stringify({
+            category: "instagram_impressions",
+            branch: "instagram_impressions"
+          }),
+        },
+        {
+          content_type:"text",
+          title: "🎴 Pick a Card",
+          payload: JSON.stringify({
+            category: "pick_a_card",
+            branch: "pick_a_card"
+          }),
+        },
+        {
+          content_type:"text",
+          title: "🖼 Other exhibitions",
+          payload: JSON.stringify({
+            category: "choose_another_exhibition",
+            branch: "choose_another_exhibition"
+          }),
+        }
+      ]
     }
   ]
 

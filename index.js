@@ -111,7 +111,41 @@ function processPostback(event) {
     else if (schema.category == "pick_a_card") {
       let message = [{text: "Look at the painting in front of you."}];
       let choice = chance.integer({min: 0, max: card_questions.length-1});
-      message.push({text: card_questions[choice]});
+      let quick_reply = [
+        {
+          content_type:"text",
+          title: "🎨 Art",
+          payload: JSON.stringify({
+            category: "art_data",
+            branch: "ART_START"
+          }),
+        },
+        {
+          content_type:"text",
+          title: "📷 Instagrammables",
+          payload: JSON.stringify({
+            category: "instagram_impressions",
+            branch: "instagram_impressions"
+          }),
+        },
+        {
+          content_type:"text",
+          title: "🎴 Pick a Card",
+          payload: JSON.stringify({
+            category: "pick_a_card",
+            branch: "pick_a_card"
+          }),
+        },
+        {
+          content_type:"text",
+          title: "🖼 Other exhibitions",
+          payload: JSON.stringify({
+            category: "choose_another_exhibition",
+            branch: "choose_another_exhibition"
+          }),
+        }
+      ];
+      message.push({text: card_questions[choice], quick_replies: quick_reply});
       sendMessage(senderId, message);
     }
     else if (schema.category == "instagram_impressions") {
@@ -132,7 +166,7 @@ function processPostback(event) {
           return id_b - id_a;
         });
         
-        let messages = [{text: "Here are the top 10 newest instagram posts. Tag your photos with #coloursofimpressionism to see your photos here!"}];
+        let messages = [{text: "Here are the 10 newest instagram posts. Tag your photos with #coloursofimpressionism to see your photos here!"}];
         let carouselItems = [];
         for (let i=0;i<10;i++) {
           let obj = {
@@ -165,29 +199,6 @@ function processPostback(event) {
   }
 }
 
-// sends messages to user
-var sendMessage = (recipientId, messages, index=0) => {
-  if (index < messages.length) {
-    request({
-      url: "https://graph.facebook.com/v2.6/me/messages",
-      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-      method: "POST",
-      json: {
-        recipient: {id: recipientId},
-        message: messages[index]
-      }
-    }, (error, response, body) => {
-      if (error) {
-        console.log("Error sending message: " + response.error);
-      }
-      sendMessage(recipientId,messages,index+1);
-    });
-  }
-  else {
-    return;
-  }  
-}
-
 function processMessage(event) {
     if (!event.message.is_echo) {
         var message = event.message;
@@ -204,7 +215,41 @@ function processMessage(event) {
           else if (schema.category == "pick_a_card") {
             let message = [{text: "Look at the painting in front of you."}];
             let choice = chance.integer({min: 0, max: card_questions.length-1});
-            message.push({text: card_questions[choice]});
+            let quick_reply = [
+              {
+                content_type:"text",
+                title: "🎨 Art",
+                payload: JSON.stringify({
+                  category: "art_data",
+                  branch: "ART_START"
+                }),
+              },
+              {
+                content_type:"text",
+                title: "📷 Instagrammables",
+                payload: JSON.stringify({
+                  category: "instagram_impressions",
+                  branch: "instagram_impressions"
+                }),
+              },
+              {
+                content_type:"text",
+                title: "🎴 Pick a Card",
+                payload: JSON.stringify({
+                  category: "pick_a_card",
+                  branch: "pick_a_card"
+                }),
+              },
+              {
+                content_type:"text",
+                title: "🖼 Other exhibitions",
+                payload: JSON.stringify({
+                  category: "choose_another_exhibition",
+                  branch: "choose_another_exhibition"
+                }),
+              }
+            ];
+            message.push({text: card_questions[choice], quick_replies: quick_reply});
             sendMessage(senderId, message);
           }
 
@@ -308,6 +353,29 @@ function processMessage(event) {
     }
 }
 
+// sends messages to user
+var sendMessage = (recipientId, messages, index=0) => {
+  if (index < messages.length) {
+    request({
+      url: "https://graph.facebook.com/v2.6/me/messages",
+      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+      method: "POST",
+      json: {
+        recipient: {id: recipientId},
+        message: messages[index]
+      }
+    }, (error, response, body) => {
+      if (error) {
+        console.log("Error sending message: " + response.error);
+      }
+      sendMessage(recipientId,messages,index+1);
+    });
+  }
+  else {
+    return;
+  }  
+}
+
 const generateWelcomeMessage = (name) => {
   let messages = [];
   messages.push({
@@ -321,7 +389,7 @@ const generateWelcomeMessage = (name) => {
     quick_replies: [
       {
         content_type:"text",
-        title: "Art",
+        title: "🎨 Art",
         payload: JSON.stringify({
           category: "art_data",
           branch: "ART_START"
@@ -329,7 +397,7 @@ const generateWelcomeMessage = (name) => {
       },
       {
         content_type:"text",
-        title: "Instagrammables",
+        title: "📷 Instagrammables",
         payload: JSON.stringify({
           category: "instagram_impressions",
           branch: "instagram_impressions"
@@ -337,7 +405,7 @@ const generateWelcomeMessage = (name) => {
       },
       {
         content_type:"text",
-        title: "Pick a Card",
+        title: "🎴 Pick a Card",
         payload: JSON.stringify({
           category: "pick_a_card",
           branch: "pick_a_card"
@@ -345,7 +413,7 @@ const generateWelcomeMessage = (name) => {
       },
       {
         content_type:"text",
-        title: "Other exhibitions",
+        title: "🖼 Other exhibitions",
         payload: JSON.stringify({
           category: "choose_another_exhibition",
           branch: "choose_another_exhibition"

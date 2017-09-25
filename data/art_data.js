@@ -13,7 +13,7 @@ export const art_data = {
             {
               title: "Clair de lune sur le port de Boulogne (Moonlight over the Port of Boulogne)",
               subtitle: "Édouard Manet\nPhoto © RMN-Grand Palais (musée d’Orsay) / Hervé Lewandowski",
-              image_url: "http://i.imgur.com/sj7QjSU.jpg",
+              image_url: "https://i.imgur.com/xOquuHP.jpg",
               buttons: [
                 {
                   type: "postback",
@@ -28,7 +28,7 @@ export const art_data = {
             {
               title: "La serveuse de bocks",
               subtitle: "Édouard Manet\nPhoto © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt",
-              image_url: "http://i.imgur.com/sj7QjSU.jpg",
+              image_url: "https://i.imgur.com/pI1wiGI.jpg",
               buttons: [
                 {
                   type: "postback",
@@ -43,7 +43,7 @@ export const art_data = {
             {
               title: "La Pie",
               subtitle: "Claude Manet\nPhoto © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt",
-              image_url: "http://i.imgur.com/sj7QjSU.jpg",
+              image_url: "https://i.imgur.com/9sLS7M6.jpg",
               buttons: [
                 {
                   type: "postback",
@@ -58,7 +58,7 @@ export const art_data = {
             {
               title: "Le berceau",
               subtitle: "Berthe Morisot\nPhoto © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt",
-              image_url: "http://i.imgur.com/sj7QjSU.jpg",
+              image_url: "https://i.imgur.com/DHD4if0.jpg",
               buttons: [
                 {
                   type: "postback",

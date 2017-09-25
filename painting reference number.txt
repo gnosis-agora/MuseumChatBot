@@ -1,7 +1,7 @@
-Edouard Manet - Clair de lune sur le port de Boulogne: 1909261475994900
-Edouard Manet - La serveuse de bocks: 1909265825994465
-Claude Monet - La Pie: 1909266012661113
-Berthe Morisot - Le berceau: 1909266129327768
+Edouard Manet - Clair de lune sur le port de Boulogne: 1909261475994900, https://i.imgur.com/xOquuHP.jpg
+Edouard Manet - La serveuse de bocks: 1909265825994465, https://i.imgur.com/pI1wiGI.jpg
+Claude Monet - La Pie: 1909266012661113, https://i.imgur.com/9sLS7M6.jpg
+Berthe Morisot - Le berceau: 1909266129327768, https://i.imgur.com/DHD4if0.jpg
 Auguste Renoir - Claude Monet: 1909266285994419
 Claude Monet - Le bassin aux nympheas, harmonie rose: 1909266592661055
 Paul Cezanne - Le golfe de Marseille vu de l'Estaque: 1909266652661049

@@ -116,7 +116,43 @@ function processPostback(event) {
     }
     else if (schema.category == "instagram_impressions") {
       // INSTAGRAM API integration here
-      sendMessage(senderId, [{text: "Under construction"}]);
+      scraper.getMediaByTag("catsdrinkingmilk", "", function(error,response_json){
+        let media = response_json["media"]["nodes"];
+        let url_list = [];
+        media.forEach(picture => {
+          url_list.push(picture["display_src"]);
+        });
+        url_list.sort(function(a,b) {
+          let id_a = a.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
+          let id_b = b.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
+
+          id_a = parseInt(id_a.substring(0,8));
+          id_b = parseInt(id_b.substring(0,8));
+
+          return id_b - id_a;
+        });
+        
+        let messages = [{text: "Here are the top 10 newest instagram posts. Tag your photos with #coloursofimpressionism to see your photos here!"}];
+        let carouselItems = [];
+        for (let i=0;i<10;i++) {
+          let obj = {
+            title: "Picture" + (i+1),
+            image_url: url_list[i],
+          };
+          carouselItems.push(obj);
+        }
+        let carousel = {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: carouselItems
+            }
+          }
+        }
+        messages.push(carousel);
+        sendMessage(senderId, messages);
+      });
     }
     else if (schema.category == "choose_another_exhibition") {
       if (schema.branch == "exhibition_start") {
@@ -210,7 +246,6 @@ function processMessage(event) {
               messages.push(carousel);
               sendMessage(senderId, messages);
             });
-            
           }
 
           else if (schema.category == "choose_another_exhibition") {

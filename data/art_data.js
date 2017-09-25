@@ -70,9 +70,6 @@ export const art_data = {
                 }
               ]              
             },
-            {
-              
-            }
           ]
         }
       }    

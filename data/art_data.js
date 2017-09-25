@@ -69,6 +69,9 @@ export const art_data = {
                   }),
                 }
               ]              
+            },
+            {
+              
             }
           ]
         }
@@ -81,7 +84,7 @@ export const art_data = {
       attachment: {
         type: "image",
         payload: {
-          attachment_id: "1880877678833280"
+          attachment_id: "1909261475994900"
         }
       }
     },
@@ -129,7 +132,7 @@ Paul Durand-Ruel discovered it there and loved it so much that he bought 20 work
       attachment: {
         type: "image",
         payload: {
-          attachment_id: "1880877678833280"
+          attachment_id: "1909265825994465"
         }
       }
     },
@@ -173,7 +176,7 @@ Artist: Édouard Manet\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / P
       attachment: {
         type: "image",
         payload: {
-          attachment_id: "1880877678833280"
+          attachment_id: "1909266012661113"
         }
       }
     },
@@ -217,7 +220,7 @@ Artist: Claude Manet\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Pat
       attachment: {
         type: "image",
         payload: {
-          attachment_id: "1880877678833280"
+          attachment_id: "1909266129327768"
         }
       }
     },

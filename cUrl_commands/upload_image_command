@@ -3,7 +3,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
     "attachment":{
       "type":"image", 
       "payload":{
-        "url":"http://i.imgur.com/ykVgu6G.jpg", 
+        "url":"https://i.imgur.com/vkJCadI.jpg", 
         "is_reusable":true,
       }
     }

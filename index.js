@@ -194,7 +194,7 @@ function processMessage(event) {
               for (let i=0;i<10;i++) {
                 let obj = {
                   title: "Picture" + (i+1),
-                  image_url: url_list[i];
+                  image_url: url_list[i],
                 };
                 carouselItems.push(obj);
               }

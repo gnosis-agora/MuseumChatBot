@@ -53,7 +53,7 @@ export const faq_helpers = {
           title: "🖼 Other exhibitions",
           payload: JSON.stringify({
             category: "choose_another_exhibition",
-            branch: "choose_another_exhibition"
+            branch: "exhibition_start"
           }),
         }
       ]
@@ -117,7 +117,7 @@ export const faq_helpers = {
           title: "🖼 Other exhibitions",
           payload: JSON.stringify({
             category: "choose_another_exhibition",
-            branch: "choose_another_exhibition"
+            branch: "exhibition_start"
           }),
         }
       ]
@@ -178,7 +178,7 @@ export const faq_helpers = {
           title: "🖼 Other exhibitions",
           payload: JSON.stringify({
             category: "choose_another_exhibition",
-            branch: "choose_another_exhibition"
+            branch: "exhibition_start"
           }),
         }
       ]

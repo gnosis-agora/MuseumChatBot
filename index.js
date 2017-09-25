@@ -141,7 +141,7 @@ function processPostback(event) {
           title: "🖼 Other exhibitions",
           payload: JSON.stringify({
             category: "choose_another_exhibition",
-            branch: "choose_another_exhibition"
+            branch: "exhibition_start"
           }),
         }
       ];
@@ -245,7 +245,7 @@ function processMessage(event) {
                 title: "🖼 Other exhibitions",
                 payload: JSON.stringify({
                   category: "choose_another_exhibition",
-                  branch: "choose_another_exhibition"
+                  branch: "exhibition_start"
                 }),
               }
             ];
@@ -416,7 +416,7 @@ const generateWelcomeMessage = (name) => {
         title: "🖼 Other exhibitions",
         payload: JSON.stringify({
           category: "choose_another_exhibition",
-          branch: "choose_another_exhibition"
+          branch: "exhibition_start"
         }),
       }
     ]

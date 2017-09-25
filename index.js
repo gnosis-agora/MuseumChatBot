@@ -190,7 +190,7 @@ function processMessage(event) {
               });
               
               let messages = [{text: "Here are the top 10 newest instagram posts. Tag your photos with #coloursofimpressionism to see your photos here!"}];
-              let carouselItems = []
+              let carouselItems = [];
               for (let i=0;i<10;i++) {
                 let obj = {
                   title: "Picture" + (i+1),
@@ -199,7 +199,7 @@ function processMessage(event) {
                 carouselItems.push(obj);
               }
               let carousel = {
-                attachments: {
+                attachment: {
                   type: "template",
                   payload: {
                     template_type: "generic",

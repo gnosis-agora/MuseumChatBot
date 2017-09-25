@@ -2,9 +2,9 @@ Edouard Manet - Clair de lune sur le port de Boulogne: 1909261475994900, https:/
 Edouard Manet - La serveuse de bocks: 1909265825994465, https://i.imgur.com/pI1wiGI.jpg
 Claude Monet - La Pie: 1909266012661113, https://i.imgur.com/9sLS7M6.jpg
 Berthe Morisot - Le berceau: 1909266129327768, https://i.imgur.com/DHD4if0.jpg
-Auguste Renoir - Claude Monet: 1909266285994419
-Claude Monet - Le bassin aux nympheas, harmonie rose: 1909266592661055
-Paul Cezanne - Le golfe de Marseille vu de l'Estaque: 1909266652661049
-Paul Signac - La bouee rouge: 1909267332660981
-Claude Monet - La Cathedrale de Rouen. Le portail et la tour Saint-Romain, plein soleil: 1909267442660970
-Auguste Renoir - Gabrielle a la rose: 1909267662660948
+Pierre-Auguste Renoir - Claude Monet: 1909266285994419, https://i.imgur.com/oUuyMoK.jpg
+Claude Monet - Le bassin aux nympheas, harmonie rose: 1909266592661055, https://i.imgur.com/63EV6OO.jpg
+Paul Cezanne - Le golfe de Marseille vu de l'Estaque: 1909266652661049, https://i.imgur.com/vJBZm0A.jpg
+Paul Signac - La bouee rouge: 1909267332660981, https://i.imgur.com/I2ZIT5i.jpg
+Claude Monet - La Cathedrale de Rouen. Le portail et la tour Saint-Romain, plein soleil: 1909267442660970, https://i.imgur.com/P8jlw7U.jpg
+Pierre-Auguste Renoir - Gabrielle a la rose: 1909267662660948, https://i.imgur.com/vkJCadI.jpg

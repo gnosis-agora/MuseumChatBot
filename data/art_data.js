@@ -9,6 +9,7 @@ export const art_data = {
         type: "template",
         payload: {
           template_type: "generic",
+          image_aspect_ratio: "square",
           elements: [
             {
               // artwork 1

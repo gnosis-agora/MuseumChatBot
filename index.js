@@ -24,22 +24,16 @@ app.listen((process.env.PORT || 5000));
 
 // Server index page
 app.get("/", function (req, res) {
-  scraper.getMediaByTag("catsdrinkingmilk", "", function(error,response_json){
-    let media = response_json["media"]["nodes"];
-    let url_list = [];
-    media.forEach(picture => {
-      url_list.push(picture["display_src"]);
-    });
-    url_list.sort(function(a,b) {
-      let id_a = a.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
-      let id_b = b.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
-
-      id_a = parseInt(id_a.substring(0,8));
-      id_b = parseInt(id_b.substring(0,8));
-
-      return id_b - id_a;
-    });
-    res.send(url_list);
+  request({
+    url: "https://www.instagram.com/p/" + "BZfo9ezhsMW",
+    qs: {
+      __a: 1,
+    },
+    method: "GET"
+  }, function(error, response, body) {
+    let json = JSON.parse(body);
+    let main = json["graphql"]["shortcode_media"];
+    res.send(main["owner"]["username"]);
   });
 });
 
@@ -317,9 +311,8 @@ function processMessage(event) {
               let carouselItems = [];
               for (let i=0;i<10;i++) {
                 let obj = {
-                  title: "Picture " + (i+1),
                   image_url: list[i].display_src,
-                  subtitle: list[i].caption,
+                  title: list[i].caption,
                   default_action: {
                     type: "web_url",
                     url: "https://www.instagram.com/p/" + list[i].code + "/",

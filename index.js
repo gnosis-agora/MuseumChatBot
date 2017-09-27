@@ -184,6 +184,7 @@ function processPostback(event) {
             type: "template",
             payload: {
               template_type: "generic",
+              image_aspect_ratio: "square",
               elements: carouselItems
             }
           }
@@ -335,6 +336,7 @@ function processMessage(event) {
                   type: "template",
                   payload: {
                     template_type: "generic",
+                    image_aspect_ratio: "square",
                     elements: carouselItems
                   }
                 }

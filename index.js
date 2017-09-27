@@ -293,13 +293,19 @@ function processMessage(event) {
           else if (schema.category == "instagram_impressions") {
             scraper.getMediaByTag("catsdrinkingmilk", "", function(error,response_json){
               let media = response_json["media"]["nodes"];
-              let url_list = [];
+              let list = [];
               media.forEach(picture => {
-                url_list.push(picture["display_src"]);
+                let item = {
+                  display_src: picture["display_src"],
+                  code: picture["code"],
+                  caption: picture["caption"],
+                  owner_id: picture["owner"]["id"],
+                }
+                list.push(item);
               });
-              url_list.sort(function(a,b) {
-                let id_a = a.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
-                let id_b = b.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
+              list.sort(function(a,b) {
+                let id_a = a.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
+                let id_b = b.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
 
                 id_a = parseInt(id_a.substring(0,8));
                 id_b = parseInt(id_b.substring(0,8));
@@ -311,8 +317,13 @@ function processMessage(event) {
               let carouselItems = [];
               for (let i=0;i<10;i++) {
                 let obj = {
-                  title: "Picture" + (i+1),
-                  image_url: url_list[i],
+                  title: "Picture " + (i+1),
+                  image_url: list[i].display_src,
+                  subtitle: list[i].caption,
+                  default_action: {
+                    type: "web_url",
+                    url: "https://www.instagram.com/p/" + list[i].code + "/",
+                  }
                 };
                 carouselItems.push(obj);
               }

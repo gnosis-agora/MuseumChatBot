@@ -30,7 +30,7 @@ export const updateQuestion2 = (choice) => {
     let obj = {$inc : {}};
     obj["$inc"][choice] = 1;
     db.collection('results').update(
-      {question : 1},
+      {question : 2},
       obj,
       {upsert: true}
     );      

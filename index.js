@@ -186,9 +186,12 @@ function processPostback(event) {
       if (schema.branch == "visit_tickets") {
         sendMessage(senderId, visit[schema.branch])
       }
-      else {
+      else if (schema.branch == "visit_opening_hours"){
         let timeNow = new moment().add(8,'hours');
         sendMessage(senderId, [{text: getOpeningHourMessage(timeNow)}]);
+      }
+      else {
+        sendMessage(senderId, visit[schema.branch]);
       }
     }
   }
@@ -324,9 +327,12 @@ function processMessage(event) {
             if (schema.branch == "visit_tickets") {
               sendMessage(senderId, visit[schema.branch])
             }
-            else {
+            else if (schema.branch == "visit_opening_hours"){
               let timeNow = new moment().add(8,'hours');
               sendMessage(senderId, [{text: getOpeningHourMessage(timeNow)}]);
+            }
+            else {
+              sendMessage(senderId, visit[schema.branch]);
             }
           }
 

@@ -93,6 +93,7 @@ function processPostback(event) {
       } else {
         let bodyObj = JSON.parse(body);
         let name = bodyObj.first_name;
+        startSurvey(senderId);
         sendMessage(senderId, generateWelcomeMessage(name));
       }
     });

@@ -6,6 +6,7 @@ import {art_data} from "./data/art_data";
 import {faq_helpers} from "./data/faq_helpers";
 import {card_questions} from "./data/card_questions";
 import {visit} from "./data/visit_questions";
+import {updateQuestion1, updateQuestion2} from "./mongoMethod";
 import https from "https";
 import moment from "moment";
 import Chance from "chance";
@@ -350,6 +351,84 @@ function processMessage(event) {
               sendMessage(senderId, faq_helpers[schema.branch]);
             }
           }          
+
+          else if (schema.category == "survey") {
+            if (schema.branch == "question_1") {
+              updateQuestion1(schema.choice);
+              sendMessage(senderId, [{
+                text: "Which feature would be most useful to you?",
+                quick_replies: [
+                  {
+                    content_type: "text",
+                    title: "Artwork information",
+                    payload: JSON.stringify({
+                      category: "survey",
+                      branch: "question_2",
+                      choice: "artwork_information"
+                    }),
+                  },
+                  {
+                    content_type: "text",
+                    title: "Things to see and do",
+                    payload: JSON.stringify({
+                      category: "survey",
+                      branch: "question_2",
+                      choice: "things_to_see_and_do"
+                    }),
+                  },
+                  {
+                    content_type: "text",
+                    title: "Buy tickets",
+                    payload: JSON.stringify({
+                      category: "survey",
+                      branch: "question_2",
+                      choice: "buy_tickets"
+                    }),
+                  },
+                  {
+                    content_type: "text",
+                    title: "Get directions",
+                    payload: JSON.stringify({
+                      category: "survey",
+                      branch: "question_2",
+                      choice: "get_directions"
+                    }),
+                  },
+                  {
+                    content_type: "text",
+                    title: "Register for events",
+                    payload: JSON.stringify({
+                      category: "survey",
+                      branch: "question_2",
+                      choice: "register_for_events"
+                    }),
+                  },
+                  {
+                    content_type: "text",
+                    title: "Promos",
+                    payload: JSON.stringify({
+                      category: "survey",
+                      branch: "question_2",
+                      choice: "promos"
+                    }),
+                  },     
+                  {
+                    content_type: "text",
+                    title: "Games",
+                    payload: JSON.stringify({
+                      category: "survey",
+                      branch: "question_2",
+                      choice: "games"
+                    }),
+                  },              
+                ]
+              }]);
+            }
+            else if (schema.branch == "question_2") {
+              updateQuestion2(schema.choice);
+              sendMessage(senderId, [{text: "Thank you for your feedback! ☺️"}]);
+            }
+          }
         }
 
         else if (message.text) {
@@ -482,7 +561,7 @@ const getOpeningHourMessage = (timeNow) => {
   let hourNow = timeNow.hour();
   let text;
 
-  if (hourNow < openingHour || hourNow > closingHour) {
+  if (hourNow < openingHour || hourNow >= closingHour) {
     let timeToOpening = (hourNow < openingHour) ? (openingHour - hourNow) : (10 + (24-hourNow));
     text = "Oh no! We're closed for the day, " + timeToOpening + " more hours to opening.";
   }  
@@ -499,3 +578,33 @@ const getOpeningHourMessage = (timeNow) => {
 
   return text;
 }
+
+const startSurvey = (senderId) => {
+  setTimeout(() => {
+    sendMessage(senderId, [{
+      text: "I'm still a bot-in-training at the moment. Would you like to see an upgraded version with more features in future? ☺️",
+      quick_replies: [
+        {
+          content_type: "text",
+          title: "✔️ Yes",
+          payload: JSON.stringify({
+            category: "survey",
+            branch: "question_1",
+            choice: "yes"
+          }),
+        },
+        {
+          content_type: "text",
+          title: "❌ No",
+          payload: JSON.stringify({
+            category: "survey",
+            branch: "question_1",
+            choice: "no"
+          }),
+        }
+      ]
+    }]);
+  }, 1*60*1000);
+}
+
+startSurvey("hello");

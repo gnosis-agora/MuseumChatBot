@@ -5,7 +5,7 @@ import rp from "request-promise";
 import {art_data} from "./data/art_data";
 import {faq_helpers} from "./data/faq_helpers";
 import {card_questions} from "./data/card_questions";
-import {exhibition_start} from "./data/exhibition_start";
+import {visit} from "./data/visit_questions";
 import https from "https";
 import moment from "moment";
 import Chance from "chance";
@@ -102,46 +102,6 @@ function processPostback(event) {
     if (schema.category == "art_data") {
       sendMessage(senderId, art_data[schema.branch]);
     }
-    else if (schema.category == "pick_a_card") {
-      let message = [{text: "Look at the painting in front of you."}];
-      let choice = chance.integer({min: 0, max: card_questions.length-1});
-      let quick_reply = [
-        {
-          content_type:"text",
-          title: "🎨 Art",
-          payload: JSON.stringify({
-            category: "art_data",
-            branch: "ART_START"
-          }),
-        },
-        {
-          content_type:"text",
-          title: "📷 Instagrammables",
-          payload: JSON.stringify({
-            category: "instagram_impressions",
-            branch: "instagram_impressions"
-          }),
-        },
-        {
-          content_type:"text",
-          title: "🎴 Pick a Card",
-          payload: JSON.stringify({
-            category: "pick_a_card",
-            branch: "pick_a_card"
-          }),
-        },
-        {
-          content_type:"text",
-          title: "🖼 Other exhibitions",
-          payload: JSON.stringify({
-            category: "choose_another_exhibition",
-            branch: "exhibition_start"
-          }),
-        }
-      ];
-      message.push({text: card_questions[choice], quick_replies: quick_reply});
-      sendMessage(senderId, message);
-    }
     else if (schema.category == "instagram_impressions") {
       // INSTAGRAM API integration here
       scraper.getMediaByTag("catsdrinkingmilk", "", function(error,response_json){
@@ -211,18 +171,10 @@ function processPostback(event) {
             },
             {
               content_type:"text",
-              title: "🎴 Pick a Card",
+              title: "🖼 Visit",
               payload: JSON.stringify({
-                category: "pick_a_card",
-                branch: "pick_a_card"
-              }),
-            },
-            {
-              content_type:"text",
-              title: "🖼 Other exhibitions",
-              payload: JSON.stringify({
-                category: "choose_another_exhibition",
-                branch: "exhibition_start"
+                category: "visit",
+                branch: "visit_start"
               }),
             }
           ]
@@ -230,12 +182,13 @@ function processPostback(event) {
         sendMessage(senderId, messages);
       });
     }
-    else if (schema.category == "choose_another_exhibition") {
-      if (schema.branch == "exhibition_start") {
-        sendMessage(senderId, exhibition_start[schema.branch])
+    else if (schema.category == "visit") {
+      if (schema.branch == "visit_tickets") {
+        sendMessage(senderId, visit[schema.branch])
       }
       else {
-        // send vote to database here
+        let timeNow = new moment().add(8,'hours');
+        sendMessage(senderId, [{text: getOpeningHourMessage(timeNow)}]);
       }
     }
   }
@@ -276,18 +229,10 @@ function processMessage(event) {
               },
               {
                 content_type:"text",
-                title: "🎴 Pick a Card",
+                title: "🖼 Visit",
                 payload: JSON.stringify({
-                  category: "pick_a_card",
-                  branch: "pick_a_card"
-                }),
-              },
-              {
-                content_type:"text",
-                title: "🖼 Other exhibitions",
-                payload: JSON.stringify({
-                  category: "choose_another_exhibition",
-                  branch: "exhibition_start"
+                  category: "visit",
+                  branch: "visit_start"
                 }),
               }
             ];
@@ -363,18 +308,10 @@ function processMessage(event) {
                   },
                   {
                     content_type:"text",
-                    title: "🎴 Pick a Card",
+                    title: "🖼 Visit",
                     payload: JSON.stringify({
-                      category: "pick_a_card",
-                      branch: "pick_a_card"
-                    }),
-                  },
-                  {
-                    content_type:"text",
-                    title: "🖼 Other exhibitions",
-                    payload: JSON.stringify({
-                      category: "choose_another_exhibition",
-                      branch: "exhibition_start"
+                      category: "visit",
+                      branch: "visit_start"
                     }),
                   }
                 ]
@@ -383,12 +320,13 @@ function processMessage(event) {
             });
           }
 
-          else if (schema.category == "choose_another_exhibition") {
-            if (schema.branch == "exhibition_start") {
-              sendMessage(senderId, exhibition_start[schema.branch])
+          else if (schema.category == "visit") {
+            if (schema.branch == "visit_tickets") {
+              sendMessage(senderId, visit[schema.branch])
             }
             else {
-              // send vote to database here
+              let timeNow = new moment().add(8,'hours');
+              sendMessage(senderId, [{text: getOpeningHourMessage(timeNow)}]);
             }
           }
 
@@ -469,10 +407,10 @@ var sendMessage = (recipientId, messages, index=0) => {
 const generateWelcomeMessage = (name) => {
   let messages = [];
   messages.push({
-    text: "Hello " + name + ", welcome to the Century of Lights Exhibition!"
+    text: "Hi " + name + "! Welcome to National Gallery Singapore!"
   });
   messages.push({
-    text: "I'll be your virtual assistant for this exhibition 🤖 I'm here to enhance your experience in this exhibition!"
+    text: "I'm your virtual assistant to the Colours of Impressionism exhibition. 🤖 Would you like to find out about our key highlights?"
   });
   messages.push({
     text: "Select an option to begin.",
@@ -495,18 +433,10 @@ const generateWelcomeMessage = (name) => {
       },
       {
         content_type:"text",
-        title: "🎴 Pick a Card",
+        title: "🖼 Visit",
         payload: JSON.stringify({
-          category: "pick_a_card",
-          branch: "pick_a_card"
-        }),
-      },
-      {
-        content_type:"text",
-        title: "🖼 Other exhibitions",
-        payload: JSON.stringify({
-          category: "choose_another_exhibition",
-          branch: "exhibition_start"
+          category: "visit",
+          branch: "visit_start"
         }),
       }
     ]
@@ -535,4 +465,31 @@ const getInstagramPosts = (hashtag) => {
     });
     return url_list;
   });
+}
+
+/*
+  Returns the relevant opening hour message
+*/
+const getOpeningHourMessage = (timeNow) => {
+  let closingHour = (timeNow.day() == 5 || timeNow.day()) ? 22 : 19;
+  let openingHour = 10;
+  let hourNow = timeNow.hour();
+  let text;
+
+  if (hourNow < openingHour || hourNow > closingHour) {
+    let timeToOpening = (hourNow < openingHour) ? (openingHour - hourNow) : (10 + (24-hourNow));
+    text = "Oh no! We're closed for the day, " + timeToOpening + " more hours to opening.";
+  }  
+
+  else {
+    if (closingHour - hourNow < 2) {
+      text = "We’re closing soon! Visit us again. This exhibition ends 11 March 2018.";
+    }
+    else {
+      let hoursLeft = closingHour - hourNow;
+      text = hoursLeft + " more hours of art before the Gallery closes!";
+    }
+  }
+
+  return text;
 }

@@ -10,25 +10,14 @@ curl -X POST -H "Content-Type: application/json" -d '{
           "payload":"{\"category\":\"art_data\",\"branch\":\"ART_START\"}"
         },
         {
-          "title":"Things to do",
-          "type":"nested",
-          "call_to_actions":[
-            {
-              "title":"Instagram Impressions",
-              "type":"postback",
-              "payload":"{\"category\":\"instagram_impressions\",\"branch\":\"instagram_impressions\"}"
-            },
-            {
-              "title":"Pick a Card",
-              "type":"postback",
-              "payload":"{\"category\":\"pick_a_card\",\"branch\":\"pick_a_card\"}"
-            }
-          ]
+          "title":"Instagram Impressions",
+          "type":"postback",
+          "payload":"{\"category\":\"instagram_impressions\",\"branch\":\"instagram_impressions\"}"
         },
         {
           "type":"postback",
-          "title":"Choose Another Exhibition",
-          "payload":"{\"category\":\"choose_another_exhibition\",\"branch\":\"exhibition_start\"}"
+          "title":"Visit",
+          "payload":"{\"category\":\"visit\",\"branch\":\"visit_start\"}"
         }
       ]
     }

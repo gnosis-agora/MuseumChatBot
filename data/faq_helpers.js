@@ -42,18 +42,10 @@ export const faq_helpers = {
         },
         {
           content_type:"text",
-          title: "🎴 Pick a Card",
+          title: "🖼 Visit",
           payload: JSON.stringify({
-            category: "pick_a_card",
-            branch: "pick_a_card"
-          }),
-        },
-        {
-          content_type:"text",
-          title: "🖼 Other exhibitions",
-          payload: JSON.stringify({
-            category: "choose_another_exhibition",
-            branch: "exhibition_start"
+            category: "visit",
+            branch: "visit_start"
           }),
         }
       ]
@@ -106,18 +98,10 @@ export const faq_helpers = {
         },
         {
           content_type:"text",
-          title: "🎴 Pick a Card",
+          title: "🖼 Visit",
           payload: JSON.stringify({
-            category: "pick_a_card",
-            branch: "pick_a_card"
-          }),
-        },
-        {
-          content_type:"text",
-          title: "🖼 Other exhibitions",
-          payload: JSON.stringify({
-            category: "choose_another_exhibition",
-            branch: "exhibition_start"
+            category: "visit",
+            branch: "visit_start"
           }),
         }
       ]
@@ -167,18 +151,10 @@ export const faq_helpers = {
         },
         {
           content_type:"text",
-          title: "🎴 Pick a Card",
+          title: "🖼 Visit",
           payload: JSON.stringify({
-            category: "pick_a_card",
-            branch: "pick_a_card"
-          }),
-        },
-        {
-          content_type:"text",
-          title: "🖼 Other exhibitions",
-          payload: JSON.stringify({
-            category: "choose_another_exhibition",
-            branch: "exhibition_start"
+            category: "visit",
+            branch: "visit"
           }),
         }
       ]

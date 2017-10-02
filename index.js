@@ -153,7 +153,7 @@ function processPostback(event) {
         }
         messages.push(carousel);
         messages.push({
-          text: "Alternatively, you can try one of our other options.",
+          text: "Can I help you with something else?",
           quick_replies: [
             {
               content_type:"text",
@@ -293,7 +293,7 @@ function processMessage(event) {
               }
               messages.push(carousel);
               messages.push({
-                text: "Alternatively, you can try one of our other options.",
+                text: "Can I help you with something else?",
                 quick_replies: [
                   {
                     content_type:"text",
@@ -605,7 +605,5 @@ const startSurvey = (senderId) => {
         }
       ]
     }]);
-  }, 1*60*1000);
+  }, 1*60*1000); // to be changed for production  
 }
-
-startSurvey("hello");

@@ -22,7 +22,7 @@ export const faq_helpers = {
       }
     },
     {
-      text: "Alternatively, you can try one of our other options.",
+      text: "Can I help you with something else?",
       quick_replies: [
         {
           content_type:"text",
@@ -78,7 +78,7 @@ export const faq_helpers = {
       }
     },
     {
-      text: "Alternatively, you can try one of our other options.",
+      text: "Can I help you with something else?",
       quick_replies: [
         {
           content_type:"text",
@@ -131,7 +131,7 @@ export const faq_helpers = {
       }
     },
     {
-      text: "Alternatively, you can try one of our other options.",
+      text: "Can I help you with something else?`",
       quick_replies: [
         {
           content_type:"text",

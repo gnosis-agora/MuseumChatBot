@@ -79,7 +79,7 @@ export const art_data = {
               // artwork 5
               title: "Claude Monet",
               subtitle: "Pierre-Auguste Renoir\nPhoto © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt",
-              image_url: "https://i.imgur.com/oUuyMoK.jpg",
+              image_url: "https://imgur.com/kZbyA2h",
               buttons: [
                 {
                   type: "postback",

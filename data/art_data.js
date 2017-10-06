@@ -199,7 +199,7 @@ Paul Durand-Ruel discovered it there and loved it so much that he bought 20 work
       quick_replies: [
         {
           content_type: "text",
-          title: "🖼 Next Artwork",
+          title: "🖼 Next artwork",
           payload: JSON.stringify({
             category: "art_data",
             branch: "ARTWORK_2"
@@ -243,7 +243,7 @@ Artist: Édouard Manet\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / P
       quick_replies: [
         {
           content_type: "text",
-          title: "🖼 Next Artwork",
+          title: "🖼 Next artwork",
           payload: JSON.stringify({
             category: "art_data",
             branch: "ARTWORK_3"
@@ -287,7 +287,7 @@ Artist: Claude Manet\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Pat
       quick_replies: [
         {
           content_type: "text",
-          title: "🖼 Next Artwork",
+          title: "🖼 Next artwork",
           payload: JSON.stringify({
             category: "art_data",
             branch: "ARTWORK_4"
@@ -332,7 +332,7 @@ Artist: Berthe Morisot\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / P
       quick_replies: [
         {
           content_type: "text",
-          title: "🖼 Next Artwork",
+          title: "🖼 Next artwork",
           payload: JSON.stringify({
             category: "art_data",
             branch: "ARTWORK_5"
@@ -378,7 +378,7 @@ Artist: Pierre-Auguste Renoir\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Pal
       quick_replies: [
         {
           content_type: "text",
-          title: "🖼 Next Artwork",
+          title: "🖼 Next artwork",
           payload: JSON.stringify({
             category: "art_data",
             branch: "ARTWORK_6"
@@ -422,7 +422,7 @@ Artist: Claude Monet\n\nCredits: © RMN-Grand Palais (musée d’Orsay) / Hervé
       quick_replies: [
         {
           content_type: "text",
-          title: "🖼 Next Artwork",
+          title: "🖼 Next artwork",
           payload: JSON.stringify({
             category: "art_data",
             branch: "ARTWORK_7"
@@ -467,7 +467,7 @@ Artist: Paul Cézanne\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Pa
       quick_replies: [
         {
           content_type: "text",
-          title: "🖼 Next Artwork",
+          title: "🖼 Next artwork",
           payload: JSON.stringify({
             category: "art_data",
             branch: "ARTWORK_8"
@@ -512,7 +512,7 @@ Artist: Paul Signac\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Patr
       quick_replies: [
         {
           content_type: "text",
-          title: "🖼 Next Artwork",
+          title: "🖼 Next artwork",
           payload: JSON.stringify({
             category: "art_data",
             branch: "ARTWORK_9"
@@ -557,7 +557,7 @@ Artist: Claude Monet\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Pat
       quick_replies: [
         {
           content_type: "text",
-          title: "🖼 Next Artwork",
+          title: "🖼 Next artwork",
           payload: JSON.stringify({
             category: "art_data",
             branch: "ARTWORK_10"
@@ -602,7 +602,7 @@ Artist: Pierre-Auguste Renoir\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Pal
       quick_replies: [
         {
           content_type: "text",
-          title: "🖼 Next Artwork",
+          title: "🖼 Next artwork",
           payload: JSON.stringify({
             category: "art_data",
             branch: "ARTWORK_1"

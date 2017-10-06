@@ -99,7 +99,7 @@ export const visit = {
   concession_holder: [
     {
       text: "Concessions apply to children aged 7–12, seniors aged 60 and above,\
-       full-time National Servicemen (NSF) excluding foreign personnel and overseas students and teachers. Valid verification is needed.",
+ full-time National Servicemen (NSF) excluding foreign personnel and overseas students and teachers. Valid verification is needed.",
       quick_replies: [
         {
           content_type:"text",
@@ -132,7 +132,7 @@ export const visit = {
   free_tickets: [
     {
       text: "This exhibition is free for children aged 6 and below, \
-      local and locally-based students and teachers, persons with disabilities and one caregiver. Tickets are still required for entry.",
+local and locally-based students and teachers, persons with disabilities and one caregiver. Tickets are still required for entry.",
       quick_replies: [
         {
           content_type:"text",

@@ -362,7 +362,38 @@ function processMessage(event) {
             }
             else if (schema.branch == "visit_opening_hours"){
               let timeNow = new moment().add(8,'hours');
-              sendMessage(senderId, [{text: getOpeningHourMessage(timeNow)}]);
+
+              sendMessage(senderId, [
+                  {
+                    text: getOpeningHourMessage(timeNow),
+                    quick_replies: [
+                      {
+                        content_type:"text",
+                        title: "🎟 Tickets",
+                        payload: JSON.stringify({
+                          category: "visit",
+                          branch: "visit_tickets"
+                        }),
+                      },
+                      {
+                        content_type:"text",
+                        title: "🎨 Art",
+                        payload: JSON.stringify({
+                          category: "art_data",
+                          branch: "ART_START"
+                        }),
+                      },
+                      {
+                        content_type:"text",
+                        title: "📷 Instagrammables",
+                        payload: JSON.stringify({
+                          category: "instagram_impressions",
+                          branch: "instagram_impressions"
+                        }),
+                      }
+                    ]
+                  },
+                ]);
             }
             else {
               sendMessage(senderId, visit[schema.branch]);

@@ -26,7 +26,7 @@ export const visit = {
 
   visit_tickets: [
     {
-      text: "Are you a Singaporean or PR?",
+      text: "Are you a Singaporean/PR?",
       quick_replies: [
         {
           content_type: "text",

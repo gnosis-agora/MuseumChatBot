@@ -50,11 +50,11 @@ export const visit = {
 
   singaporean_tickets: [
     {
-      text: "All-access pass (includes General Admission ticket) - $15\nConcession-holders - $10",
+      text: "All-access pass (includes General Admission ticket) - $15\nConcessions - $10",
       quick_replies: [
         {
           content_type: "text",
-          title: "Concession-holder",
+          title: "Concessions?",
           payload: JSON.stringify({
             category: "visit",
             branch: "concession_holder"
@@ -62,7 +62,7 @@ export const visit = {
         },
         {
           content_type: "text",
-          title: "Free tickets?",
+          title: "Free admission?",
           payload: JSON.stringify({
             category: "visit",
             branch: "free_tickets"
@@ -74,11 +74,11 @@ export const visit = {
 
   non_singaporean_tickets: [
     {
-      text: "Exhibition only - $25\nConcession-holders - $20\n\nAll-access pass (includes General Admission ticket) - $30\nConcession holders - $25",
+      text: "Exhibition only - $25\nConcessions - $20\n\nAll-access pass (includes General Admission ticket) - $30\nConcessions - $25",
       quick_replies: [
         {
           content_type: "text",
-          title: "Concession-holder",
+          title: "Concessions?",
           payload: JSON.stringify({
             category: "visit",
             branch: "concession_holder"
@@ -86,7 +86,7 @@ export const visit = {
         },
         {
           content_type: "text",
-          title: "Free tickets?",
+          title: "Free admission?",
           payload: JSON.stringify({
             category: "visit",
             branch: "free_tickets"
@@ -103,14 +103,6 @@ export const visit = {
       quick_replies: [
         {
           content_type:"text",
-          title: "🖼 Visit",
-          payload: JSON.stringify({
-            category: "visit",
-            branch: "visit_start"
-          }),
-        },
-        {
-          content_type:"text",
           title: "🎨 Art",
           payload: JSON.stringify({
             category: "art_data",
@@ -119,12 +111,20 @@ export const visit = {
         },
         {
           content_type:"text",
-          title: "📷 Instagrammables",
+          title: "📷 Instagram",
           payload: JSON.stringify({
             category: "instagram_impressions",
             branch: "instagram_impressions"
           }),
-        }
+        },
+        {
+          content_type:"text",
+          title: "🖼 Visit",
+          payload: JSON.stringify({
+            category: "visit",
+            branch: "visit_start"
+          }),
+        },
       ]      
     }
   ],
@@ -136,14 +136,6 @@ local and locally-based students and teachers, persons with disabilities and one
       quick_replies: [
         {
           content_type:"text",
-          title: "🖼 Visit",
-          payload: JSON.stringify({
-            category: "visit",
-            branch: "visit_start"
-          }),
-        },
-        {
-          content_type:"text",
           title: "🎨 Art",
           payload: JSON.stringify({
             category: "art_data",
@@ -152,12 +144,20 @@ local and locally-based students and teachers, persons with disabilities and one
         },
         {
           content_type:"text",
-          title: "📷 Instagrammables",
+          title: "📷 Instagram",
           payload: JSON.stringify({
             category: "instagram_impressions",
             branch: "instagram_impressions"
           }),
-        }
+        },
+        {
+          content_type:"text",
+          title: "🖼 Visit",
+          payload: JSON.stringify({
+            category: "visit",
+            branch: "visit_start"
+          }),
+        },
       ]      
     }
   ],  

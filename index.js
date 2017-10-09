@@ -165,7 +165,7 @@ function processPostback(event) {
             },
             {
               content_type:"text",
-              title: "📷 Instagrammables",
+              title: "📷 Instagram",
               payload: JSON.stringify({
                 category: "instagram_impressions",
                 branch: "instagram_impressions"
@@ -197,14 +197,6 @@ function processPostback(event) {
               quick_replies: [
                 {
                   content_type:"text",
-                  title: "🎟 Tickets",
-                  payload: JSON.stringify({
-                    category: "visit",
-                    branch: "visit_tickets"
-                  }),
-                },
-                {
-                  content_type:"text",
                   title: "🎨 Art",
                   payload: JSON.stringify({
                     category: "art_data",
@@ -213,12 +205,20 @@ function processPostback(event) {
                 },
                 {
                   content_type:"text",
-                  title: "📷 Instagrammables",
+                  title: "📷 Instagram",
                   payload: JSON.stringify({
                     category: "instagram_impressions",
                     branch: "instagram_impressions"
                   }),
-                }
+                },
+                {
+                  content_type:"text",
+                  title: "🎟 Tickets",
+                  payload: JSON.stringify({
+                    category: "visit",
+                    branch: "visit_tickets"
+                  }),
+                },
               ]
             },
           ]);
@@ -257,7 +257,7 @@ function processMessage(event) {
               },
               {
                 content_type:"text",
-                title: "📷 Instagrammables",
+                title: "📷 Instagram",
                 payload: JSON.stringify({
                   category: "instagram_impressions",
                   branch: "instagram_impressions"
@@ -336,7 +336,7 @@ function processMessage(event) {
                   },
                   {
                     content_type:"text",
-                    title: "📷 Instagrammables",
+                    title: "📷 Instagram",
                     payload: JSON.stringify({
                       category: "instagram_impressions",
                       branch: "instagram_impressions"
@@ -369,14 +369,6 @@ function processMessage(event) {
                     quick_replies: [
                       {
                         content_type:"text",
-                        title: "🎟 Tickets",
-                        payload: JSON.stringify({
-                          category: "visit",
-                          branch: "visit_tickets"
-                        }),
-                      },
-                      {
-                        content_type:"text",
                         title: "🎨 Art",
                         payload: JSON.stringify({
                           category: "art_data",
@@ -385,12 +377,20 @@ function processMessage(event) {
                       },
                       {
                         content_type:"text",
-                        title: "📷 Instagrammables",
+                        title: "📷 Instagram",
                         payload: JSON.stringify({
                           category: "instagram_impressions",
                           branch: "instagram_impressions"
                         }),
-                      }
+                      },
+                      {
+                        content_type:"text",
+                        title: "🎟 Tickets",
+                        payload: JSON.stringify({
+                          category: "visit",
+                          branch: "visit_tickets"
+                        }),
+                      },
                     ]
                   },
                 ]);
@@ -403,7 +403,7 @@ function processMessage(event) {
           else if (schema.category == "faq_helpers") {
             if (schema.branch == "NEXT_TOUR") {
               let timeNow = new moment().add(8,'hours'); // offset the timezone difference on server and SG
-              if (timeNow.hours() < 14) {
+              if (timeNow.hours() < 13) {
                 sendMessage(senderId, faq_helpers["NEXT_TOUR_AVAILABLE"]);
               }
               else {
@@ -558,10 +558,10 @@ const generateWelcomeMessage = (name) => {
     text: "Hi " + name + "! Welcome to National Gallery Singapore!"
   });
   messages.push({
-    text: "I'm your virtual assistant to the Colours of Impressionism exhibition. 🤖 Would you like to find out about our key highlights?"
+    text: "I'm your virtual assistant 🤖 to the _Colours of Impressionism_ exhibition. "
   });
   messages.push({
-    text: "Select an option to begin.",
+    text: "Would you like to discover key highlights, explore other people’s impressions of this exhibition, or find out about ticketing and opening hours?",
     quick_replies: [
       {
         content_type:"text",
@@ -573,7 +573,7 @@ const generateWelcomeMessage = (name) => {
       },
       {
         content_type:"text",
-        title: "📷 Instagrammables",
+        title: "📷 Instagram",
         payload: JSON.stringify({
           category: "instagram_impressions",
           branch: "instagram_impressions"
@@ -619,7 +619,7 @@ const getInstagramPosts = (hashtag) => {
   Returns the relevant opening hour message
 */
 const getOpeningHourMessage = (timeNow) => {
-  let closingHour = (timeNow.day() == 5 || timeNow.day()) ? 22 : 19;
+  let closingHour = (timeNow.day() == 5 ) ? 21 : 19;
   let openingHour = 10;
   let hourNow = timeNow.hour();
   let text;
@@ -667,5 +667,5 @@ const startSurvey = (senderId) => {
         }
       ]
     }]);
-  }, 1*60*1000); // to be changed for production  
+  }, 30*60*1000); // to be changed for production  
 }

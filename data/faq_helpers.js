@@ -15,14 +15,14 @@ export const faq_helpers = {
             {
               type: "web_url",
               url: "https://appsto.re/sg/VaJ76.i",
-              title: "🍎 IOS users"
+              title: "🍎 iOS users"
             }
           ]
         }
       }
     },
     {
-      text: "Can I help you with something else?",
+      text: "Select another option below.",
       quick_replies: [
         {
           content_type:"text",
@@ -34,7 +34,7 @@ export const faq_helpers = {
         },
         {
           content_type:"text",
-          title: "📷 Instagrammables",
+          title: "📷 Instagram",
           payload: JSON.stringify({
             category: "instagram_impressions",
             branch: "instagram_impressions"
@@ -71,14 +71,14 @@ export const faq_helpers = {
             {
               type: "web_url",
               url: "https://appsto.re/sg/VaJ76.i",
-              title: "🍎 IOS users"
+              title: "🍎 iOS users"
             }
           ]
         }
       }
     },
     {
-      text: "Can I help you with something else?",
+      text: "Select another option below.",
       quick_replies: [
         {
           content_type:"text",
@@ -90,7 +90,7 @@ export const faq_helpers = {
         },
         {
           content_type:"text",
-          title: "📷 Instagrammables",
+          title: "📷 Instagram",
           payload: JSON.stringify({
             category: "instagram_impressions",
             branch: "instagram_impressions"
@@ -124,14 +124,14 @@ export const faq_helpers = {
             {
               type: "web_url",
               url: "https://appsto.re/sg/VaJ76.i",
-              title: "🍎 IOS users"
+              title: "🍎 iOS users"
             }
           ]
         }
       }
     },
     {
-      text: "Can I help you with something else?`",
+      text: "Select another option below.",
       quick_replies: [
         {
           content_type:"text",
@@ -143,7 +143,7 @@ export const faq_helpers = {
         },
         {
           content_type:"text",
-          title: "📷 Instagrammables",
+          title: "📷 Instagram",
           payload: JSON.stringify({
             category: "instagram_impressions",
             branch: "instagram_impressions"

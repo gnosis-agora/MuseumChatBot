@@ -2,7 +2,7 @@ export const art_data = {
   ART_START: [
     // Insert some kind of intro here.
     {
-      text: "Here are some of our must-sees:"
+      text: "Here are our key highlights!"
     },
     {
       attachment: {
@@ -14,7 +14,7 @@ export const art_data = {
             {
               // artwork 1
               title: "Clair de lune sur le port de Boulogne (Moonlight over the Port of Boulogne)",
-              subtitle: "Édouard Manet\nPhoto © RMN-Grand Palais (musée d’Orsay) / Hervé Lewandowski",
+              subtitle: "Édouard Manet\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 1993. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski.",
               image_url: "https://i.imgur.com/xOquuHP.jpg",
               buttons: [
                 {
@@ -29,8 +29,8 @@ export const art_data = {
             },
             {
               // artwork 2
-              title: "La serveuse de bocks",
-              subtitle: "Édouard Manet\nPhoto © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt",
+              title: "La Serveuse de bocks (The Beer Maid)",
+              subtitle: "Édouard Manet\nFormerly in the Matsukata collection, entered the Musée du Louvre as part of the peace treaty with Japan, 1959. Collection of Musée d’Orsay, Paris, France. RF 1959 4. Photo © RMN-Grand Palais (Musée d’Orsay)/Martine Beck-Coppola.",
               image_url: "https://i.imgur.com/pI1wiGI.jpg",
               buttons: [
                 {
@@ -45,8 +45,8 @@ export const art_data = {
             },
             {
               // artwork 3
-              title: "La Pie",
-              subtitle: "Claude Manet\nPhoto © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt",
+              title: "La Pie (The Magpie)",
+              subtitle: "Claude Manet\nPurchased by the French state, 1984. Collection of Musée d’Orsay, Paris, France. RF 1984 164. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski.",
               image_url: "https://i.imgur.com/9sLS7M6.jpg",
               buttons: [
                 {
@@ -62,7 +62,7 @@ export const art_data = {
             {
               // artwork 4
               title: "Le berceau",
-              subtitle: "Berthe Morisot\nPhoto © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt",
+              subtitle: "Berthe Morisot\nPurchased 1930. Collection of Musée d’Orsay, Paris, France. RF 2849. Photo © RMN-Grand Palais (Musée d’Orsay)/Michel Urtado.",
               image_url: "https://i.imgur.com/DHD4if0.jpg",
               buttons: [
                 {
@@ -78,7 +78,7 @@ export const art_data = {
             {
               // artwork 5
               title: "Claude Monet",
-              subtitle: "Pierre-Auguste Renoir\nPhoto © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt",
+              subtitle: "Auguste Renoir\nBequest of Mr and Mrs Raymond Koechlin, 1931. Collection of Musée d’Orsay, Paris, France.  RF 3666. Photo © RMN-Grand Palais (Musée d’Orsay)/Jean-Gilles Berizzi.",
               image_url: "https://i.imgur.com/WoDpoA6.jpg",
               buttons: [
                 {
@@ -93,8 +93,8 @@ export const art_data = {
             },
             {
               // artwork 6
-              title: "Le bassin aux nymphéas, harmonie rose",
-              subtitle: "Claude Monet\nPhoto © RMN-Grand Palais (musée d’Orsay) / Hervé Lewandowski",
+              title: "Le Bassin aux nymphéas, harmonie rose (Waterlily Pond, Pink Harmony)",
+              subtitle: "Claude Monet\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 2005. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski.",
               image_url: "https://i.imgur.com/63EV6OO.jpg",
               buttons: [
                 {
@@ -109,8 +109,8 @@ export const art_data = {
             },
             {
               // artwork 7
-              title: "Le golfe de Marseille vu de l’Estaque",
-              subtitle: "Paul Cézanne\nPhoto © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt",
+              title: "Le Golfe de Marseille vu de l’Estaque (The Gulf of Marseilles Seen from L’Estaque)",
+              subtitle: "Paul Cézanne\nBequest of Gustave Caillebotte, 1894. Collection of Musée d’Orsay, Paris, France.  RF 2761. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage.",
               image_url: "https://i.imgur.com/vJBZm0A.jpg",
               buttons: [
                 {
@@ -125,8 +125,8 @@ export const art_data = {
             },
             {
               // artwork 8
-              title: "La bouée rouge (The Red Buoy)",
-              subtitle: "Paul Signac\nPhoto © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt",
+              title: "La Bouée rouge (The Red Buoy)",
+              subtitle: "Paul Signac\nGift of Dr Pierre Hébert, 1957. Collection of Musée d’Orsay, Paris, France. RF 1957 12. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski.",
               image_url: "https://i.imgur.com/I2ZIT5i.jpg",
               buttons: [
                 {
@@ -141,8 +141,8 @@ export const art_data = {
             },
             {
               // artwork 9
-              title: "La cathédrale de Rouen. Le portail et la tour Saint-Romain, plein soleil",
-              subtitle: "Claude Monet\nPhoto © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt",
+              title: "La cathédrale de Rouen. Le portail et la tour Saint-Romain, plein soleil (Rouen Cathedral: The Portal and Saint-Romain Tower, Full Sunlight)",
+              subtitle: "Claude Monet\nBequest of Count Isaac de Camondo, 1911.Collection of Musée d’Orsay, Paris, France.  RF 2002. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage.",
               image_url: "https://i.imgur.com/P8jlw7U.jpg",
               buttons: [
                 {
@@ -157,8 +157,8 @@ export const art_data = {
             },
             {
               // artwork 10
-              title: "Gabrielle à la rose",
-              subtitle: "Pierre-Auguste Renoir\nPhoto © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt",
+              title: "Gabrielle à la rose (Gabrielle with a Rose)",
+              subtitle: "Auguste Renoir\nBequest of Count Isaac de Camondo, 1911.Collection of Musée d’Orsay, Paris, France.  RF 2002. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage.",
               image_url: "https://i.imgur.com/vkJCadI.jpg",
               buttons: [
                 {
@@ -187,8 +187,8 @@ export const art_data = {
       }
     },
     {
-      text: "Artwork title: Clair de lune sur le port de Boulogne (Moonlight over the Port of Boulogne)\n\n\
-Artist: Édouard Manet\n\nCredits: © RMN-Grand Palais (musée d’Orsay) / Hervé Lewandowski"
+      text: "Clair de lune sur le port de Boulogne (Moonlight over the Port of Boulogne)\n\n\
+Édouard Manet\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 1993. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
     },
     {
       text: "Manet’s friend and fellow painter Alfred Stevens kept this painting in his Paris studio for a few years. \
@@ -215,7 +215,7 @@ Paul Durand-Ruel discovered it there and loved it so much that he bought 20 work
         },
         {
           content_type: "text",
-          title: "🙋 Next tour timing",
+          title: "🙋 Tours",
           payload: JSON.stringify({
             category: "faq_helpers",
             branch: "NEXT_TOUR"
@@ -235,8 +235,8 @@ Paul Durand-Ruel discovered it there and loved it so much that he bought 20 work
       }
     },
     {
-      text: "Artwork title: La serveuse de bocks\n\n\
-Artist: Édouard Manet\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt"
+      text: "La Serveuse de bocks (The Beer Maid)\n\n\
+Édouard Manet\n\nFormerly in the Matsukata collection, entered the Musée du Louvre as part of the peace treaty with Japan, 1959. Collection of Musée d’Orsay, Paris, France. RF 1959 4. Photo © RMN-Grand Palais (Musée d’Orsay)/Martine Beck-Coppola."
     },
     {
       text: "In case you’re wondering what the French title says, it means “The Waitress of Beers!” 💁🍻",
@@ -259,7 +259,7 @@ Artist: Édouard Manet\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / P
         },
         {
           content_type: "text",
-          title: "🙋 Next tour timing",
+          title: "🙋 Tours",
           payload: JSON.stringify({
             category: "faq_helpers",
             branch: "NEXT_TOUR"
@@ -279,8 +279,8 @@ Artist: Édouard Manet\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / P
       }
     },
     {
-      text: "Artwork title: La Pie\n\n\
-Artist: Claude Manet\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt"
+      text: "La Pie (The Magpie)\n\n\
+Claude Manet\n\nPurchased by the French state, 1984. Collection of Musée d’Orsay, Paris, France. RF 1984 164. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
     },
     {
       text: "Did you know that the white snow in this painting is actually made of dabs of blue, pink and yellow as well?",
@@ -303,7 +303,7 @@ Artist: Claude Manet\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Pat
         },
         {
           content_type: "text",
-          title: "🙋 Next tour timing",
+          title: "🙋 Tours",
           payload: JSON.stringify({
             category: "faq_helpers",
             branch: "NEXT_TOUR"
@@ -323,8 +323,8 @@ Artist: Claude Manet\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Pat
       }
     },
     {
-      text: "Artwork title: Le berceau\n\n\
-Artist: Berthe Morisot\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt"
+      text: "Le Berceau (The Cradle)\n\n\
+Berthe Morisot\n\nPurchased 1930. Collection of Musée d’Orsay, Paris, France. RF 2849. Photo © RMN-Grand Palais (Musée d’Orsay)/Michel Urtado."
     },
     {
       text: "Morisot led a double life of sorts! She loved painting, but when visitors came over,\
@@ -348,7 +348,7 @@ Artist: Berthe Morisot\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / P
         },
         {
           content_type: "text",
-          title: "🙋 Next tour timing",
+          title: "🙋 Tours",
           payload: JSON.stringify({
             category: "faq_helpers",
             branch: "NEXT_TOUR"
@@ -368,8 +368,8 @@ Artist: Berthe Morisot\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / P
       }
     },
     {
-      text: "Artwork title: Claude Monet\n\n\
-Artist: Pierre-Auguste Renoir\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt"
+      text: "Claude Monet\n\n\
+Auguste Renoir\n\nBequest of Mr and Mrs Raymond Koechlin, 1931. Collection of Musée d’Orsay, Paris, France.  RF 3666. Photo © RMN-Grand Palais (Musée d’Orsay)/Jean-Gilles Berizzi."
     },
     {
       text: "Can you guess what Monet is painting and how the artwork looks based on his palette?\
@@ -394,7 +394,7 @@ Artist: Pierre-Auguste Renoir\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Pal
         },
         {
           content_type: "text",
-          title: "🙋 Next tour timing",
+          title: "🙋 Tours",
           payload: JSON.stringify({
             category: "faq_helpers",
             branch: "NEXT_TOUR"
@@ -414,8 +414,8 @@ Artist: Pierre-Auguste Renoir\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Pal
       }
     },
     {
-      text: "Artwork title: CLe bassin aux nymphéas, harmonie rose\n\n\
-Artist: Claude Monet\n\nCredits: © RMN-Grand Palais (musée d’Orsay) / Hervé Lewandowski"
+      text: "CLe Bassin aux nymphéas, harmonie rose (Waterlily Pond, Pink Harmony)\n\n\
+Claude Monet\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 2005. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
     },
     {
       text: "Monet was an avid botanist. He once said, “My garden is my most beautiful masterpiece.”🌾🌿🍀🌲",
@@ -438,7 +438,7 @@ Artist: Claude Monet\n\nCredits: © RMN-Grand Palais (musée d’Orsay) / Hervé
         },
         {
           content_type: "text",
-          title: "🙋 Next tour timing",
+          title: "🙋 Tours",
           payload: JSON.stringify({
             category: "faq_helpers",
             branch: "NEXT_TOUR"
@@ -458,8 +458,8 @@ Artist: Claude Monet\n\nCredits: © RMN-Grand Palais (musée d’Orsay) / Hervé
       }
     },
     {
-      text: "Artwork title: Le golfe de Marseille vu de l’Estaque\n\n\
-Artist: Paul Cézanne\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt"
+      text: "Le Golfe de Marseille vu de l’Estaque (The Gulf of Marseilles Seen from L’Estaque)\n\n\
+Paul Cézanne\n\nBequest of Gustave Caillebotte, 1894. Collection of Musée d’Orsay, Paris, France.  RF 2761. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage."
     },
     {
       text: "L’Estaque was a Mediterranean fishing village that Cézanne escaped to when family life got a\
@@ -483,7 +483,7 @@ Artist: Paul Cézanne\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Pa
         },
         {
           content_type: "text",
-          title: "🙋 Next tour timing",
+          title: "🙋 Tours",
           payload: JSON.stringify({
             category: "faq_helpers",
             branch: "NEXT_TOUR"
@@ -503,8 +503,8 @@ Artist: Paul Cézanne\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Pa
       }
     },
     {
-      text: "Artwork title: La bouée rouge (The Red Buoy)\n\n\
-Artist: Paul Signac\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt"
+      text: "La Bouée rouge (The Red Buoy)\n\n\
+Paul Signac\n\nGift of Dr Pierre Hébert, 1957. Collection of Musée d’Orsay, Paris, France. RF 1957 12. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
     },
     {
       text: "Signac was an enthusiastic sailor who painted landscapes across the coasts of Europe. In 2010,\
@@ -528,7 +528,7 @@ Artist: Paul Signac\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Patr
         },
         {
           content_type: "text",
-          title: "🙋 Next tour timing",
+          title: "🙋 Tours",
           payload: JSON.stringify({
             category: "faq_helpers",
             branch: "NEXT_TOUR"
@@ -548,8 +548,8 @@ Artist: Paul Signac\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Patr
       }
     },
     {
-      text: "Artwork title: La Cathedrale de Rouen. Le portail et la tour Saint-Romain, plein soleil\n\n\
-Artist: Claude Monet\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt"
+      text: "La Cathedrale de Rouen. Le portail et la tour Saint-Romain, plein soleil (Rouen Cathedral: The Portal and Saint-Romain Tower, Full Sunlight)\n\n\
+Claude Monet\n\nBequest of Count Isaac de Camondo, 1911.Collection of Musée d’Orsay, Paris, France.  RF 2002. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage."
     },
     {
       text: "Monet painted over 30 Rouen Cathedral paintings to capture the light that changed from day to day.\
@@ -573,7 +573,7 @@ Artist: Claude Monet\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Pat
         },
         {
           content_type: "text",
-          title: "🙋 Next tour timing",
+          title: "🙋 Tours",
           payload: JSON.stringify({
             category: "faq_helpers",
             branch: "NEXT_TOUR"
@@ -593,8 +593,8 @@ Artist: Claude Monet\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Pat
       }
     },
     {
-      text: "Artwork title: Gabrielle a la rose\n\n\
-Artist: Pierre-Auguste Renoir\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Palais / Patrice Schmidt"
+      text: "Gabrielle a la rose (Gabrielle with a Rose)\n\n\
+Auguste Renoir\n\nBequest of Count Isaac de Camondo, 1911.Collection of Musée d’Orsay, Paris, France.  RF 2002. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage."
     },
     {
       text: "Gabrielle was a cousin of Renoir’s wife.\
@@ -618,7 +618,7 @@ Artist: Pierre-Auguste Renoir\n\nCredits: © Musée d'Orsay, Dist. RMN-Grand Pal
         },
         {
           content_type: "text",
-          title: "🙋 Next tour timing",
+          title: "🙋 Tours",
           payload: JSON.stringify({
             category: "faq_helpers",
             branch: "NEXT_TOUR"

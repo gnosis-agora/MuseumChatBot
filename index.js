@@ -543,6 +543,9 @@ function processMessage(event) {
 
 // sends messages to user
 var sendMessage = (recipientId, messages, index=0) => {
+  if (messasges === undefined || !messages) {
+    return;
+  }
   if (index < messages.length) {
     request({
       url: "https://graph.facebook.com/v2.6/me/messages",

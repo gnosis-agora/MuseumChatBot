@@ -11,6 +11,7 @@ import https from "https";
 import moment from "moment";
 import Chance from "chance";
 var chance = new Chance();
+var scraper = require('insta-scraper');
 
 // stops server from sleeping by pinging every 15min
 setInterval(() => {

@@ -22,7 +22,7 @@ export const faq_helpers = {
       }
     },
     {
-      text: "Select another option below.",
+      text: "Looking for something else? Choose another option below.",
       quick_replies: [
         {
           content_type:"text",
@@ -78,7 +78,7 @@ export const faq_helpers = {
       }
     },
     {
-      text: "Select another option below.",
+      text: "Looking for something else? Choose another option below.",
       quick_replies: [
         {
           content_type:"text",
@@ -131,7 +131,7 @@ export const faq_helpers = {
       }
     },
     {
-      text: "Select another option below.",
+      text: "Looking for something else? Choose another option below.",
       quick_replies: [
         {
           content_type:"text",

@@ -156,7 +156,7 @@ function processPostback(event) {
         }
         messages.push(carousel);
         messages.push({
-          text: "Can I help you with something else?",
+          text: "Looking for something else? Choose another option below.",
           quick_replies: [
             {
               content_type:"text",
@@ -332,7 +332,7 @@ function processMessage(event) {
               }
               messages.push(carousel);
               messages.push({
-                text: "Can I help you with something else?",
+                text: "Looking for something else? Choose another option below.",
                 quick_replies: [
                   {
                     content_type:"text",

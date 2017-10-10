@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import rp from "request-promise";
 import {art_data} from "./data/art_data";
 import {faq_helpers} from "./data/faq_helpers";
-import {card_questions} from "./data/card_questions";
+import {card_questions, card_answers} from "./data/card_questions";
 import {visit} from "./data/visit_questions";
 import {updateQuestion1, updateQuestion2} from "./mongoMethod";
 import https from "https";
@@ -12,16 +12,19 @@ import moment from "moment";
 import Chance from "chance";
 var chance = new Chance();
 
-var scraper = require('insta-scraper');
-
+// stops server from sleeping by pinging every 15min
 setInterval(() => {
   https.get("https://pacific-lake-62804.herokuapp.com/");
 }, 900000 );
 
+// start express
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.listen((process.env.PORT || 5000));
+
+// global variable to keep track of card number
+var cardNumber = 0;
 
 // Server index page
 app.get("/", function (req, res) {
@@ -244,36 +247,41 @@ function processMessage(event) {
           }
 
           else if (schema.category == "pick_a_card") {
-            let message = [{text: "Look at the painting in front of you."}];
-            let choice = chance.integer({min: 0, max: card_questions.length-1});
-            let quick_reply = [
-              {
-                content_type:"text",
-                title: "🎨 Art",
-                payload: JSON.stringify({
-                  category: "art_data",
-                  branch: "ART_START"
-                }),
-              },
-              {
-                content_type:"text",
-                title: "📷 Instagram",
-                payload: JSON.stringify({
-                  category: "instagram_impressions",
-                  branch: "instagram_impressions"
-                }),
-              },
-              {
-                content_type:"text",
-                title: "🖼 Visit",
-                payload: JSON.stringify({
-                  category: "visit",
-                  branch: "visit_start"
-                }),
-              }
-            ];
-            message.push({text: card_questions[choice], quick_replies: quick_reply});
-            sendMessage(senderId, message);
+            if (schema.branch == "pick_a_card_start") {
+              console.log("card number: " + cardNumber);
+              sendMessage(senderId, [card_questions[cardNumber]]);
+              cardNumber += 1;
+            }
+            else {
+              let answer = card_answers[schema.branch];
+              answer.quick_reply = [
+                {
+                  content_type:"text",
+                  title: "🎨 Art",
+                  payload: JSON.stringify({
+                    category: "art_data",
+                    branch: "ART_START"
+                  }),
+                },
+                {
+                  content_type:"text",
+                  title: "📷 Instagram",
+                  payload: JSON.stringify({
+                    category: "instagram_impressions",
+                    branch: "instagram_impressions"
+                  }),
+                },
+                {
+                  content_type:"text",
+                  title: "🖼 Visit",
+                  payload: JSON.stringify({
+                    category: "visit",
+                    branch: "visit_start"
+                  }),
+                }
+              ];
+              sendMessage(senderId, [answer]);
+            }           
           }
 
           else if (schema.category == "instagram_impressions") {

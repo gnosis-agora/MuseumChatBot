@@ -207,6 +207,14 @@ Paul Durand-Ruel discovered it there and loved it so much that he bought 20 work
         },
         {
           content_type: "text",
+          title: "🎴 Pick a card",
+          payload: JSON.stringify({
+            category: "pick_a_card",
+            branch: "pick_a_card_start"
+          }),
+        },
+        {
+          content_type: "text",
           title: "🎧 Audio guide",
           payload: JSON.stringify({
             category: "faq_helpers",

@@ -254,7 +254,7 @@ function processMessage(event) {
             }
             else {
               let answer = card_answers[schema.branch];
-              answer.quick_reply = [
+              answer.quick_replies = [
                 {
                   content_type:"text",
                   title: "🎨 Art",

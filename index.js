@@ -543,7 +543,7 @@ function processMessage(event) {
 
 // sends messages to user
 var sendMessage = (recipientId, messages, index=0) => {
-  if (messasges === undefined || !messages) {
+  if (messages === undefined || !messages) {
     return;
   }
   if (index < messages.length) {

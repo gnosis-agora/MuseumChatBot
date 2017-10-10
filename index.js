@@ -60,6 +60,9 @@ app.post("/webhook", function (req, res) {
     // Iterate over each entry
     // There may be multiple entries if batched
     req.body.entry.forEach(function(entry) {
+      if (!entry.messaging) {
+        break;
+      }
       // Iterate over each messaging event
       entry.messaging.forEach(function(event) {
         if (event.postback) {
@@ -70,7 +73,6 @@ app.post("/webhook", function (req, res) {
         }
       });
     });
-
     res.sendStatus(200);
   }
 });

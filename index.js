@@ -251,6 +251,9 @@ function processMessage(event) {
               console.log("card number: " + cardNumber);
               sendMessage(senderId, [card_questions[cardNumber]]);
               cardNumber += 1;
+              if (cardNumber > 9) {
+                cardNumber = cardNumber % 10;
+              }
             }
             else {
               let answer = card_answers[schema.branch];

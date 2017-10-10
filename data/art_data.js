@@ -259,6 +259,14 @@ Paul Durand-Ruel discovered it there and loved it so much that he bought 20 work
         },
         {
           content_type: "text",
+          title: "🎴 Pick a card",
+          payload: JSON.stringify({
+            category: "pick_a_card",
+            branch: "pick_a_card_start"
+          }),
+        },
+        {
+          content_type: "text",
           title: "🎧 Audio guide",
           payload: JSON.stringify({
             category: "faq_helpers",
@@ -299,6 +307,14 @@ Claude Manet\n\nPurchased by the French state, 1984. Collection of Musée d’Or
           payload: JSON.stringify({
             category: "art_data",
             branch: "ARTWORK_4"
+          }),
+        },
+        {
+          content_type: "text",
+          title: "🎴 Pick a card",
+          payload: JSON.stringify({
+            category: "pick_a_card",
+            branch: "pick_a_card_start"
           }),
         },
         {
@@ -344,6 +360,14 @@ Berthe Morisot\n\nPurchased 1930. Collection of Musée d’Orsay, Paris, France.
           payload: JSON.stringify({
             category: "art_data",
             branch: "ARTWORK_5"
+          }),
+        },
+        {
+          content_type: "text",
+          title: "🎴 Pick a card",
+          payload: JSON.stringify({
+            category: "pick_a_card",
+            branch: "pick_a_card_start"
           }),
         },
         {
@@ -394,6 +418,14 @@ Auguste Renoir\n\nBequest of Mr and Mrs Raymond Koechlin, 1931. Collection of Mu
         },
         {
           content_type: "text",
+          title: "🎴 Pick a card",
+          payload: JSON.stringify({
+            category: "pick_a_card",
+            branch: "pick_a_card_start"
+          }),
+        },
+        {
+          content_type: "text",
           title: "🎧 Audio guide",
           payload: JSON.stringify({
             category: "faq_helpers",
@@ -434,6 +466,14 @@ Claude Monet\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d�
           payload: JSON.stringify({
             category: "art_data",
             branch: "ARTWORK_7"
+          }),
+        },
+        {
+          content_type: "text",
+          title: "🎴 Pick a card",
+          payload: JSON.stringify({
+            category: "pick_a_card",
+            branch: "pick_a_card_start"
           }),
         },
         {
@@ -483,6 +523,14 @@ Paul Cézanne\n\nBequest of Gustave Caillebotte, 1894. Collection of Musée d’
         },
         {
           content_type: "text",
+          title: "🎴 Pick a card",
+          payload: JSON.stringify({
+            category: "pick_a_card",
+            branch: "pick_a_card_start"
+          }),
+        },
+        {
+          content_type: "text",
           title: "🎧 Audio guide",
           payload: JSON.stringify({
             category: "faq_helpers",
@@ -524,6 +572,14 @@ Paul Signac\n\nGift of Dr Pierre Hébert, 1957. Collection of Musée d’Orsay, 
           payload: JSON.stringify({
             category: "art_data",
             branch: "ARTWORK_9"
+          }),
+        },
+        {
+          content_type: "text",
+          title: "🎴 Pick a card",
+          payload: JSON.stringify({
+            category: "pick_a_card",
+            branch: "pick_a_card_start"
           }),
         },
         {
@@ -573,6 +629,14 @@ Claude Monet\n\nBequest of Count Isaac de Camondo, 1911.Collection of Musée d�
         },
         {
           content_type: "text",
+          title: "🎴 Pick a card",
+          payload: JSON.stringify({
+            category: "pick_a_card",
+            branch: "pick_a_card_start"
+          }),
+        },
+        {
+          content_type: "text",
           title: "🎧 Audio guide",
           payload: JSON.stringify({
             category: "faq_helpers",
@@ -614,6 +678,14 @@ Auguste Renoir\n\nBequest of Count Isaac de Camondo, 1911.Collection of Musée d
           payload: JSON.stringify({
             category: "art_data",
             branch: "ARTWORK_1"
+          }),
+        },
+        {
+          content_type: "text",
+          title: "🎴 Pick a card",
+          payload: JSON.stringify({
+            category: "pick_a_card",
+            branch: "pick_a_card_start"
           }),
         },
         {

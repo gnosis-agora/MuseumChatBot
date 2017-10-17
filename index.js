@@ -683,5 +683,5 @@ const startSurvey = (senderId) => {
         }
       ]
     }]);
-  }, 30*60*1000); // to be changed for production  
+  }, 15*60*1000); // to be changed for production  
 }

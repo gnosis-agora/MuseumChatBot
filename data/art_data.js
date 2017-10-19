@@ -13,7 +13,7 @@ export const art_data = {
           elements: [
             {
               // artwork 1
-              title: "_Clair de lune sur le port de Boulogne_ (Moonlight over the Port of Boulogne)",
+              title: "_Clair_ _de_ _lune_ _sur_ _le_ _port_ _de_ _Boulogne_ (Moonlight over the Port of Boulogne)",
               subtitle: "Édouard Manet\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 1993. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski.",
               image_url: "https://i.imgur.com/xOquuHP.jpg",
               buttons: [
@@ -29,7 +29,7 @@ export const art_data = {
             },
             {
               // artwork 2
-              title: "_La Serveuse de bocks_ (The Beer Maid)",
+              title: "_La_ _Serveuse_ _de_ _bocks_ (The Beer Maid)",
               subtitle: "Édouard Manet\nFormerly in the Matsukata collection, entered the Musée du Louvre as part of the peace treaty with Japan, 1959. Collection of Musée d’Orsay, Paris, France. RF 1959 4. Photo © RMN-Grand Palais (Musée d’Orsay)/Martine Beck-Coppola.",
               image_url: "https://i.imgur.com/pI1wiGI.jpg",
               buttons: [
@@ -45,7 +45,7 @@ export const art_data = {
             },
             {
               // artwork 3
-              title: "_La Pie_ (The Magpie)",
+              title: "_La_ _Pie_ (The Magpie)",
               subtitle: "Claude Manet\nPurchased by the French state, 1984. Collection of Musée d’Orsay, Paris, France. RF 1984 164. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski.",
               image_url: "https://i.imgur.com/9sLS7M6.jpg",
               buttons: [
@@ -61,7 +61,7 @@ export const art_data = {
             },
             {
               // artwork 4
-              title: "_Le berceau_ (The Cradle)",
+              title: "_Le_ _berceau_ (The Cradle)",
               subtitle: "Berthe Morisot\nPurchased 1930. Collection of Musée d’Orsay, Paris, France. RF 2849. Photo © RMN-Grand Palais (Musée d’Orsay)/Michel Urtado.",
               image_url: "https://i.imgur.com/DHD4if0.jpg",
               buttons: [
@@ -77,7 +77,7 @@ export const art_data = {
             },
             {
               // artwork 5
-              title: "_Claude Monet_",
+              title: "_Claude_ _Monet_",
               subtitle: "Auguste Renoir\nBequest of Mr and Mrs Raymond Koechlin, 1931. Collection of Musée d’Orsay, Paris, France.  RF 3666. Photo © RMN-Grand Palais (Musée d’Orsay)/Jean-Gilles Berizzi.",
               image_url: "https://i.imgur.com/WoDpoA6.jpg",
               buttons: [
@@ -93,7 +93,7 @@ export const art_data = {
             },
             {
               // artwork 6
-              title: "_Le Bassin aux nymphéas, harmonie rose_ (Waterlily Pond, Pink Harmony)",
+              title: "_Le_ _Bassin_ _aux_ _nymphéas,_ _harmonie_ _rose_ (Waterlily Pond, Pink Harmony)",
               subtitle: "Claude Monet\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 2005. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski.",
               image_url: "https://i.imgur.com/63EV6OO.jpg",
               buttons: [
@@ -109,7 +109,7 @@ export const art_data = {
             },
             {
               // artwork 7
-              title: "_Le Golfe de Marseille vu de l’Estaque_ (The Gulf of Marseilles Seen from L’Estaque)",
+              title: "_Le_ _Golfe_ _de_ _Marseille_ _vu_ _de_ _l’Estaque_ (The Gulf of Marseilles Seen from L’Estaque)",
               subtitle: "Paul Cézanne\nBequest of Gustave Caillebotte, 1894. Collection of Musée d’Orsay, Paris, France. RF 2761. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage.",
               image_url: "https://i.imgur.com/vJBZm0A.jpg",
               buttons: [
@@ -125,7 +125,7 @@ export const art_data = {
             },
             {
               // artwork 8
-              title: "_La Bouée rouge_ (The Red Buoy)",
+              title: "_La_ _Bouée_ _rouge_ (The Red Buoy)",
               subtitle: "Paul Signac\nGift of Dr Pierre Hébert, 1957. Collection of Musée d’Orsay, Paris, France. RF 1957 12. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski.",
               image_url: "https://i.imgur.com/I2ZIT5i.jpg",
               buttons: [
@@ -141,7 +141,7 @@ export const art_data = {
             },
             {
               // artwork 9
-              title: "_La cathédrale de Rouen. Le portail et la tour Saint-Romain, plein soleil_ (Rouen Cathedral: The Portal and Saint-Romain Tower, Full Sunlight)",
+              title: "_La_ _cathédrale_ _de_ _Rouen._ _Le_ _portail_ _et_ _la_ _tour_ _Saint-Romain,_ _plein_ _soleil_ (Rouen Cathedral: The Portal and Saint-Romain Tower, Full Sunlight)",
               subtitle: "Claude Monet\nBequest of Count Isaac de Camondo, 1911.Collection of Musée d’Orsay, Paris, France.  RF 2002. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage.",
               image_url: "https://i.imgur.com/P8jlw7U.jpg",
               buttons: [
@@ -157,7 +157,7 @@ export const art_data = {
             },
             {
               // artwork 10
-              title: "_Gabrielle à la rose_ (Gabrielle with a Rose)",
+              title: "_Gabrielle_ _à_ _la_ _rose_ (Gabrielle with a Rose)",
               subtitle: "Auguste Renoir\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 2002. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage.",
               image_url: "https://i.imgur.com/vkJCadI.jpg",
               buttons: [
@@ -187,7 +187,7 @@ export const art_data = {
       }
     },
     {
-      text: "_Clair de lune sur le port de Boulogne_ (Moonlight over the Port of Boulogne)\n\n\
+      text: "_Clair_ _de_ _lune_ _sur_ _le_ _port_ _de_ _Boulogne_ (Moonlight over the Port of Boulogne)\n\n\
 Édouard Manet\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 1993. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
     },
     {
@@ -243,7 +243,7 @@ Paul Durand-Ruel discovered it there and loved it so much that he bought 20 work
       }
     },
     {
-      text: "_La Serveuse de bocks_ (The Beer Maid)\n\n\
+      text: "_La_ _Serveuse_ _de_ _bocks_ (The Beer Maid)\n\n\
 Édouard Manet\n\nFormerly in the Matsukata collection, entered the Musée du Louvre as part of the peace treaty with Japan, 1959. Collection of Musée d’Orsay, Paris, France. RF 1959 4. Photo © RMN-Grand Palais (Musée d’Orsay)/Martine Beck-Coppola."
     },
     {
@@ -295,7 +295,7 @@ Paul Durand-Ruel discovered it there and loved it so much that he bought 20 work
       }
     },
     {
-      text: "_La Pie_ (The Magpie)\n\n\
+      text: "_La_ _Pie_ (The Magpie)\n\n\
 Claude Manet\n\nPurchased by the French state, 1984. Collection of Musée d’Orsay, Paris, France. RF 1984 164. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
     },
     {
@@ -347,7 +347,7 @@ Claude Manet\n\nPurchased by the French state, 1984. Collection of Musée d’Or
       }
     },
     {
-      text: "_Le Berceau_ (The Cradle)\n\n\
+      text: "_Le_ _Berceau_ (The Cradle)\n\n\
 Berthe Morisot\n\nPurchased 1930. Collection of Musée d’Orsay, Paris, France. RF 2849. Photo © RMN-Grand Palais (Musée d’Orsay)/Michel Urtado."
     },
     {
@@ -400,13 +400,13 @@ Berthe Morisot\n\nPurchased 1930. Collection of Musée d’Orsay, Paris, France.
       }
     },
     {
-      text: "_Claude Monet_\n\n\
+      text: "_Claude_ _Monet_\n\n\
 Auguste Renoir\n\nBequest of Mr and Mrs Raymond Koechlin, 1931. Collection of Musée d’Orsay, Paris, France.  RF 3666. Photo © RMN-Grand Palais (Musée d’Orsay)/Jean-Gilles Berizzi."
     },
     {
       text: "Can you guess what Monet is painting and how the artwork looks based on his palette?\
  As Monet rarely painted figures indoors, some people think that he may have been working on a painting\
- of his wife dressed in a kimono titled _La Japonaise_, which was shown at the second Impressionist exhibition in 1876.",
+ of his wife dressed in a kimono titled _La_ _Japonaise_, which was shown at the second Impressionist exhibition in 1876.",
       quick_replies: [
         {
           content_type: "text",
@@ -454,7 +454,7 @@ Auguste Renoir\n\nBequest of Mr and Mrs Raymond Koechlin, 1931. Collection of Mu
       }
     },
     {
-      text: "_Le Bassin aux nymphéas, harmonie rose_ (Waterlily Pond, Pink Harmony)\n\n\
+      text: "_Le_ _Bassin_ _aux_ _nymphéas,_ _harmonie_ _rose_ (Waterlily Pond, Pink Harmony)\n\n\
 Claude Monet\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 2005. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
     },
     {
@@ -506,7 +506,7 @@ Claude Monet\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d�
       }
     },
     {
-      text: "_Le Golfe de Marseille vu de l’Estaque_ (The Gulf of Marseilles Seen from L’Estaque)\n\n\
+      text: "_Le_ _Golfe_ _de_ _Marseille_ _vu_ _de_ _l’Estaque_ (The Gulf of Marseilles Seen from L’Estaque)\n\n\
 Paul Cézanne\n\nBequest of Gustave Caillebotte, 1894. Collection of Musée d’Orsay, Paris, France.  RF 2761. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage."
     },
     {
@@ -559,7 +559,7 @@ Paul Cézanne\n\nBequest of Gustave Caillebotte, 1894. Collection of Musée d’
       }
     },
     {
-      text: "_La Bouée rouge_ (The Red Buoy)\n\n\
+      text: "_La_ _Bouée_ _rouge_ (The Red Buoy)\n\n\
 Paul Signac\n\nGift of Dr Pierre Hébert, 1957. Collection of Musée d’Orsay, Paris, France. RF 1957 12. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
     },
     {
@@ -612,7 +612,7 @@ Paul Signac\n\nGift of Dr Pierre Hébert, 1957. Collection of Musée d’Orsay, 
       }
     },
     {
-      text: "_La Cathedrale de Rouen. Le portail et la tour Saint-Romain, plein soleil_ (Rouen Cathedral: The Portal and Saint-Romain Tower, Full Sunlight)\n\n\
+      text: "_La_ _Cathedrale_ _de_ _Rouen._ _Le_ _portail_ _et_ _la_ _tour_ _Saint-Romain,_ _plein_ _soleil_ (Rouen Cathedral: The Portal and Saint-Romain Tower, Full Sunlight)\n\n\
 Claude Monet\n\nBequest of Count Isaac de Camondo, 1911.Collection of Musée d’Orsay, Paris, France.  RF 2002. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage."
     },
     {
@@ -665,7 +665,7 @@ Claude Monet\n\nBequest of Count Isaac de Camondo, 1911.Collection of Musée d�
       }
     },
     {
-      text: "_Gabrielle à la rose (Gabrielle with a Rose)_\n\n\
+      text: "_Gabrielle_ _à_ _la_ _rose_ (Gabrielle with a Rose)_\n\n\
 Auguste Renoir\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 2002. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage."
     },
     {

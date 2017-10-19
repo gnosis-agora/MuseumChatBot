@@ -574,7 +574,7 @@ const generateWelcomeMessage = (name) => {
     text: "Hi " + name + "! Welcome to National Gallery Singapore!"
   });
   messages.push({
-    text: "I'm your virtual assistant 🤖 to the 𝘊𝘰𝘭𝘰𝘶𝘳𝘴 𝘰𝘧 𝘐𝘮𝘱𝘳𝘦𝘴𝘴𝘪𝘰𝘯𝘪𝘴𝘮 exhibition. "
+    text: "I'm your virtual assistant 🤖 to the Colours of Impressionism exhibition. "
   });
   messages.push({
     text: "Would you like to discover key highlights, explore other people’s impressions of this exhibition, or find out about ticketing and opening hours?",

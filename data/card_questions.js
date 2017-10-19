@@ -141,7 +141,7 @@ export const card_questions = [
       },
       {
         content_type: "text",
-        title: "A play of light and shadow", // ISSUE with word count
+        title: "A bit of both", // ISSUE with word count
         payload: JSON.stringify({
           category: "pick_a_card",
           branch: "question_5",
@@ -314,34 +314,30 @@ export const card_answers = {
   },
 
   question_3: {
-    text: "Impressionists often arranged paintings in three sections: foreground—the part of the painting that\
- appears closest to the viewer; middle ground—the part of the picture between the foreground and background;\
- and background—the part of the picture that appears furthest away. Artists use composition to lend perspective or create a sense of balance and harmony."
+    text: "Impressionists often arranged paintings in three sections—foreground,\
+ middle ground and background—to lend perspective or create a sense of balance and harmony."
   },
 
   question_4: {
-    text: "Many Impressionist artists took their inspiration from the unique surroundings they lived and worked in.\
- While some were interested in capturing modern city life, a few artists were averse to the intense pace\
- of modern society and—with the ease of mobility provided by new railroads—escaped to the countryside to paint."
+    text: "Many Impressionist artists took inspiration from their surroundings.\
+ While some captured modern city life, a few were averse to the intense pace of\
+ modern society and—with the ease of mobility provided by new railroads—escaped to the countryside to paint."
   },
 
   question_5: {
-    text: "Impressionist artists studied and sought to recreate the way light bounces off the faces of dancers,\
- cathedrals and water surfaces. Sometimes they painted the same scene several times, but in different light.\
- They were also attuned to the latest developments in colour and optical theory and created shadows by mixing\
- complementary colours instead of using black. "
+    text: "Impressionist artists played with light and shadow.\
+ They were also attuned to colour and optical theory and often created shadows using complementary colours instead of black. "
   },
 
   question_6: {
-    text: "Impressionist artists often painted realistic scenes of modern life en plein air, or outdoors.\
- They created blurred outlines or vague forms in their paintings to portray a fleeting moment and\
- capture a sense of ambiguity typical of the modern experience."
+    text: "Most Impressionist artists painted realistic scenes of modern life _en plein air_,\
+ or outdoors. They created blurred outlines or vague forms in their paintings to portray a fleeting moment and capture a sense of ambiguity."
   },
 
   question_7: {
-    text: "The size of an artwork often depends on a few factors such as the choice of subject matter,\
- where it will be presented, and even how much money the artist has to purchase paints and canvasses.\
- Some Impressionists were so poor that they would reuse an old canvas by painting another work on top of an existing one."
+    text: "The size of an artwork depends on the choice of subject matter,\
+ where it will be presented, and even how much money the artist has to buy paints and canvasses.\
+ Some Impressionists would reuse an old canvas by painting another work on top of an existing one."
   },
 
   question_8: {
@@ -350,14 +346,13 @@ export const card_answers = {
   },
 
   question_9: {
-    text: "Quickly applied brushstrokes give the impression of movement and spontaneity.\
- Instead of rendering realistic details in photographic quality, Impressionists artists often made their brushwork visible,\
- relying on the viewer’s eye to visually blend the individual marks and colours and perceive the essence of the whole scene."
+    text: "Instead of rendering realistic details in photographic quality, Impressionists artists often made\
+ their brushwork visible, relying on the viewer’s eye to visually blend the individual marks and colours."
   },
 
   question_10: {
     text: "Photography inspired artists to capture immediate snapshots or moments in time.\
- The invention of synthetic, readymade paints that came in portable tubes allowed them to work spontaneously,\
- whether outdoors or in a studio. Consider the ways new technology affect your ideas of time, space and memory, and the things you create."
+ The invention of synthetic paints in portable tubes allowed them to work spontaneously,\
+ whether outdoors or in a studio. Consider the ways new technologies affect the things you create. "
   },
 }

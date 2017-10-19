@@ -10,12 +10,12 @@ export const faq_helpers = {
             {
               type: "web_url",
               url: "https://goo.gl/ytAmxN",
-              title: "🤖 Android users"
+              title: "🤖 Android"
             },
             {
               type: "web_url",
               url: "https://appsto.re/sg/VaJ76.i",
-              title: "🍎 iOS users"
+              title: "🍎 iOS"
             }
           ]
         }
@@ -66,12 +66,12 @@ export const faq_helpers = {
             {
               type: "web_url",
               url: "https://goo.gl/ytAmxN",
-              title: "🤖 Android users"
+              title: "🤖 Android"
             },
             {
               type: "web_url",
               url: "https://appsto.re/sg/VaJ76.i",
-              title: "🍎 iOS users"
+              title: "🍎 iOS"
             }
           ]
         }
@@ -119,12 +119,12 @@ export const faq_helpers = {
             {
               type: "web_url",
               url: "https://goo.gl/ytAmxN",
-              title: "🤖 Android users"
+              title: "🤖 Android"
             },
             {
               type: "web_url",
               url: "https://appsto.re/sg/VaJ76.i",
-              title: "🍎 iOS users"
+              title: "🍎 iOS"
             }
           ]
         }

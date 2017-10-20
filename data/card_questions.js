@@ -330,7 +330,7 @@ export const card_answers = {
   },
 
   question_6: {
-    text: "Most Impressionist artists painted realistic scenes of modern life _en plein air_,\
+    text: "Most Impressionist artists painted realistic scenes of modern life en plein air,\
  or outdoors. They created blurred outlines or vague forms in their paintings to portray a fleeting moment and capture a sense of ambiguity."
   },
 

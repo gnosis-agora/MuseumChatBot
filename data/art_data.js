@@ -406,7 +406,7 @@ Auguste Renoir\n\nBequest of Mr and Mrs Raymond Koechlin, 1931. Collection of Mu
     {
       text: "Can you guess what Monet is painting and how the artwork looks based on his palette?\
  As Monet rarely painted figures indoors, some people think that he may have been working on a painting\
- of his wife dressed in a kimono titled _La Japonaise_ , which was shown at the second Impressionist exhibition in 1876.",
+ of his wife dressed in a kimono titled _La Japonaise_, which was shown at the second Impressionist exhibition in 1876.",
       quick_replies: [
         {
           content_type: "text",

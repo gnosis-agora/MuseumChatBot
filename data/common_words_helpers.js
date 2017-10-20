@@ -4,10 +4,10 @@ import moment from "moment"
 var scraper = require('insta-scraper');
 
 export const getReply = (wordsArray) => {
-	let artPrompt = ["art", "artwork", "painting", "featured", "highlight", "artist", "recommended", "artworks"];
-	let instagramPrompt = ["social media", "instagram", "coloursofimpressionism", "photo", "photos"];
-	let openingHourPrompt = ["opening hours", "open", "close", "time", "opening hour"];
-	let ticketsPrompt = ["how much", "price", "ticket", "discount", "concession", "free", "admission", "entry", "tickets",];
+	let artPrompt = ["art", "artwork", "painting", "featured", "highlight", "artist", "recommended", "artworks", "paintings"];
+	let instagramPrompt = ["social", "media", "instagram", "coloursofimpressionism", "photo", "photos"];
+	let openingHourPrompt = ["opening", "open", "close", "time", "hours", "hour"];
+	let ticketsPrompt = ["how", "much", "price", "ticket", "discount", "concession", "free", "admission", "entry", "tickets",];
 
 	if (containsCommonWord(wordsArray, artPrompt)) {
 		return art_data["ART_START"];
@@ -146,36 +146,41 @@ const containsCommonWord = (sentence, match_words) => {
   Message to be returned in the case of un-programmed input from user
 */
 const getUnhandledRequest = () => {
-  let message = {
-    text: "What would you like to know?",
-    quick_replies: [
-      {
-        content_type:"text",
-        title: "🎨 Art",
-        payload: JSON.stringify({
-          category: "art_data",
-          branch: "ART_START"
-        }),
-      },
-      {
-        content_type:"text",
-        title: "📷 Instagram",
-        payload: JSON.stringify({
-          category: "instagram_impressions",
-          branch: "instagram_impressions"
-        }),
-      },
-      {
-        content_type:"text",
-        title: "🖼 Visit",
-        payload: JSON.stringify({
-          category: "visit",
-          branch: "visit_start"
-        }),
-      }
-    ]
-  };
-  return [message];
+  let message = [
+    {
+      text: "Please don’t play these games with my heart."
+    },
+    {
+      text: "Can you try one of these?",
+      quick_replies: [
+        {
+          content_type:"text",
+          title: "🎨 Art",
+          payload: JSON.stringify({
+            category: "art_data",
+            branch: "ART_START"
+          }),
+        },
+        {
+          content_type:"text",
+          title: "📷 Instagram",
+          payload: JSON.stringify({
+            category: "instagram_impressions",
+            branch: "instagram_impressions"
+          }),
+        },
+        {
+          content_type:"text",
+          title: "🖼 Visit",
+          payload: JSON.stringify({
+            category: "visit",
+            branch: "visit_start"
+          }),
+        }
+      ]
+    }
+  ];
+  return message;
 }
 
 /*

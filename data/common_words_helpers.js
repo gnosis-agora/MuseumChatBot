@@ -6,128 +6,108 @@ var scraper = require('insta-scraper');
 export const getReply = (wordsArray) => {
 	let artPrompt = ["art", "artwork", "painting", "featured", "highlight", "artist", "recommended", "artworks", "paintings"];
 	let instagramPrompt = ["social", "media", "instagram", "coloursofimpressionism", "photo", "photos"];
-	let openingHourPrompt = ["opening", "open", "close", "time", "hours", "hour"];
+	let openingHourPrompt = ["opening", "open", "close", "time", "hours", "hour",];
 	let ticketsPrompt = ["how", "much", "price", "ticket", "discount", "concession", "free", "admission", "entry", "tickets",];
 
 	if (containsCommonWord(wordsArray, artPrompt)) {
-		return art_data["ART_START"];
-	}
-	else if (containsCommonWord(wordsArray, instagramPrompt)) {
-    scraper.getMediaByTag("nationalgallerysg", "", function(error,response_json){
-      let media = response_json["media"]["nodes"];
-      let list = [];
-      media.forEach(picture => {
-        let item = {
-          display_src: picture["display_src"],
-          code: picture["code"],
-          caption: picture["caption"],
-          owner_id: picture["owner"]["id"],
-        }
-        list.push(item);
-      });
-      list.sort(function(a,b) {
-        let id_a = a.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
-        let id_b = b.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
-
-        id_a = parseInt(id_a.substring(0,8));
-        id_b = parseInt(id_b.substring(0,8));
-
-        return id_b - id_a;
-      });
-      
-      let messages = [{text: "Here are the top 10 newest Instagram posts. Tag your photos with #coloursofimpressionism to see your photos here!"}];
-      let carouselItems = [];
-      for (let i=0;i<10;i++) {
-        let obj = {
-          image_url: list[i].display_src,
-          title: list[i].caption,
-          default_action: {
-            type: "web_url",
-            url: "https://www.instagram.com/p/" + list[i].code + "/",
-          }
-        };
-        carouselItems.push(obj);
-      }
-      let carousel = {
-        attachment: {
-          type: "template",
-          payload: {
-            template_type: "generic",
-            image_aspect_ratio: "square",
-            elements: carouselItems
-          }
-        }
-      }
-      messages.push(carousel);
-      messages.push({
-        text: "Looking for something else? Choose another option below.",
+		return [
+      {
+        text: "Looking for the key highlights of this exhibition?",
         quick_replies: [
           {
-            content_type:"text",
-            title: "🎨 Art",
+            content_type: "text",
+            title: "Yes",
             payload: JSON.stringify({
               category: "art_data",
               branch: "ART_START"
             }),
           },
           {
-            content_type:"text",
-            title: "📷 Instagram",
+            content_type: "text",
+            title: "No",
             payload: JSON.stringify({
-              category: "instagram_impressions",
-              branch: "instagram_impressions"
-            }),
-          },
-          {
-            content_type:"text",
-            title: "🖼 Visit",
-            payload: JSON.stringify({
-              category: "visit",
-              branch: "visit_start"
+              category: "wrong_words",
+              branch: "NO"
             }),
           }
         ]
-      });  
-      return messages;
-    });	
+      }
+    ];
 	}
-	else if (containsCommonWord(wordsArray, openingHourPrompt)) {
-	  let timeNow = new moment().add(8,'hours');
-
-	  return [
+	else if (containsCommonWord(wordsArray, instagramPrompt)) {
+    return [
       {
-        text: getOpeningHourMessage(timeNow),
+        text: "Looking for the latest Instagram posts on this exhibition?",
         quick_replies: [
           {
-            content_type:"text",
-            title: "🎨 Art",
-            payload: JSON.stringify({
-              category: "art_data",
-              branch: "ART_START"
-            }),
-          },
-          {
-            content_type:"text",
-            title: "📷 Instagram",
+            content_type: "text",
+            title: "Yes",
             payload: JSON.stringify({
               category: "instagram_impressions",
               branch: "instagram_impressions"
             }),
           },
           {
-            content_type:"text",
-            title: "🎟 Tickets",
+            content_type: "text",
+            title: "No",
+            payload: JSON.stringify({
+              category: "wrong_words",
+              branch: "NO"
+            }),
+          }
+        ]
+      }
+    ];
+	}
+	else if (containsCommonWord(wordsArray, openingHourPrompt)) {
+    return [
+      {
+        text: "Looking for information on our opening hours?",
+        quick_replies: [
+          {
+            content_type: "text",
+            title: "Yes",
+            payload: JSON.stringify({
+              category: "visit",
+              branch: "visit_opening_hours"
+            }),
+          },
+          {
+            content_type: "text",
+            title: "No",
+            payload: JSON.stringify({
+              category: "wrong_words",
+              branch: "NO"
+            }),
+          }
+        ]
+      }
+    ];	
+	}
+	else if (containsCommonWord(wordsArray, ticketsPrompt)) {
+    return [
+      {
+        text: "Looking for information on ticket prices?",
+        quick_replies: [
+          {
+            content_type: "text",
+            title: "Yes",
             payload: JSON.stringify({
               category: "visit",
               branch: "visit_tickets"
             }),
           },
+          {
+            content_type: "text",
+            title: "No",
+            payload: JSON.stringify({
+              category: "wrong_words",
+              branch: "NO"
+            }),
+          }
         ]
-      },
-    ];		
-	}
-	else if (containsCommonWord(wordsArray, ticketsPrompt)) {
-		return visit["visit_tickets"];
+      }
+    ];
 	}
 	else {
 		return getUnhandledRequest();

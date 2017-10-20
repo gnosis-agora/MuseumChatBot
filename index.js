@@ -342,7 +342,7 @@ function processMessage(event) {
             else if (schema.branch == "visit_opening_hours"){
               let timeNow = new moment().add(8,'hours');
               let messages = [{text: getOpeningHourMessage(timeNow)},{text: "Looking for another artwork?"}];
-              messages = message.concat(art_data["ART_START"]);
+              messages = messages.concat(art_data["ART_START"]);
               sendMessage(senderId, messages);
             }
             else {

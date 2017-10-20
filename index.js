@@ -123,7 +123,7 @@ function processPostback(event) {
           return id_b - id_a;
         });
         
-        let messages = [{text: "Here are the top 10 newest instagram posts. Tag your photos with #coloursofimpressionism to see your photos here!"}];
+        let messages = [{text: "Here are the top 10 newest Instagram posts. Tag your photos with #coloursofimpressionism to see your photos here!"}];
         let carouselItems = [];
         for (let i=0;i<10;i++) {
           let obj = {
@@ -302,7 +302,7 @@ function processMessage(event) {
                 return id_b - id_a;
               });
               
-              let messages = [{text: "Here are the top 10 newest instagram posts. Tag your photos with #coloursofimpressionism to see your photos here!"}];
+              let messages = [{text: "Here are the top 10 newest Instagram posts. Tag your photos with #coloursofimpressionism to see your photos here!"}];
               let carouselItems = [];
               for (let i=0;i<10;i++) {
                 let obj = {
@@ -365,38 +365,9 @@ function processMessage(event) {
             }
             else if (schema.branch == "visit_opening_hours"){
               let timeNow = new moment().add(8,'hours');
-
-              sendMessage(senderId, [
-                  {
-                    text: getOpeningHourMessage(timeNow),
-                    quick_replies: [
-                      {
-                        content_type:"text",
-                        title: "🎨 Art",
-                        payload: JSON.stringify({
-                          category: "art_data",
-                          branch: "ART_START"
-                        }),
-                      },
-                      {
-                        content_type:"text",
-                        title: "📷 Instagram",
-                        payload: JSON.stringify({
-                          category: "instagram_impressions",
-                          branch: "instagram_impressions"
-                        }),
-                      },
-                      {
-                        content_type:"text",
-                        title: "🎟 Tickets",
-                        payload: JSON.stringify({
-                          category: "visit",
-                          branch: "visit_tickets"
-                        }),
-                      },
-                    ]
-                  },
-                ]);
+              let messages = [{text: getOpeningHourMessage(timeNow)},{text: "Looking for another artwork?"}];
+              messages = message.concat(art_data["ART_START"]);
+              sendMessage(senderId, messages);
             }
             else {
               sendMessage(senderId, visit[schema.branch]);
@@ -407,14 +378,20 @@ function processMessage(event) {
             if (schema.branch == "NEXT_TOUR") {
               let timeNow = new moment().add(8,'hours'); // offset the timezone difference on server and SG
               if (timeNow.hours() < 13) {
-                sendMessage(senderId, faq_helpers["NEXT_TOUR_AVAILABLE"]);
+                let messages = faq_helpers["NEXT_TOUR_AVAILABLE"];
+                messages = messages.concat(art_data["ART_START"]);
+                sendMessage(senderId, messages);
               }
               else {
-                sendMessage(senderId, faq_helpers["NEXT_TOUR_UNAVAILABLE"]);
+                let messages = faq_helpers["NEXT_TOUR_UNAVAILABLE"];
+                messages = messages.concat(art_data["ART_START"]);
+                sendMessage(senderId, messages);
               }
             }
             else {
-              sendMessage(senderId, faq_helpers[schema.branch]);
+              let messages = faq_helpers[schema.branch];
+              messages = messages.concat(art_data["ART_START"]);
+              sendMessage(senderId, messages);
             }
           }          
 
@@ -492,7 +469,40 @@ function processMessage(event) {
             }
             else if (schema.branch == "question_2") {
               updateQuestion2(schema.choice);
-              sendMessage(senderId, [{text: "Thank you for your feedback! ☺️"}]);
+              sendMessage(senderId, [
+                {
+                  text: "Thank you for your feedback! ☺️"
+                },
+                {
+                  text: "Shall we continue with the fun stuff?",
+                  quick_replies: [
+                    {
+                      content_type:"text",
+                      title: "🎨 Art",
+                      payload: JSON.stringify({
+                        category: "art_data",
+                        branch: "ART_START"
+                      }),
+                    },
+                    {
+                      content_type:"text",
+                      title: "📷 Instagram",
+                      payload: JSON.stringify({
+                        category: "instagram_impressions",
+                        branch: "instagram_impressions"
+                      }),
+                    },
+                    {
+                      content_type:"text",
+                      title: "🎟 Tickets",
+                      payload: JSON.stringify({
+                        category: "visit",
+                        branch: "visit_tickets"
+                      }),
+                    },
+                  ]
+                }
+              ]);
             }
           }
         }
@@ -500,7 +510,7 @@ function processMessage(event) {
         else if (message.text) {
         	// If user were to restart the conversation
           let prompts = ["hello","hi","yo","what up","hey","hey there","get started"];
-          let potentialStart = message.text.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+          let potentialStart = message.text.toLowerCase().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
           if (prompts.indexOf(potentialStart) != -1) {
             // Get user's first name from the User Profile API
             // and include it in the greeting
@@ -523,7 +533,7 @@ function processMessage(event) {
             });            
           }
           else {
-            let sentence = message.text.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(" ");
+            let sentence = message.text.toLowerCase().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(" ");
             sendMessage(senderId, getReply(sentence));
           }
           
@@ -565,7 +575,7 @@ const generateWelcomeMessage = (name) => {
     text: "Hi " + name + "! Welcome to National Gallery Singapore!"
   });
   messages.push({
-    text: "I'm your virtual assistant 🤖 to the Colours of Impressionism exhibition. "
+    text: "I'm your virtual assistant 🤖 to the _Colours of Impressionism_ exhibition. "
   });
   messages.push({
     text: "Would you like to discover key highlights, explore other people’s impressions of this exhibition, or find out about ticketing and opening hours?",

@@ -4,10 +4,10 @@ import moment from "moment"
 var scraper = require('insta-scraper');
 
 export const getReply = (wordsArray) => {
-	let artPrompt = ["art", "artwork", "painting", "featured", "highlight", "artist", "recommended"];
-	let instagramPrompt = ["social media", "instagram", "coloursofimpressionism", "photo"];
-	let openingHourPrompt = ["opening hours", "open", "close", "time"];
-	let ticketsPrompt = ["how much", "price", "ticket", "discount", "concession", "free", "admission", "entry"];
+	let artPrompt = ["art", "artwork", "painting", "featured", "highlight", "artist", "recommended", "artworks"];
+	let instagramPrompt = ["social media", "instagram", "coloursofimpressionism", "photo", "photos"];
+	let openingHourPrompt = ["opening hours", "open", "close", "time", "opening hour"];
+	let ticketsPrompt = ["how much", "price", "ticket", "discount", "concession", "free", "admission", "entry", "tickets",];
 
 	if (containsCommonWord(wordsArray, artPrompt)) {
 		return art_data["ART_START"];
@@ -35,7 +35,7 @@ export const getReply = (wordsArray) => {
         return id_b - id_a;
       });
       
-      let messages = [{text: "Here are the top 10 newest instagram posts. Tag your photos with #coloursofimpressionism to see your photos here!"}];
+      let messages = [{text: "Here are the top 10 newest Instagram posts. Tag your photos with #coloursofimpressionism to see your photos here!"}];
       let carouselItems = [];
       for (let i=0;i<10;i++) {
         let obj = {

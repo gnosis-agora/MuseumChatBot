@@ -207,7 +207,7 @@ Paul Durand-Ruel discovered it there and loved it so much that he bought 20 work
         },
         {
           content_type: "text",
-          title: "🎴 Pick a card",
+          title: "👀 Art of seeing art",
           payload: JSON.stringify({
             category: "pick_a_card",
             branch: "pick_a_card_start"
@@ -259,7 +259,7 @@ Paul Durand-Ruel discovered it there and loved it so much that he bought 20 work
         },
         {
           content_type: "text",
-          title: "🎴 Pick a card",
+          title: "👀 Art of seeing art",
           payload: JSON.stringify({
             category: "pick_a_card",
             branch: "pick_a_card_start"
@@ -311,7 +311,7 @@ Claude Manet\n\nPurchased by the French state, 1984. Collection of Musée d’Or
         },
         {
           content_type: "text",
-          title: "🎴 Pick a card",
+          title: "👀 Art of seeing art",
           payload: JSON.stringify({
             category: "pick_a_card",
             branch: "pick_a_card_start"
@@ -364,7 +364,7 @@ Berthe Morisot\n\nPurchased 1930. Collection of Musée d’Orsay, Paris, France.
         },
         {
           content_type: "text",
-          title: "🎴 Pick a card",
+          title: "👀 Art of seeing art",
           payload: JSON.stringify({
             category: "pick_a_card",
             branch: "pick_a_card_start"
@@ -406,7 +406,7 @@ Auguste Renoir\n\nBequest of Mr and Mrs Raymond Koechlin, 1931. Collection of Mu
     {
       text: "Can you guess what Monet is painting and how the artwork looks based on his palette?\
  As Monet rarely painted figures indoors, some people think that he may have been working on a painting\
- of his wife dressed in a kimono titled La Japonaise, which was shown at the second Impressionist exhibition in 1876.",
+ of his wife dressed in a kimono titled _La Japonaise_, which was shown at the second Impressionist exhibition in 1876.",
       quick_replies: [
         {
           content_type: "text",
@@ -418,7 +418,7 @@ Auguste Renoir\n\nBequest of Mr and Mrs Raymond Koechlin, 1931. Collection of Mu
         },
         {
           content_type: "text",
-          title: "🎴 Pick a card",
+          title: "👀 Art of seeing art",
           payload: JSON.stringify({
             category: "pick_a_card",
             branch: "pick_a_card_start"
@@ -470,7 +470,7 @@ Claude Monet\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d�
         },
         {
           content_type: "text",
-          title: "🎴 Pick a card",
+          title: "👀 Art of seeing art",
           payload: JSON.stringify({
             category: "pick_a_card",
             branch: "pick_a_card_start"
@@ -523,7 +523,7 @@ Paul Cézanne\n\nBequest of Gustave Caillebotte, 1894. Collection of Musée d’
         },
         {
           content_type: "text",
-          title: "🎴 Pick a card",
+          title: "👀 Art of seeing art",
           payload: JSON.stringify({
             category: "pick_a_card",
             branch: "pick_a_card_start"
@@ -576,7 +576,7 @@ Paul Signac\n\nGift of Dr Pierre Hébert, 1957. Collection of Musée d’Orsay, 
         },
         {
           content_type: "text",
-          title: "🎴 Pick a card",
+          title: "👀 Art of seeing art",
           payload: JSON.stringify({
             category: "pick_a_card",
             branch: "pick_a_card_start"
@@ -629,7 +629,7 @@ Claude Monet\n\nBequest of Count Isaac de Camondo, 1911.Collection of Musée d�
         },
         {
           content_type: "text",
-          title: "🎴 Pick a card",
+          title: "👀 Art of seeing art",
           payload: JSON.stringify({
             category: "pick_a_card",
             branch: "pick_a_card_start"
@@ -682,7 +682,7 @@ Auguste Renoir\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée 
         },
         {
           content_type: "text",
-          title: "🎴 Pick a card",
+          title: "👀 Art of seeing art",
           payload: JSON.stringify({
             category: "pick_a_card",
             branch: "pick_a_card_start"

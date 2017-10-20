@@ -1,3 +1,4 @@
+
 export const faq_helpers = {
   AUDIO_GUIDE: [
     {
@@ -22,33 +23,7 @@ export const faq_helpers = {
       }
     },
     {
-      text: "Looking for something else? Choose another option below.",
-      quick_replies: [
-        {
-          content_type:"text",
-          title: "🎨 Art",
-          payload: JSON.stringify({
-            category: "art_data",
-            branch: "ART_START"
-          }),
-        },
-        {
-          content_type:"text",
-          title: "📷 Instagram",
-          payload: JSON.stringify({
-            category: "instagram_impressions",
-            branch: "instagram_impressions"
-          }),
-        },
-        {
-          content_type:"text",
-          title: "🖼 Visit",
-          payload: JSON.stringify({
-            category: "visit",
-            branch: "visit_start"
-          }),
-        }
-      ]
+      text: "Looking for another artwork?"
     }
   ],
 
@@ -78,34 +53,8 @@ export const faq_helpers = {
       }
     },
     {
-      text: "Looking for something else? Choose another option below.",
-      quick_replies: [
-        {
-          content_type:"text",
-          title: "🎨 Art",
-          payload: JSON.stringify({
-            category: "art_data",
-            branch: "ART_START"
-          }),
-        },
-        {
-          content_type:"text",
-          title: "📷 Instagram",
-          payload: JSON.stringify({
-            category: "instagram_impressions",
-            branch: "instagram_impressions"
-          }),
-        },
-        {
-          content_type:"text",
-          title: "🖼 Visit",
-          payload: JSON.stringify({
-            category: "visit",
-            branch: "visit_start"
-          }),
-        }
-      ]
-    }
+      text: "Looking for another artwork?"
+    },
   ],
 
   NEXT_TOUR_UNAVAILABLE: [
@@ -131,33 +80,7 @@ export const faq_helpers = {
       }
     },
     {
-      text: "Looking for something else? Choose another option below.",
-      quick_replies: [
-        {
-          content_type:"text",
-          title: "🎨 Art",
-          payload: JSON.stringify({
-            category: "art_data",
-            branch: "ART_START"
-          }),
-        },
-        {
-          content_type:"text",
-          title: "📷 Instagram",
-          payload: JSON.stringify({
-            category: "instagram_impressions",
-            branch: "instagram_impressions"
-          }),
-        },
-        {
-          content_type:"text",
-          title: "🖼 Visit",
-          payload: JSON.stringify({
-            category: "visit",
-            branch: "visit"
-          }),
-        }
-      ]
+      text: "Looking for another artwork?"
     }
   ]
 

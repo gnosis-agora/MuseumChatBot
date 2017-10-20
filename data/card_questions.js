@@ -151,7 +151,7 @@ export const card_questions = [
   },
   {
     // question 6
-    text: "How would you describe the tones in this painting?",
+    text: "Do the forms in this painting appear clear or blurred to you?",
     quick_replies: [
       {
         content_type: "text",

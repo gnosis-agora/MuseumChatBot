@@ -248,34 +248,10 @@ function processMessage(event) {
               }
             }
             else {
-              let answer = card_answers[schema.branch];
-              answer.quick_replies = [
-                {
-                  content_type:"text",
-                  title: "🎨 Art",
-                  payload: JSON.stringify({
-                    category: "art_data",
-                    branch: "ART_START"
-                  }),
-                },
-                {
-                  content_type:"text",
-                  title: "📷 Instagram",
-                  payload: JSON.stringify({
-                    category: "instagram_impressions",
-                    branch: "instagram_impressions"
-                  }),
-                },
-                {
-                  content_type:"text",
-                  title: "🖼 Visit",
-                  payload: JSON.stringify({
-                    category: "visit",
-                    branch: "visit_start"
-                  }),
-                }
-              ];
-              sendMessage(senderId, [answer]);
+              let answer = [card_answers[schema.branch]];
+              answer.push({text: "Looking for another artwork?"});
+              answer = answer.concat(art_data["ART_START"]);
+              sendMessage(senderId, answer);
             }           
           }
 

@@ -533,11 +533,11 @@ function processMessage(event) {
             });            
           }
           else {
-            sendMessage(senderId, [{text: "Sorry, I don't understand your request."}]);
+            sendMessage(senderId, getUnhandledRequest());
           }
           
         } else if (message.attachments) {
-            sendMessage(senderId, [{text: "Sorry, I don't understand your request."}]);
+            sendMessage(senderId, getUnhandledRequest());
         }
     }
 }
@@ -609,26 +609,39 @@ const generateWelcomeMessage = (name) => {
 }
 
 /*
-  Returns top 10 most recent public instagram pictures with the hashtag specified 
+  Message to be returned in the case of un-programmed input from user
 */
-const getInstagramPosts = (hashtag) => {
-  scraper.getMediaByTag("nationalgallerysg", "", function(error,response_json){
-    let media = response_json["media"]["nodes"];
-    let url_list = [];
-    media.forEach(picture => {
-      url_list.push(picture["display_src"]);
-    });
-    url_list.sort(function(a,b) {
-      let id_a = a.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
-      let id_b = b.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
-
-      id_a = parseInt(id_a.substring(0,8));
-      id_b = parseInt(id_b.substring(0,8));
-
-      return id_b - id_a;
-    });
-    return url_list;
-  });
+const getUnhandledRequest = () => {
+  let message = {
+    text: "What would you like to know?",
+    quick_replies: [
+      {
+        content_type:"text",
+        title: "🎨 Art",
+        payload: JSON.stringify({
+          category: "art_data",
+          branch: "ART_START"
+        }),
+      },
+      {
+        content_type:"text",
+        title: "📷 Instagram",
+        payload: JSON.stringify({
+          category: "instagram_impressions",
+          branch: "instagram_impressions"
+        }),
+      },
+      {
+        content_type:"text",
+        title: "🖼 Visit",
+        payload: JSON.stringify({
+          category: "visit",
+          branch: "visit_start"
+        }),
+      }
+    ]
+  };
+  return [message];
 }
 
 /*

@@ -7,6 +7,7 @@ import {faq_helpers} from "./data/faq_helpers";
 import {card_questions, card_answers} from "./data/card_questions";
 import {visit} from "./data/visit_questions";
 import {updateQuestion1, updateQuestion2} from "./mongoMethod";
+import {getReply} from "./data/common_words_helpers";
 import https from "https";
 import moment from "moment";
 import Chance from "chance";
@@ -29,17 +30,6 @@ var cardNumber = 0;
 
 // Server index page
 app.get("/", function (req, res) {
-  request({
-    url: "https://www.instagram.com/p/" + "BZfo9ezhsMW",
-    qs: {
-      __a: 1,
-    },
-    method: "GET"
-  }, function(error, response, body) {
-    let json = JSON.parse(body);
-    let main = json["graphql"]["shortcode_media"];
-    res.send(main["owner"]["username"]);
-  });
 });
 
 // Facebook Webhook
@@ -533,7 +523,8 @@ function processMessage(event) {
             });            
           }
           else {
-            sendMessage(senderId, getUnhandledRequest());
+            let sentence = message.text.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(" ");
+            sendMessage(senderId, getReply(sentence));
           }
           
         } else if (message.attachments) {

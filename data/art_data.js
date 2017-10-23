@@ -93,7 +93,7 @@ export const art_data = {
             },
             {
               // artwork 6
-              title: "Le Bassin aux nymphéas, harmonie rose (Waterlily Pond, Pink Harmony)",
+              title: "Le Bassin aux nymphéas, harmonie rose (Water Lily Pond, Pink Harmony)",
               subtitle: "Claude Monet\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 2005. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski.",
               image_url: "https://i.imgur.com/63EV6OO.jpg",
               buttons: [
@@ -454,7 +454,7 @@ Auguste Renoir\n\nBequest of Mr and Mrs Raymond Koechlin, 1931. Collection of Mu
       }
     },
     {
-      text: "Le Bassin aux nymphéas, harmonie rose (Waterlily Pond, Pink Harmony)\n\n\
+      text: "Le Bassin aux nymphéas, harmonie rose (Water Lily Pond, Pink Harmony)\n\n\
 Claude Monet\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 2005. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
     },
     {

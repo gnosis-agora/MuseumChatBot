@@ -17,7 +17,7 @@ var scraper = require('insta-scraper');
 // stops server from sleeping by pinging every 15min
 setInterval(() => {
   https.get("https://pacific-lake-62804.herokuapp.com/");
-}, 800000 );
+}, 900000 );
 
 // start express
 var app = express();

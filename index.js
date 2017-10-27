@@ -14,12 +14,12 @@ import Chance from "chance";
 var chance = new Chance();
 var scraper = require('insta-scraper');
 
-/*
+
 // stops server from sleeping by pinging every 15min
 setInterval(() => {
   https.get("https://pacific-lake-62804.herokuapp.com/");
 }, 900000 );
-*/
+
 // start express
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));

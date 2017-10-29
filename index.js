@@ -511,6 +511,38 @@ function processMessage(event) {
               ]);
             }
           }
+
+          else if (schema.category == "wrong_words") {
+            sendMessage(senderId, [{
+              text: "Looking for something else? Choose another option below.",
+              quick_replies: [
+                {
+                  content_type:"text",
+                  title: "🎨 Art",
+                  payload: JSON.stringify({
+                    category: "art_data",
+                    branch: "ART_START"
+                  }),
+                },
+                {
+                  content_type:"text",
+                  title: "📷 Instagram",
+                  payload: JSON.stringify({
+                    category: "instagram_impressions",
+                    branch: "instagram_impressions"
+                  }),
+                },
+                {
+                  content_type:"text",
+                  title: "🖼 Visit",
+                  payload: JSON.stringify({
+                    category: "visit",
+                    branch: "visit_start"
+                  }),
+                }
+              ]              
+            }]);
+          }
         }
 
         else if (message.text) {
@@ -561,13 +593,16 @@ var sendMessage = (recipientId, messages, index=0) => {
       method: "POST",
       json: {
         recipient: {id: recipientId},
-        message: messages[index]
+        message: messages[index],
+        sender_action: "typing_on"
       }
     }, (error, response, body) => {
       if (error) {
         console.log("Error sending message: " + response.error);
       }
-      sendMessage(recipientId,messages,index+1);
+      setTimeout(() => {
+        sendMessage(recipientId,messages,index+1);
+      }, 1000);
     });
   }
   else {
@@ -581,7 +616,7 @@ const generateWelcomeMessage = (name) => {
     text: "Hi " + name + "! Welcome to National Gallery Singapore!"
   });
   messages.push({
-    text: "I'm your virtual assistant 🤖 to the _Colours of Impressionism_ exhibition. "
+    text: "I'm your virtual assistant 🤖 to the Colours of Impressionism exhibition. "
   });
   messages.push({
     text: "Would you like to discover key highlights, explore other people’s impressions of this exhibition, or find out about ticketing and opening hours?",

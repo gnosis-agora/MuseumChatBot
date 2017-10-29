@@ -600,9 +600,7 @@ var sendMessage = (recipientId, messages, index=0) => {
       if (error) {
         console.log("Error sending message: " + response.error);
       }
-      setTimeout(() => {
-        sendMessage(recipientId,messages,index+1);
-      }, 1000);
+      sendMessage(recipientId,messages,index+1);
     });
   }
   else {

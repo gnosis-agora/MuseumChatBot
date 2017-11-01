@@ -607,15 +607,15 @@ var sendMessage = (recipientId, messages, index=0) => {
           method: "POST",
           json: {
             recipient: {id: recipientId},
-            message: messages[index],
+            sender_action: "typing_off"
           }
         }, (error, response, body) => {
           if (error) {
             console.log("Error sending message: " + response.error);
+            sendMessage(recipientId,messages,index+1);
           }
-          sendMessage(recipientId,messages,index+1);
         });   
-      }, 3000);  
+      }, 2000);  
     });
   }
   else {

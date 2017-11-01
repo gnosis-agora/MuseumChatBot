@@ -603,20 +603,21 @@ var sendMessage = (recipientId, messages, index=0) => {
       }, 3000);  
     });
   }*/
-  request({
-    url: "https://graph.facebook.com/v2.6/me/messages",
-    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-    method: "POST",
-    json: {
-      recipient: {id: recipientId},
-      message: messages[index],
-    }
-  }, (error, response, body) => {
-    if (error) {
-      console.log("Error sending message: " + response.error);
-    }
-    sendMessage(recipientId,messages,index+1);
-  });
+    request({
+      url: "https://graph.facebook.com/v2.6/me/messages",
+      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+      method: "POST",
+      json: {
+        recipient: {id: recipientId},
+        message: messages[index],
+      }
+    }, (error, response, body) => {
+      if (error) {
+        console.log("Error sending message: " + response.error);
+      }
+      sendMessage(recipientId,messages,index+1);
+    });
+  }
   else {
     return;
   }  

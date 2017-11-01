@@ -599,7 +599,7 @@ var sendMessage = (recipientId, messages, index=0) => {
       if (error) {
         console.log("Error sending message: " + response.error);      
       }
-      console.log(response);
+      console.log(body);
       setTimeout(() => {         
         request({
           url: "https://graph.facebook.com/v2.6/me/messages",

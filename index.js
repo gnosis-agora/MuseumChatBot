@@ -614,7 +614,7 @@ var sendMessage = (recipientId, messages, index=0) => {
           }
           sendMessage(recipientId,messages,index+1);
         });            
-      }, 1000);  
+      }, 900);  
     });
   }
   else {

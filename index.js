@@ -620,7 +620,7 @@ var sendMessage = (recipientId, messages, index=0) => {
           }
           sendMessage(recipientId,messages,index+1); // send next message
         }); 
-      }, 650); // set 650ms delay on reply
+      }, 1000); // set 1000ms delay on reply
     });
   }
   else {

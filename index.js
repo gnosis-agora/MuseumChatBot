@@ -124,7 +124,7 @@ function processPostback(event) {
           return id_b - id_a;
         });
         
-        let messages = [{text: "Here are the top 10 newest Instagram posts. Tag your photos with #coloursofimpressionism to see your photos here!"}];
+        let messages = [{text: "Here are the most recent Instagram posts on this exhibition. Tag your posts with #CenturyofLight to see your photos here!"}];
         let carouselItems = [];
         for (let i=0;i<10;i++) {
           let obj = {
@@ -161,7 +161,7 @@ function processPostback(event) {
             },
             {
               content_type:"text",
-              title: "📷 Instagram",
+              title: "📷 Photos",
               payload: JSON.stringify({
                 category: "instagram_impressions",
                 branch: "instagram_impressions"
@@ -188,36 +188,39 @@ function processPostback(event) {
         let timeNow = new moment().add(8,'hours');
 
         sendMessage(senderId, [
-            {
-              text: getOpeningHourMessage(timeNow),
-              quick_replies: [
-                {
-                  content_type:"text",
-                  title: "🎨 Art",
-                  payload: JSON.stringify({
-                    category: "art_data",
-                    branch: "ART_START"
-                  }),
-                },
-                {
-                  content_type:"text",
-                  title: "📷 Instagram",
-                  payload: JSON.stringify({
-                    category: "instagram_impressions",
-                    branch: "instagram_impressions"
-                  }),
-                },
-                {
-                  content_type:"text",
-                  title: "🎟 Tickets",
-                  payload: JSON.stringify({
-                    category: "visit",
-                    branch: "visit_tickets"
-                  }),
-                },
-              ]
-            },
-          ]);
+          {
+            text: "Colours of Impressionism exhibition opens from 10am to 7pm from Saturday to Thursday, 10am to 9pm on Friday and Sunday. General ticket sales end 30 minutes before closing time."
+          },
+          {
+            text: getOpeningHourMessage(timeNow),
+            quick_replies: [
+              {
+                content_type:"text",
+                title: "🎨 Art",
+                payload: JSON.stringify({
+                  category: "art_data",
+                  branch: "ART_START"
+                }),
+              },
+              {
+                content_type:"text",
+                title: "📷 Photos",
+                payload: JSON.stringify({
+                  category: "instagram_impressions",
+                  branch: "instagram_impressions"
+                }),
+              },
+              {
+                content_type:"text",
+                title: "🎟 Tickets",
+                payload: JSON.stringify({
+                  category: "visit",
+                  branch: "visit_tickets"
+                }),
+              },
+            ]
+          },
+        ]);
       }
       else {
         sendMessage(senderId, visit[schema.branch]);
@@ -279,7 +282,7 @@ function processMessage(event) {
                 return id_b - id_a;
               });
               
-              let messages = [{text: "Here are the top 10 newest Instagram posts. Tag your photos with #coloursofimpressionism to see your photos here!"}];
+              let messages = [{text: "Here are the most recent Instagram posts on this exhibition. Tag your posts with #CenturyofLight to see your photos here!"}];
               let carouselItems = [];
               for (let i=0;i<10;i++) {
                 let obj = {
@@ -316,7 +319,7 @@ function processMessage(event) {
                   },
                   {
                     content_type:"text",
-                    title: "📷 Instagram",
+                    title: "📷 Photos",
                     payload: JSON.stringify({
                       category: "instagram_impressions",
                       branch: "instagram_impressions"
@@ -344,6 +347,9 @@ function processMessage(event) {
               let timeNow = new moment().add(8,'hours');
               let message = [
                 {
+                  text: "Colours of Impressionism exhibition opens from 10am to 7pm from Saturday to Thursday, 10am to 9pm on Friday and Sunday. General ticket sales end 30 minutes before closing time."
+                },              
+                {
                   text: getOpeningHourMessage(timeNow),
                   quick_replies: [
                     {
@@ -356,7 +362,7 @@ function processMessage(event) {
                     },
                     {
                       content_type:"text",
-                      title: "📷 Instagram",
+                      title: "📷 Photos",
                       payload: JSON.stringify({
                         category: "instagram_impressions",
                         branch: "instagram_impressions"
@@ -492,7 +498,7 @@ function processMessage(event) {
                     },
                     {
                       content_type:"text",
-                      title: "📷 Instagram",
+                      title: "📷 Photos",
                       payload: JSON.stringify({
                         category: "instagram_impressions",
                         branch: "instagram_impressions"
@@ -526,7 +532,7 @@ function processMessage(event) {
                 },
                 {
                   content_type:"text",
-                  title: "📷 Instagram",
+                  title: "📷 Photos",
                   payload: JSON.stringify({
                     category: "instagram_impressions",
                     branch: "instagram_impressions"
@@ -593,13 +599,12 @@ var sendMessage = (recipientId, messages, index=0) => {
       method: "POST",
       json: {
         recipient: {id: recipientId},
-        sender_action: "typing_on"
+        sender_action: "typing_on" // typing display
       }
     }, (error, response, body) => {
       if (error) {
         console.log("Error sending message: " + response.error);      
       }
-      console.log(body);
       setTimeout(() => {         
         request({
           url: "https://graph.facebook.com/v2.6/me/messages",
@@ -607,15 +612,15 @@ var sendMessage = (recipientId, messages, index=0) => {
           method: "POST",
           json: {
             recipient: {id: recipientId},
-            message: messages[index],
+            message: messages[index], // send message
           }
         }, (error, response, body) => {
           if (error) {
             console.log("Error sending message: " + response.error);
           }
-          sendMessage(recipientId,messages,index+1);
+          sendMessage(recipientId,messages,index+1); // send next message
         }); 
-      }, 650);  
+      }, 650); // set 650ms delay on reply
     });
   }
   else {
@@ -644,7 +649,7 @@ const generateWelcomeMessage = (name) => {
       },
       {
         content_type:"text",
-        title: "📷 Instagram",
+        title: "📷 Photos",
         payload: JSON.stringify({
           category: "instagram_impressions",
           branch: "instagram_impressions"
@@ -684,7 +689,7 @@ const getUnhandledRequest = () => {
         },
         {
           content_type:"text",
-          title: "📷 Instagram",
+          title: "📷 Photos",
           payload: JSON.stringify({
             category: "instagram_impressions",
             branch: "instagram_impressions"

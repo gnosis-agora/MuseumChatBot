@@ -143,7 +143,7 @@ const getUnhandledRequest = () => {
         },
         {
           content_type:"text",
-          title: "📷 Instagram",
+          title: "📷 Photos",
           payload: JSON.stringify({
             category: "instagram_impressions",
             branch: "instagram_impressions"

@@ -50,7 +50,7 @@ export const visit = {
 
   singaporean_tickets: [
     {
-      text: "All-access pass (includes General Admission ticket) - $15\nConcessions - $10",
+      text: "Century of Light only (includes General Admission ticket) - $15\nConcessions - $10",
       quick_replies: [
         {
           content_type: "text",
@@ -74,7 +74,7 @@ export const visit = {
 
   non_singaporean_tickets: [
     {
-      text: "Exhibition only - $25\nConcessions - $20\n\nAll-access pass (includes General Admission ticket) - $30\nConcessions - $25",
+      text: "Century of Light only - $25\nConcessions - $20\n\nAll-access pass (includes General Admission ticket) - $30\nConcessions - $25",
       quick_replies: [
         {
           content_type: "text",
@@ -111,7 +111,7 @@ export const visit = {
         },
         {
           content_type:"text",
-          title: "📷 Instagram",
+          title: "📷 Photos",
           payload: JSON.stringify({
             category: "instagram_impressions",
             branch: "instagram_impressions"
@@ -144,7 +144,7 @@ local and locally-based students and teachers, persons with disabilities and one
         },
         {
           content_type:"text",
-          title: "📷 Instagram",
+          title: "📷 Photos",
           payload: JSON.stringify({
             category: "instagram_impressions",
             branch: "instagram_impressions"

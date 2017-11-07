@@ -720,7 +720,7 @@ const getOpeningHourMessage = (timeNow) => {
 
   else {
     if (closingHour - hourNow < 2) {
-      text = "We’re closing soon at " + closingHour-12 "pm! Visit Colours of Impressionism again from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. This exhibition ends 11 March 2018.";
+      text = "We’re closing soon at " + (closingHour-12) +  "pm! Visit Colours of Impressionism again from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. This exhibition ends 11 March 2018.";
     }
     else {
       let hoursLeft = closingHour - hourNow;

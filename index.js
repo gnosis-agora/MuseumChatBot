@@ -124,7 +124,7 @@ function processPostback(event) {
           return id_b - id_a;
         });
         
-        let messages = [{text: "Here are the most recent Instagram posts on this exhibition. Tag your posts with #CenturyofLight to see your photos here!"}];
+        let messages = [{text: "Here are the most recent Instagram posts on Between Worlds and Colours of Impressionism, two exhibitions that are part of the Century of Light series. Tag your posts with #CenturyofLight to see your photos here!"}];
         let carouselItems = [];
         for (let i=0;i<10;i++) {
           let obj = {
@@ -161,7 +161,7 @@ function processPostback(event) {
             },
             {
               content_type:"text",
-              title: "📷 Photos",
+              title: "📷 #CenturyofLight",
               payload: JSON.stringify({
                 category: "instagram_impressions",
                 branch: "instagram_impressions"
@@ -189,7 +189,7 @@ function processPostback(event) {
 
         sendMessage(senderId, [
           {
-            text: "Colours of Impressionism exhibition opens from 10am to 7pm from Saturday to Thursday, 10am to 9pm on Friday and Sunday. General ticket sales end 30 minutes before closing time."
+            text: "Colours of Impressionism opens from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. "
           },
           {
             text: getOpeningHourMessage(timeNow),
@@ -204,7 +204,7 @@ function processPostback(event) {
               },
               {
                 content_type:"text",
-                title: "📷 Photos",
+                title: "📷 #CenturyofLight",
                 payload: JSON.stringify({
                   category: "instagram_impressions",
                   branch: "instagram_impressions"
@@ -282,7 +282,7 @@ function processMessage(event) {
                 return id_b - id_a;
               });
               
-              let messages = [{text: "Here are the most recent Instagram posts on this exhibition. Tag your posts with #CenturyofLight to see your photos here!"}];
+              let messages = [{text: "Here are the most recent Instagram posts on Between Worlds and Colours of Impressionism, two exhibitions that are part of the Century of Light series. Tag your posts with #CenturyofLight to see your photos here!"}];
               let carouselItems = [];
               for (let i=0;i<10;i++) {
                 let obj = {
@@ -319,7 +319,7 @@ function processMessage(event) {
                   },
                   {
                     content_type:"text",
-                    title: "📷 Photos",
+                    title: "📷 #CenturyofLight",
                     payload: JSON.stringify({
                       category: "instagram_impressions",
                       branch: "instagram_impressions"
@@ -345,10 +345,7 @@ function processMessage(event) {
             }
             else if (schema.branch == "visit_opening_hours"){
               let timeNow = new moment().add(8,'hours');
-              let message = [
-                {
-                  text: "Colours of Impressionism exhibition opens from 10am to 7pm from Saturday to Thursday, 10am to 9pm on Friday and Sunday. General ticket sales end 30 minutes before closing time."
-                },              
+              let message = [             
                 {
                   text: getOpeningHourMessage(timeNow),
                   quick_replies: [
@@ -362,7 +359,7 @@ function processMessage(event) {
                     },
                     {
                       content_type:"text",
-                      title: "📷 Photos",
+                      title: "📷 #CenturyofLight",
                       payload: JSON.stringify({
                         category: "instagram_impressions",
                         branch: "instagram_impressions"
@@ -498,7 +495,7 @@ function processMessage(event) {
                     },
                     {
                       content_type:"text",
-                      title: "📷 Photos",
+                      title: "📷 #CenturyofLight",
                       payload: JSON.stringify({
                         category: "instagram_impressions",
                         branch: "instagram_impressions"
@@ -532,7 +529,7 @@ function processMessage(event) {
                 },
                 {
                   content_type:"text",
-                  title: "📷 Photos",
+                  title: "📷 #CenturyofLight",
                   payload: JSON.stringify({
                     category: "instagram_impressions",
                     branch: "instagram_impressions"
@@ -631,13 +628,11 @@ var sendMessage = (recipientId, messages, index=0) => {
 const generateWelcomeMessage = (name) => {
   let messages = [];
   messages.push({
-    text: "Hi " + name + "! Welcome to National Gallery Singapore!"
+    text: "Hi " + name + "! Welcome to National Gallery Singapore! I'm your virtual assistant 🤖 to Colours of Impressionism.\
+This exhibition is part of Century of Light, a showcase of art from the 19th century that brings together two exhibitions — Between Worlds and Colours of Impressionism."
   });
   messages.push({
-    text: "I'm your virtual assistant 🤖 to the Colours of Impressionism exhibition. "
-  });
-  messages.push({
-    text: "Would you like to discover key highlights, explore other people’s impressions of this exhibition, or find out about ticketing and opening hours?",
+    text: "Would you like to learn about artworks, discover what other people have posted on Instagram, or find out about ticketing and opening hours to prepare for your visit? Tap one of the options below.",
     quick_replies: [
       {
         content_type:"text",
@@ -649,7 +644,7 @@ const generateWelcomeMessage = (name) => {
       },
       {
         content_type:"text",
-        title: "📷 Photos",
+        title: "📷 #CenturyofLight",
         payload: JSON.stringify({
           category: "instagram_impressions",
           branch: "instagram_impressions"
@@ -689,7 +684,7 @@ const getUnhandledRequest = () => {
         },
         {
           content_type:"text",
-          title: "📷 Photos",
+          title: "📷 #CenturyofLight",
           payload: JSON.stringify({
             category: "instagram_impressions",
             branch: "instagram_impressions"
@@ -720,16 +715,17 @@ const getOpeningHourMessage = (timeNow) => {
 
   if (hourNow < openingHour || hourNow >= closingHour) {
     let timeToOpening = (hourNow < openingHour) ? (openingHour - hourNow) : (10 + (24-hourNow));
-    text = "Oh no! We're closed for the day, " + timeToOpening + " more hours to opening.";
+    text = "Oh no! We're closed for the day, " + timeToOpening + " more hours to opening. Visit Colours of Impressionism again from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. This exhibition ends 11 March 2018.";
   }  
 
   else {
     if (closingHour - hourNow < 2) {
-      text = "We’re closing soon! Visit us again. This exhibition ends 11 March 2018.";
+      text = "We’re closing soon at " + closingHour-12 "pm! Visit Colours of Impressionism again from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. This exhibition ends 11 March 2018.";
     }
     else {
       let hoursLeft = closingHour - hourNow;
-      text = hoursLeft + " more hours of art before the Gallery closes!";
+      text = "Colours of Impressionism opens from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. "
+       + hoursLeft + " more hours of art before we close for the day!";
     }
   }
 

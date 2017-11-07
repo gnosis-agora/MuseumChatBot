@@ -31,6 +31,7 @@ var cardNumber = 0;
 
 // Server index page
 app.get("/", function (req, res) {
+  res.send("Hello");
 });
 
 // Facebook Webhook

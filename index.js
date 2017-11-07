@@ -628,7 +628,7 @@ var sendMessage = (recipientId, messages, index=0) => {
 const generateWelcomeMessage = (name) => {
   let messages = [];
   messages.push({
-    text: "Hi " + name + "! Welcome to National Gallery Singapore! I'm your virtual assistant 🤖 to Colours of Impressionism.\
+    text: "Hi " + name + "! Welcome to National Gallery Singapore! I'm your virtual assistant 🤖 to Colours of Impressionism. \
 This exhibition is part of Century of Light, a showcase of art from the 19th century that brings together two exhibitions — Between Worlds and Colours of Impressionism."
   });
   messages.push({

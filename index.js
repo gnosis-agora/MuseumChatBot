@@ -103,7 +103,7 @@ function processPostback(event) {
     }
     else if (schema.category == "instagram_impressions") {
       // INSTAGRAM API integration here
-      scraper.getMediaByTag("nationalgallerysg", "", function(error,response_json){
+      scraper.getMediaByTag("centuryoflight", "", function(error,response_json){
         let media = response_json["media"]["nodes"];
         let list = [];
         media.forEach(picture => {
@@ -261,7 +261,7 @@ function processMessage(event) {
           }
 
           else if (schema.category == "instagram_impressions") {
-            scraper.getMediaByTag("nationalgallerysg", "", function(error,response_json){
+            scraper.getMediaByTag("centuryoflight", "", function(error,response_json){
               let media = response_json["media"]["nodes"];
               let list = [];
               media.forEach(picture => {

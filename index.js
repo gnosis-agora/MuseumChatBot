@@ -15,10 +15,10 @@ var chance = new Chance();
 var scraper = require('insta-scraper');
 
 
-// stops server from sleeping by pinging every 15min
+// stops server from sleeping by pinging every 17min
 setInterval(() => {
   https.get("https://pacific-lake-62804.herokuapp.com/");
-}, 900000 );
+}, 17 * 60 * 1000 );
 
 // start express
 var app = express();

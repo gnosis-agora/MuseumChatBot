@@ -384,13 +384,15 @@ function processMessage(event) {
           }
 
           else if (schema.category == "faq_helpers") {
+            
             if (schema.branch == "NEXT_TOUR") {
+              let messages;
               let timeNow = new moment().add(8,'hours'); // offset the timezone difference on server and SG
               if (timeNow.hours() < 13) {
-                let messages = faq_helpers["NEXT_TOUR_AVAILABLE"];
+                messages = faq_helpers["NEXT_TOUR_AVAILABLE"];
               }
               else {
-                let messages = faq_helpers["NEXT_TOUR_UNAVAILABLE"];
+                messages = faq_helpers["NEXT_TOUR_UNAVAILABLE"];
               }
               if (schema.entry_point == "visit") {
                 messages[messages.length-1]["quick_replies"] = [

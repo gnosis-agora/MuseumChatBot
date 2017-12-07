@@ -644,7 +644,7 @@ var sendMessage = (recipientId, messages, delay=2000, index=0) => {
           if (error) {
             console.log("Error sending message: " + response.error);
           }
-          sendMessage(recipientId,messages,index+1); // send next message
+          sendMessage(recipientId,messages,delay,index+1); // send next message
         }); 
       }, delay); // set 1300ms delay on reply
     });

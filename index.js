@@ -253,38 +253,41 @@ function processMessage(event) {
             }
             else {
               let answer = [card_answers[schema.branch]];
+              answer["quick_replies"] = [
+                {
+                  content_type:"text",
+                  title: "🎨 Back to highlights",
+                  payload: JSON.stringify({
+                    category: "art_data",
+                    branch: "ART_START"
+                  }),
+                },
+                {
+                  content_type: "text",
+                  title: "👀 Next question",
+                  payload: JSON.stringify({
+                    category: "pick_a_card",
+                    branch: "pick_a_card_start"
+                  }),
+                },
+                {
+                  content_type: "text",
+                  title: "🎧 Audio guide",
+                  payload: JSON.stringify({
+                    category: "faq_helpers",
+                    branch: "AUDIO_GUIDE"
+                  }),          
+                },
+                {
+                  content_type: "text",
+                  title: "🙋 Tours",
+                  payload: JSON.stringify({
+                    category: "faq_helpers",
+                    branch: "NEXT_TOUR"
+                  }),
+                }
+              ]
               sendMessage(senderId, answer, 3000);
-              let answer2 = [
-              {
-                text: "Looking for something else? Choose another option below.",
-                quick_replies: [
-                  {
-                    content_type:"text",
-                    title: "🎨 Art",
-                    payload: JSON.stringify({
-                      category: "art_data",
-                      branch: "ART_START"
-                    }),
-                  },
-                  {
-                    content_type:"text",
-                    title: "📷 #CenturyofLight",
-                    payload: JSON.stringify({
-                      category: "instagram_impressions",
-                      branch: "instagram_impressions"
-                    }),
-                  },
-                  {
-                    content_type:"text",
-                    title: "🖼 Visit",
-                    payload: JSON.stringify({
-                      category: "visit",
-                      branch: "visit_start"
-                    }),
-                  }
-                ]
-              }];
-              sendMessage(senderId, answer2, 5000);
             }           
           }
 

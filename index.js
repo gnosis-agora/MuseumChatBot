@@ -187,7 +187,6 @@ function processPostback(event) {
       }
       else if (schema.branch == "visit_opening_hours"){
         let timeNow = new moment().add(8,'hours');
-
         sendMessage(senderId, [
           {
             text: "Colours of Impressionism opens from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. "
@@ -285,7 +284,7 @@ function processMessage(event) {
                   }
                 ]
               }];
-              sendMessage(senderId, answer2, delay=5000);
+              sendMessage(senderId, answer2, 5000);
             }           
           }
 
@@ -615,7 +614,7 @@ function processMessage(event) {
 }
 
 // sends messages to user
-var sendMessage = (recipientId, messages, index=0, delay=2000) => {
+var sendMessage = (recipientId, messages, delay=2000, index=0) => {
   if (messages === undefined || !messages) {
     return;
   }

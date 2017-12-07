@@ -252,10 +252,10 @@ function processMessage(event) {
               }
             }
             else {
-              let answer = [card_answers[schema.branch]];
+              let answer = card_answers[schema.branch];
               answer["quick_replies"] = [
                 {
-                  content_type:"text",
+                  content_type: "text",
                   title: "🎨 Back to highlights",
                   payload: JSON.stringify({
                     category: "art_data",
@@ -286,8 +286,8 @@ function processMessage(event) {
                     branch: "NEXT_TOUR"
                   }),
                 }
-              ]
-              sendMessage(senderId, answer, 3000);
+              ];
+              sendMessage(senderId, [answer], 3000);
             }           
           }
 

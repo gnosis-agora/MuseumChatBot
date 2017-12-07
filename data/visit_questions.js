@@ -25,7 +25,8 @@ export const visit = {
           title: "🙋 Tours",
           payload: JSON.stringify({
             category: "faq_helpers",
-            branch: "NEXT_TOUR"
+            branch: "NEXT_TOUR",
+            entry_point: "visit"
           }),
         }
       ]
@@ -122,7 +123,8 @@ export const visit = {
           title: "🙋 Tours",
           payload: JSON.stringify({
             category: "faq_helpers",
-            branch: "NEXT_TOUR"
+            branch: "NEXT_TOUR",
+            entry_point: "visit"
           }),
         },
         {
@@ -163,7 +165,8 @@ local and locally-based students and teachers, persons with disabilities and one
           title: "🙋 Tours",
           payload: JSON.stringify({
             category: "faq_helpers",
-            branch: "NEXT_TOUR"
+            branch: "NEXT_TOUR",
+            entry_point: "visit"
           }),
         },
         {

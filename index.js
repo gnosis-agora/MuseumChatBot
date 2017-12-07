@@ -355,7 +355,8 @@ function processMessage(event) {
                       title: "🙋 Tours",
                       payload: JSON.stringify({
                         category: "faq_helpers",
-                        branch: "NEXT_TOUR"
+                        branch: "NEXT_TOUR",
+                        entry_point: "visit"
                       }),
                     },
                     {

@@ -368,6 +368,7 @@ function processMessage(event) {
                     },
                   ]
                 },
+              ]);
             else {
               sendMessage(senderId, visit[schema.branch]);
             }

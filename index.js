@@ -189,9 +189,6 @@ function processPostback(event) {
         let timeNow = new moment().add(8,'hours');
         sendMessage(senderId, [
           {
-            text: "Colours of Impressionism opens from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. "
-          },
-          {
             text: getOpeningHourMessage(timeNow),
             quick_replies: [
               {
@@ -219,6 +216,9 @@ function processPostback(event) {
                 }),
               },
             ]
+          },
+          {
+            text: "Colours of Impressionism opens from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. This exhibition ends 11 March 2018."
           },
         ]);
       }
@@ -836,21 +836,20 @@ const getOpeningHourMessage = (timeNow) => {
   let closingHour = (timeNow.day() == 5 ) ? 21 : 19;
   let openingHour = 10;
   let hourNow = timeNow.hour();
-  let text;
+  let text = [];
 
   if (hourNow < openingHour || hourNow >= closingHour) {
     let timeToOpening = (hourNow < openingHour) ? (openingHour - hourNow) : (10 + (24-hourNow));
-    text = "Oh no! We're closed for the day, " + timeToOpening + " more hours to opening. Visit Colours of Impressionism again from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. This exhibition ends 11 March 2018.";
+    text = "Oh no! We're closed for the day, " + timeToOpening + " more hours to opening.";
   }  
 
   else {
     if (closingHour - hourNow < 2) {
-      text = "We’re closing soon at " + (closingHour-12) +  "pm! Visit Colours of Impressionism again from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. This exhibition ends 11 March 2018.";
+      text = "We’re closing soon at " + (closingHour-12) +  "pm!";
     }
     else {
       let hoursLeft = closingHour - hourNow;
-      text = "Colours of Impressionism opens from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. "
-       + hoursLeft + " more hours of art before we close for the day! This exhibition ends 11 March 2018.";
+      text = hoursLeft + " more hours of art before we close for the day!";
     }
   }
 

@@ -182,49 +182,7 @@ function processPostback(event) {
       });
     }
     else if (schema.category == "visit") {
-      if (schema.branch == "visit_tickets") {
-        sendMessage(senderId, visit[schema.branch])
-      }
-      else if (schema.branch == "visit_opening_hours"){
-        let timeNow = new moment().add(8,'hours');
-        sendMessage(senderId, [
-          {
-            text: getOpeningHourMessage(timeNow),
-          },
-          {
-            text: "Colours of Impressionism opens from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. This exhibition ends 11 March 2018.",
-            quick_replies: [
-              {
-                content_type:"text",
-                title: "🎨 Art",
-                payload: JSON.stringify({
-                  category: "art_data",
-                  branch: "ART_START"
-                }),
-              },
-              {
-                content_type:"text",
-                title: "📷 #CenturyofLight",
-                payload: JSON.stringify({
-                  category: "instagram_impressions",
-                  branch: "instagram_impressions"
-                }),
-              },
-              {
-                content_type:"text",
-                title: "🎟 Tickets",
-                payload: JSON.stringify({
-                  category: "visit",
-                  branch: "visit_tickets"
-                }),
-              },
-            ]
-          },
-        ]);
-      }
-      else {
-        sendMessage(senderId, visit[schema.branch]);
-      }
+      sendMessage(senderId, visit[schema.branch]);
     }
   }
 }
@@ -377,29 +335,16 @@ function processMessage(event) {
             }
             else if (schema.branch == "visit_opening_hours"){
               let timeNow = new moment().add(8,'hours');
-              let message = [             
+              sendMessage(senderId, [
                 {
                   text: getOpeningHourMessage(timeNow),
+                },
+                {
+                  text: "Colours of Impressionism opens from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. This exhibition ends 11 March 2018.",
                   quick_replies: [
                     {
-                      content_type: "text",
-                      title: "🎟 Tickets",
-                      payload: JSON.stringify({
-                        category: "visit",
-                        branch: "visit_tickets"
-                      }),
-                    },
-                    {
-                      content_type: "text",
-                      title: "🙋 Tours",
-                      payload: JSON.stringify({
-                        category: "faq_helpers",
-                        branch: "NEXT_TOUR"
-                      }),
-                    },
-                    {
                       content_type:"text",
-                      title: "🎨 Back to highlights",
+                      title: "🎨 Art",
                       payload: JSON.stringify({
                         category: "art_data",
                         branch: "ART_START"
@@ -413,11 +358,16 @@ function processMessage(event) {
                         branch: "instagram_impressions"
                       }),
                     },
+                    {
+                      content_type:"text",
+                      title: "🎟 Tickets",
+                      payload: JSON.stringify({
+                        category: "visit",
+                        branch: "visit_tickets"
+                      }),
+                    },
                   ]
-                }
-              ];
-              sendMessage(senderId, message);
-            }
+                },
             else {
               sendMessage(senderId, visit[schema.branch]);
             }

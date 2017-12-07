@@ -21,9 +21,6 @@ export const faq_helpers = {
           ]
         }
       }
-    },
-    {
-      text: "Looking for another artwork?"
     }
   ],
 
@@ -51,10 +48,7 @@ export const faq_helpers = {
           ]
         }
       }
-    },
-    {
-      text: "Looking for another artwork?"
-    },
+    }
   ],
 
   NEXT_TOUR_UNAVAILABLE: [
@@ -78,9 +72,6 @@ export const faq_helpers = {
           ]
         }
       }
-    },
-    {
-      text: "Looking for another artwork?"
     }
   ]
 

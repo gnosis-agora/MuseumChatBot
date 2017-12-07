@@ -110,8 +110,24 @@ export const visit = {
  full-time National Servicemen (NSF) excluding foreign personnel and overseas students and teachers. Valid verification is needed.",
       quick_replies: [
         {
+          content_type: "text",
+          title: "🕰 Opening hours",
+          payload: JSON.stringify({
+            category: "visit",
+            branch: "visit_opening_hours"
+          }),
+        },
+        {
+          content_type: "text",
+          title: "🙋 Tours",
+          payload: JSON.stringify({
+            category: "faq_helpers",
+            branch: "NEXT_TOUR"
+          }),
+        },
+        {
           content_type:"text",
-          title: "🎨 Art",
+          title: "🎨 Back to highlights",
           payload: JSON.stringify({
             category: "art_data",
             branch: "ART_START"
@@ -123,14 +139,6 @@ export const visit = {
           payload: JSON.stringify({
             category: "instagram_impressions",
             branch: "instagram_impressions"
-          }),
-        },
-        {
-          content_type:"text",
-          title: "🖼 Visit",
-          payload: JSON.stringify({
-            category: "visit",
-            branch: "visit_start"
           }),
         },
       ]      
@@ -143,8 +151,24 @@ export const visit = {
 local and locally-based students and teachers, persons with disabilities and one caregiver. Tickets are still required for entry.",
       quick_replies: [
         {
+          content_type: "text",
+          title: "🕰 Opening hours",
+          payload: JSON.stringify({
+            category: "visit",
+            branch: "visit_opening_hours"
+          }),
+        },
+        {
+          content_type: "text",
+          title: "🙋 Tours",
+          payload: JSON.stringify({
+            category: "faq_helpers",
+            branch: "NEXT_TOUR"
+          }),
+        },
+        {
           content_type:"text",
-          title: "🎨 Art",
+          title: "🎨 Back to highlights",
           payload: JSON.stringify({
             category: "art_data",
             branch: "ART_START"
@@ -156,14 +180,6 @@ local and locally-based students and teachers, persons with disabilities and one
           payload: JSON.stringify({
             category: "instagram_impressions",
             branch: "instagram_impressions"
-          }),
-        },
-        {
-          content_type:"text",
-          title: "🖼 Visit",
-          payload: JSON.stringify({
-            category: "visit",
-            branch: "visit_start"
           }),
         },
       ]      

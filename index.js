@@ -99,7 +99,7 @@ function processPostback(event) {
     let schema = JSON.parse(payload);
 
     if (schema.category == "art_data") {
-      sendMessage(senderId, art_data[schema.branch]);
+      sendMessage(senderId, art_data[schema.branch], 5000);
     }
     else if (schema.category == "instagram_impressions") {
       // INSTAGRAM API integration here
@@ -382,8 +382,24 @@ function processMessage(event) {
                   text: getOpeningHourMessage(timeNow),
                   quick_replies: [
                     {
+                      content_type: "text",
+                      title: "🎟 Tickets",
+                      payload: JSON.stringify({
+                        category: "visit",
+                        branch: "visit_tickets"
+                      }),
+                    },
+                    {
+                      content_type: "text",
+                      title: "🙋 Tours",
+                      payload: JSON.stringify({
+                        category: "faq_helpers",
+                        branch: "NEXT_TOUR"
+                      }),
+                    },
+                    {
                       content_type:"text",
-                      title: "🎨 Art",
+                      title: "🎨 Back to highlights",
                       payload: JSON.stringify({
                         category: "art_data",
                         branch: "ART_START"
@@ -397,14 +413,6 @@ function processMessage(event) {
                         branch: "instagram_impressions"
                       }),
                     },
-                    {
-                      content_type:"text",
-                      title: "🖼 Visit",
-                      payload: JSON.stringify({
-                        category: "visit",
-                        branch: "visit_start"
-                      }),
-                    }
                   ]
                 }
               ];
@@ -420,20 +428,105 @@ function processMessage(event) {
               let timeNow = new moment().add(8,'hours'); // offset the timezone difference on server and SG
               if (timeNow.hours() < 13) {
                 let messages = faq_helpers["NEXT_TOUR_AVAILABLE"];
-                messages = messages.concat(art_data["ART_START"]);
-                sendMessage(senderId, messages);
               }
               else {
                 let messages = faq_helpers["NEXT_TOUR_UNAVAILABLE"];
-                messages = messages.concat(art_data["ART_START"]);
-                sendMessage(senderId, messages);
+              }
+              if (schema.entry_point == "visit") {
+                messages[messages.length-1]["quick_replies"] = [
+                  {
+                    content_type: "text",
+                    title: "🕰 Opening hours",
+                    payload: JSON.stringify({
+                      category: "visit",
+                      branch: "visit_opening_hours"
+                    }),
+                  },
+                  {
+                    content_type: "text",
+                    title: "🎟 Tickets",
+                    payload: JSON.stringify({
+                      category: "visit",
+                      branch: "visit_tickets"
+                    }),     
+                  },
+                  {
+                    content_type: "text",
+                    title: "🎨 Back to highlights",
+                    payload: JSON.stringify({
+                      category: "art_data",
+                      branch: "ART_START"
+                    }),
+                  },
+                  {
+                    content_type:"text",
+                    title: "📷 #CenturyofLight",
+                    payload: JSON.stringify({
+                      category: "instagram_impressions",
+                      branch: "instagram_impressions"
+                    }),
+                  }
+                ];
+              }
+              else {
+                messages[messages.length-1]["quick_replies"] = [
+                  {
+                    content_type: "text",
+                    title: "🎨 Back to highlights",
+                    payload: JSON.stringify({
+                      category: "art_data",
+                      branch: "ART_START"
+                    }),
+                  },
+                  {
+                    content_type: "text",
+                    title: "👀 Art of seeing art",
+                    payload: JSON.stringify({
+                      category: "pick_a_card",
+                      branch: "pick_a_card_start"
+                    }),
+                  },
+                  {
+                    content_type: "text",
+                    title: "🎧 Audio guide",
+                    payload: JSON.stringify({
+                      category: "faq_helpers",
+                      branch: "AUDIO_GUIDE"
+                    }),          
+                  },
+                ];
               }
             }
             else {
               let messages = faq_helpers[schema.branch];
-              messages = messages.concat(art_data["ART_START"]);
-              sendMessage(senderId, messages);
+              messages[messages.length-1]["quick_replies"] = [
+                {
+                  content_type: "text",
+                  title: "🎨 Back to highlights",
+                  payload: JSON.stringify({
+                    category: "art_data",
+                    branch: "ART_START"
+                  }),
+                },
+                {
+                  content_type: "text",
+                  title: "👀 Art of seeing art",
+                  payload: JSON.stringify({
+                    category: "pick_a_card",
+                    branch: "pick_a_card_start"
+                  }),
+                },
+                {
+                  content_type: "text",
+                  title: "🙋 Tours",
+                  payload: JSON.stringify({
+                    category: "faq_helpers",
+                    branch: "NEXT_TOUR"
+                  }),          
+                },
+              ];
             }
+            sendMessage(senderId, messages);
           }          
 
           else if (schema.category == "survey") {

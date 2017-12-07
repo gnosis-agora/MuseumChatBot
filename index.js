@@ -254,9 +254,38 @@ function processMessage(event) {
             }
             else {
               let answer = [card_answers[schema.branch]];
-              answer.push({text: "Looking for another artwork?"});
-              answer = answer.concat(art_data["ART_START"]);
-              sendMessage(senderId, answer);
+              sendMessage(senderId, answer, delay=3000);
+              let answer2 = [
+              {
+                text: "Looking for something else? Choose another option below.",
+                quick_replies: [
+                  {
+                    content_type:"text",
+                    title: "🎨 Art",
+                    payload: JSON.stringify({
+                      category: "art_data",
+                      branch: "ART_START"
+                    }),
+                  },
+                  {
+                    content_type:"text",
+                    title: "📷 #CenturyofLight",
+                    payload: JSON.stringify({
+                      category: "instagram_impressions",
+                      branch: "instagram_impressions"
+                    }),
+                  },
+                  {
+                    content_type:"text",
+                    title: "🖼 Visit",
+                    payload: JSON.stringify({
+                      category: "visit",
+                      branch: "visit_start"
+                    }),
+                  }
+                ]
+              }];
+              sendMessage(senderId, answer2, delay=5000);
             }           
           }
 
@@ -586,7 +615,7 @@ function processMessage(event) {
 }
 
 // sends messages to user
-var sendMessage = (recipientId, messages, index=0) => {
+var sendMessage = (recipientId, messages, index=0, delay=2000) => {
   if (messages === undefined || !messages) {
     return;
   }
@@ -618,7 +647,7 @@ var sendMessage = (recipientId, messages, index=0) => {
           }
           sendMessage(recipientId,messages,index+1); // send next message
         }); 
-      }, 1300); // set 1300ms delay on reply
+      }, delay); // set 1300ms delay on reply
     });
   }
   else {
@@ -726,7 +755,7 @@ const getOpeningHourMessage = (timeNow) => {
     else {
       let hoursLeft = closingHour - hourNow;
       text = "Colours of Impressionism opens from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. "
-       + hoursLeft + " more hours of art before we close for the day!";
+       + hoursLeft + " more hours of art before we close for the day! This exhibition ends 11 March 2018.";
     }
   }
 

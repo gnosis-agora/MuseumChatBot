@@ -19,6 +19,14 @@ export const visit = {
             category: "visit",
             branch: "visit_tickets"
           }),
+        },
+        {
+          content_type: "text",
+          title: "🙋 Tours",
+          payload: JSON.stringify({
+            category: "faq_helpers",
+            branch: "NEXT_TOUR"
+          }),
         }
       ]
     },   

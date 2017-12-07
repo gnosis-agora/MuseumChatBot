@@ -253,7 +253,7 @@ function processMessage(event) {
             }
             else {
               let answer = [card_answers[schema.branch]];
-              sendMessage(senderId, answer, delay=3000);
+              sendMessage(senderId, answer, 3000);
               let answer2 = [
               {
                 text: "Looking for something else? Choose another option below.",

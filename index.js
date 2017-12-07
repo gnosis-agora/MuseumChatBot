@@ -384,9 +384,9 @@ function processMessage(event) {
           }
 
           else if (schema.category == "faq_helpers") {
-            
+            let messages;
             if (schema.branch == "NEXT_TOUR") {
-              let messages;
+              
               let timeNow = new moment().add(8,'hours'); // offset the timezone difference on server and SG
               if (timeNow.hours() < 13) {
                 messages = faq_helpers["NEXT_TOUR_AVAILABLE"];
@@ -460,7 +460,7 @@ function processMessage(event) {
               }
             }
             else {
-              let messages = faq_helpers[schema.branch];
+              messages = faq_helpers[schema.branch];
               messages[messages.length-1]["quick_replies"] = [
                 {
                   content_type: "text",

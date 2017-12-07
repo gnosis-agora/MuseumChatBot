@@ -190,6 +190,9 @@ function processPostback(event) {
         sendMessage(senderId, [
           {
             text: getOpeningHourMessage(timeNow),
+          },
+          {
+            text: "Colours of Impressionism opens from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. This exhibition ends 11 March 2018.",
             quick_replies: [
               {
                 content_type:"text",
@@ -216,9 +219,6 @@ function processPostback(event) {
                 }),
               },
             ]
-          },
-          {
-            text: "Colours of Impressionism opens from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. This exhibition ends 11 March 2018."
           },
         ]);
       }

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node index.js"
+    "start": "node babel-node index.js"
   },
   "author": "Chen Kuang",
   "license": "ISC",

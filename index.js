@@ -111,7 +111,7 @@ function processPostback(event) {
   }
   else {
     let schema;
-    if (typeof payload == string) {
+    if (typeof payload == "string") {
       schema = JSON.parse(payload);
     } else {
       schem = payload;

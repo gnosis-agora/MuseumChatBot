@@ -51,13 +51,15 @@ app.post("/webhook", function (req, res) {
   console.log(req.body.entry[0].messaging);
   if (req.body.entry[0].standby) {
     console.log("Standby: " + req.body.entry[0].standby[0]);
-    let event = req.body.entry[0].standby[0];
-    if (event.postback) {
-      processPostback(event);
-    }
-    else if (event.message) {
-      processMessage(event);
-    }
+    let events = req.body.entry[0].standby;
+    events.forEach(function (event) {
+      if (event.postback) {
+        processPostback(event);
+      }
+      else if (event.message) {
+        processMessage(event);
+      }      
+    })
     res.status(200).send("EVENT_RECEIVED");
   }
   // Make sure this is a page subscription

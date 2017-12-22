@@ -46,7 +46,7 @@ app.get("/webhook", function (req, res) {
   }
 });
 
-All callbacks for Messenger will be POST-ed here
+//All callbacks for Messenger will be POST-ed here
 app.post("/webhook", function (req, res) {
   console.log(req.body);
   // Make sure this is a page subscription

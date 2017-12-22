@@ -114,7 +114,7 @@ function processPostback(event) {
     if (typeof payload == "string") {
       schema = JSON.parse(payload);
     } else {
-      schem = payload;
+      schema = payload;
     }
 
     if (schema.category == "art_data") {

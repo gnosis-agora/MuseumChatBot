@@ -50,8 +50,8 @@ app.get("/webhook", function (req, res) {
 app.post("/webhook", function (req, res) {
   console.log(req.body.entry[0].messaging);
   if (req.body.entry[0].standby) {
-    console.log("Standby: " + req.body.entry[0].standby);
-    let event = req.body.entry[0].standby;
+    console.log("Standby: " + req.body.entry[0].standby[0]);
+    let event = req.body.entry[0].standby[0];
     if (event.postback) {
       processPostback(event);
     }

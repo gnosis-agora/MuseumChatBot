@@ -690,7 +690,7 @@ function processMessage(event) {
 // sends messages to user
 const wait = time => new Promise((resolve) => setTimeout(resolve, time));
 
-var sendMessage = (recipientId, messages, delay=2000, index=0) => {
+var sendMessage = (recipientId, messages, delay=3000, index=0) => {
   if (messages === undefined || !messages) {
     return;
   }
@@ -717,19 +717,19 @@ var sendMessage = (recipientId, messages, delay=2000, index=0) => {
 
     rp(options1)
       .then(body => {
-        console.log("starting process for message: " + JSON.stringify(messages[index]));
+        // console.log("starting process for message: " + JSON.stringify(messages[index]));
       })
       .then(() => {
-        console.log("Now displaying typing animation");
+        // console.log("Now displaying typing animation");
         return wait(delay);
       })
       .then(() => {
-        console.log("Sending message");
+        // console.log("Sending message");
         return rp(options2);
         
       })
       .then((something) => {
-        console.log("Moving on to next message");
+        // console.log("Moving on to next message");
 
         sendMessage(recipientId,messages,delay,index+1); // send next message
       })

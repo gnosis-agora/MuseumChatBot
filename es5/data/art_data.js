@@ -1,4 +1,9 @@
-export const art_data = {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var art_data = exports.art_data = {
   ART_START: [
   // Insert some kind of intro here.
   {
@@ -156,9 +161,9 @@ export const art_data = {
 Édouard Manet\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 1993. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
   }, {
     text: "Manet’s friend and fellow painter Alfred Stevens kept this painting in his Paris studio for a few years. \
-The art dealer Paul Durand-Ruel discovered it there and loved it so much that he bought 20 works by Manet 😱"
+Paul Durand-Ruel discovered it there and loved it so much that he bought 20 works by Manet 😱"
   }, {
-    text: "Durand-Ruel ended up becoming the main dealer for Manet and other Impressionist artists!",
+    text: "Durand-Ruel ended up becoming the main art dealer for Manet and other Impressionist artists!",
     quick_replies: [{
       content_type: "text",
       title: "🖼 Next artwork",
@@ -201,7 +206,7 @@ The art dealer Paul Durand-Ruel discovered it there and loved it so much that he
     text: "La Serveuse de bocks (The Beer Maid)\n\n\
 Édouard Manet\n\nFormerly in the Matsukata collection, entered the Musée du Louvre as part of the peace treaty with Japan, 1959. Collection of Musée d’Orsay, Paris, France. RF 1959 4. Photo © RMN-Grand Palais (Musée d’Orsay)/Martine Beck-Coppola."
   }, {
-    text: "Because Manet often captured scenes of Parisian nightlife, a number of his paintings have beer in them. 💁🍻",
+    text: "Because Manet so often captured scenes of the Parisian nightlife, a number of his paintings have beer in them. 💁🍻",
     quick_replies: [{
       content_type: "text",
       title: "🖼 Next artwork",
@@ -244,7 +249,7 @@ The art dealer Paul Durand-Ruel discovered it there and loved it so much that he
     text: "La Pie (The Magpie)\n\n\
 Claude Manet\n\nPurchased by the French state, 1984. Collection of Musée d’Orsay, Paris, France. RF 1984 164. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
   }, {
-    text: "Did you know that the white snow in this painting is actually made up of dabs of blue, pink and yellow as well?",
+    text: "Did you know that the white snow in this painting is actually made of dabs of blue, pink and yellow as well?",
     quick_replies: [{
       content_type: "text",
       title: "🖼 Next artwork",
@@ -287,7 +292,7 @@ Claude Manet\n\nPurchased by the French state, 1984. Collection of Musée d’Or
     text: "Le Berceau (The Cradle)\n\n\
 Berthe Morisot\n\nPurchased 1930. Collection of Musée d’Orsay, Paris, France. RF 2849. Photo © RMN-Grand Palais (Musée d’Orsay)/Michel Urtado."
   }, {
-    text: "Morisot led a double life of sorts! She loved painting, but because it was still not acceptable for women to be artists, when visitors came over,\
+    text: "Morisot led a double life of sorts! She loved painting, but when visitors came over,\
  she would hide her paintings and present herself as a fancy high society lady 👩‍🎨➡👸",
     quick_replies: [{
       content_type: "text",
@@ -333,7 +338,7 @@ Auguste Renoir\n\nBequest of Mr and Mrs Raymond Koechlin, 1931. Collection of Mu
   }, {
     text: "Can you guess what Monet is painting and how the artwork looks based on his palette?\
  As Monet rarely painted figures indoors, some people think that he may have been working on a painting\
- of his wife dressed in a kimono titled La Japonaise, which was shown at the second Impressionist exhibition in 1876.",
+ of his wife dressed in a kimono titled _La Japonaise_, which was shown at the second Impressionist exhibition in 1876.",
     quick_replies: [{
       content_type: "text",
       title: "🖼 Next artwork",
@@ -463,8 +468,8 @@ Paul Cézanne\n\nBequest of Gustave Caillebotte, 1894. Collection of Musée d’
     text: "La Bouée rouge (The Red Buoy)\n\n\
 Paul Signac\n\nGift of Dr Pierre Hébert, 1957. Collection of Musée d’Orsay, Paris, France. RF 1957 12. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
   }, {
-    text: "Signac was an enthusiastic sailor who painted landscapes along the coasts of Europe. In 2010,\
- a hotel by a lake in the Netherlands, Hotel Spaander, discovered that one of the works hanging on its walls was by Signac, which the artist supposedly gave them to pay for his stay. ⛵",
+    text: "Signac was an enthusiastic sailor who painted landscapes across the coasts of Europe. In 2010,\
+ a hotel by a lake in the Netherlands, Hotel Spaander, discovered one of his works, which Signac supposedly used to pay for his stay. ⛵",
     quick_replies: [{
       content_type: "text",
       title: "🖼 Next artwork",
@@ -507,7 +512,7 @@ Paul Signac\n\nGift of Dr Pierre Hébert, 1957. Collection of Musée d’Orsay, 
     text: "La Cathédrale de Rouen. Le portail et la tour Saint-Romain, plein soleil (Rouen Cathedral: The Portal and Saint-Romain Tower, Full Sunlight)\n\n\
 Claude Monet\n\nBequest of Count Isaac de Camondo, 1911.Collection of Musée d’Orsay, Paris, France.  RF 2002. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage."
   }, {
-    text: "Monet painted over 30 paintings of Rouen Cathedral, to capture the light that changed from day to day.\
+    text: "Monet painted over 30 Rouen Cathedral paintings to capture the light that changed from day to day.\
  He had vivid nightmares of the cathedral, in various hues of pinks, blues and yellows, falling on him.✨",
     quick_replies: [{
       content_type: "text",

@@ -308,9 +308,9 @@ export const card_answers = {
   },
 
   question_2: {
-    text: "Many Impressionists painted everyday scenes of the Parisian middle class in cafés,\
- cabarets and parks. Instead of formal poses and staged settings, they often captured images that were candid.\
- Consider how this compares to the way you see and document the world you live in."
+    text: "Many Impressionists painted everyday scenes of the Parisian middle class relaxing in cafés,\
+ cabarets and parks. Instead of formal poses and staged settings, they strove to make their paintings as\
+ candid as possible.. Consider how this compares to the way you see and document the world you live in."
   },
 
   question_3: {
@@ -321,7 +321,7 @@ export const card_answers = {
   question_4: {
     text: "Many Impressionist artists took inspiration from their surroundings.\
  While some captured modern city life, a few were averse to the intense pace of\
- modern society and—with the ease of mobility provided by new railroads—escaped to the countryside to paint."
+ modern society and—with easier transport provided by new railroads—escaped to the countryside to paint."
   },
 
   question_5: {
@@ -330,8 +330,8 @@ export const card_answers = {
   },
 
   question_6: {
-    text: "Most Impressionist artists painted realistic scenes of modern life en plein air,\
- or outdoors. They created blurred outlines or vague forms in their paintings to portray a fleeting moment and capture a sense of ambiguity."
+    text: "Most Impressionist artists painted realistic landscapes en plein air,\
+ or outdoors. They used loose, rapid brushstrokes in their paintings to portray a fleeting moment and capture a sense of ambiguity."
   },
 
   question_7: {
@@ -354,5 +354,5 @@ export const card_answers = {
     text: "Photography inspired artists to capture immediate snapshots or moments in time.\
  The invention of synthetic paints in portable tubes allowed them to work spontaneously,\
  whether outdoors or in a studio. Consider the ways new technologies affect the things you create. "
-  },
-}
+  }
+};

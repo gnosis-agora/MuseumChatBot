@@ -57,15 +57,16 @@ app.post("/webhook", function (req, res) {
         // Iterate over each messaging event
         entry.messaging.forEach(function(event) {
           if (event.postback) {
-            processPostback(event);
+            //processPostback(event);
           } 
           else if (event.message) {
-            processMessage(event);
+            //processMessage(event);
+            console.log(event.message);
           }
         });
       }
     });
-    res.sendStatus(200);
+    res.status(200).send("EVENT_RECEIVED");
   }
 });
 
@@ -389,8 +390,11 @@ function processMessage(event) {
             if (schema.branch == "NEXT_TOUR") {
               
               let timeNow = new moment().add(8,'hours'); // offset the timezone difference on server and SG
-              if (timeNow.hours() < 13) {
-                messages = faq_helpers["NEXT_TOUR_AVAILABLE"];
+              if (timeNow.hours() < 14) {
+                messages = faq_helpers["NEXT_TOUR_AVAILABLE_1"];
+              }
+              else if (timeNow.hours() >= 14 && timeNow.hours() < 16) {
+                messages = faq_helpers["NEXT_TOUR_AVAILABLE_2"];
               }
               else {
                 messages = faq_helpers["NEXT_TOUR_UNAVAILABLE"];
@@ -591,7 +595,7 @@ function processMessage(event) {
                     },
                     {
                       content_type:"text",
-                      title: "🎟 Tickets",
+                      title: "🖼 Visit",
                       payload: JSON.stringify({
                         category: "visit",
                         branch: "visit_tickets"
@@ -716,7 +720,7 @@ var sendMessage = (recipientId, messages, delay=2000, index=0) => {
 const generateWelcomeMessage = (name) => {
   let messages = [];
   messages.push({
-    text: "Hi " + name + "! Welcome to National Gallery Singapore! I'm your virtual assistant 🤖 to Colours of Impressionism. \
+    text: "Hi " + name + "! Welcome to National Gallery Singapore! I'm your virtual guide 🤖 to Colours of Impressionism. \
 This exhibition is part of Century of Light, a showcase of art from the 19th century that brings together two exhibitions — Between Worlds and Colours of Impressionism."
   });
   messages.push({

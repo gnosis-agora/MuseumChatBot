@@ -66,7 +66,7 @@ app.post("/webhook", function (req, res) {
         });
       }
     });
-    res.status(200).send("EVENT_RECEIVED");
+    res.sendStatus(200);
   }
 });
 

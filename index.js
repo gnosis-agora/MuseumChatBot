@@ -50,7 +50,15 @@ app.get("/webhook", function (req, res) {
 app.post("/webhook", function (req, res) {
   console.log(req.body.entry[0].messaging);
   if (req.body.entry[0].standby) {
-    console.log(req.body.entry[0].standby)
+    console.log("Standby: " + req.body.entry[0].standby);
+    event = req.body.entry[0].standby;
+    if (event.postback) {
+      processPostback(event);
+    }
+    else if (event.message) {
+      processMessage(event);
+    }
+    res.status(200).send("EVENT_RECEIVED");
   }
   // Make sure this is a page subscription
   if (req.body.object == "page") {

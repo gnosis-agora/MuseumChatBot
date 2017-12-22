@@ -48,8 +48,6 @@ app.get("/webhook", function (req, res) {
 
 //All callbacks for Messenger will be POST-ed here
 app.post("/webhook", function (req, res) {
-  console.log(req.body);
-
   let body = req.body;
 
   // Make sure this is a page subscription
@@ -690,12 +688,14 @@ function processMessage(event) {
 }
 
 // sends messages to user
+const wait = time => new Promise((resolve) => setTimeout(resolve, time));
+
 var sendMessage = (recipientId, messages, delay=2000, index=0) => {
   if (messages === undefined || !messages) {
     return;
   }
   if (index < messages.length) {
-    request({
+    var options1 = {
       url: "https://graph.facebook.com/v2.6/me/messages",
       qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
       method: "POST",
@@ -703,27 +703,40 @@ var sendMessage = (recipientId, messages, delay=2000, index=0) => {
         recipient: {id: recipientId},
         sender_action: "typing_on" // typing display
       }
-    }, (error, response, body) => {
-      if (error) {
-        console.log("Error sending message: " + response.error);      
+    };
+
+    var options2 = {
+      url: "https://graph.facebook.com/v2.6/me/messages",
+      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+      method: "POST",
+      json: {
+        recipient: {id: recipientId},
+        message: messages[index],
       }
-      setTimeout(() => {         
-        request({
-          url: "https://graph.facebook.com/v2.6/me/messages",
-          qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-          method: "POST",
-          json: {
-            recipient: {id: recipientId},
-            message: messages[index], // send message
-          }
-        }, (error, response, body) => {
-          if (error) {
-            console.log("Error sending message: " + response.error);
-          }
-          sendMessage(recipientId,messages,delay,index+1); // send next message
-        }); 
-      }, delay); // set 1300ms delay on reply
-    });
+    }
+
+    rp(options1)
+      .then(body => {
+        console.log("starting process for message: " + JSON.stringify(messages[index]));
+      })
+      .then(() => {
+        console.log("Now displaying typing animation");
+        return wait(delay);
+      })
+      .then(() => {
+        console.log("Sending message");
+        return rp(options2);
+        
+      })
+      .then((something) => {
+        console.log("Moving on to next message");
+
+        sendMessage(recipientId,messages,delay,index+1); // send next message
+      })
+      .catch(err => {
+        console.log("error: " + err.error);
+        sendMessage(recipientId,messages,delay,index);
+      })  
   }
   else {
     return;

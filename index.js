@@ -48,20 +48,7 @@ app.get("/webhook", function (req, res) {
 
 //All callbacks for Messenger will be POST-ed here
 app.post("/webhook", function (req, res) {
-  console.log(req.body.entry[0].messaging);
-  if (req.body.entry[0].standby) {
-    // console.log("Standby: " + req.body.entry[0].standby[0]);
-    let events = req.body.entry[0].standby;
-    events.forEach(function (event) {
-      console.log("Standby: " + JSON.stringify(event));
-      if (event.postback) {
-        processPostback(event);
-      }
-      else if (event.message) {
-        processMessage(event);
-      }      
-    })
-  }
+  console.log(req.body.entry[0]);
   // Make sure this is a page subscription
   if (req.body.object == "page") {
     // Iterate over each entry
@@ -82,6 +69,12 @@ app.post("/webhook", function (req, res) {
     res.status(200).send("EVENT_RECEIVED");
   }
 });
+
+function processStandby(event) {
+  let senderId = event.sender.id;
+  let postback = event.postback;
+
+}
 
 function processPostback(event) {
   let senderId = event.sender.id;
@@ -110,12 +103,7 @@ function processPostback(event) {
     });
   }
   else {
-    let schema;
-    if (typeof payload == "string") {
-      schema = JSON.parse(payload);
-    } else {
-      schema = payload;
-    }
+    let schema = JSON.parse(payload);
 
     if (schema.category == "art_data") {
       sendMessage(senderId, art_data[schema.branch], 5000);

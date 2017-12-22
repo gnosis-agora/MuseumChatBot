@@ -53,7 +53,7 @@ app.post("/webhook", function (req, res) {
     // console.log("Standby: " + req.body.entry[0].standby[0]);
     let events = req.body.entry[0].standby;
     events.forEach(function (event) {
-      console.log("Standby: " + event);
+      console.log("Standby: " + JSON.stringify(event));
       if (event.postback) {
         processPostback(event);
       }
@@ -110,7 +110,12 @@ function processPostback(event) {
     });
   }
   else {
-    let schema = JSON.parse(payload);
+    let schema;
+    if (typeof payload == string) {
+      schema = JSON.parse(payload);
+    } else {
+      schem = payload;
+    }
 
     if (schema.category == "art_data") {
       sendMessage(senderId, art_data[schema.branch], 5000);

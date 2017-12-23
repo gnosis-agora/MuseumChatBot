@@ -60,13 +60,12 @@ app.post("/webhook", function (req, res) {
         // will only ever contain one message, so we get index 0
         let webhookEvent = entry.messaging[0];
 
-        // if (webhookEvent.postback) {
-        //   processPostback(webhookEvent);
-        // } 
-        // else if (webhookEvent.message) {
-        //   processMessage(webhookEvent);
-        // }
-        console.log(webhookEvent);
+        if (webhookEvent.postback) {
+          processPostback(webhookEvent);
+        } 
+        else if (webhookEvent.message) {
+          processMessage(webhookEvent);
+        }
       }
     });
     res.sendStatus(200);

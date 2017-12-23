@@ -47,33 +47,38 @@ app.get("/webhook", function (req, res) {
 });
 
 //All callbacks for Messenger will be POST-ed here
+// app.post("/webhook", function (req, res) {
+//   let body = req.body;
+
+//   // Make sure this is a page subscription
+//   if (body.object === "page") {
+//     // Iterate over each entry
+//     // There may be multiple entries if batched
+//     body.entry.forEach(function(entry) {
+//       if (entry.messaging) {
+//         // Gets the message. entry.messaging is an array, but 
+//         // will only ever contain one message, so we get index 0
+//         let webhookEvent = entry.messaging[0];
+
+//         if (webhookEvent.postback) {
+//           processPostback(webhookEvent);
+//         } 
+//         else if (webhookEvent.message) {
+//           processMessage(webhookEvent);
+//         }
+//       }
+//     });
+//     res.sendStatus(200);
+//   } else {
+//     // Returns a '404 Not Found' if event is not from a page subscription
+//     res.sendStatus(404);
+//   }
+// });
+
 app.post("/webhook", function (req, res) {
-  let body = req.body;
-
-  // Make sure this is a page subscription
-  if (body.object === "page") {
-    // Iterate over each entry
-    // There may be multiple entries if batched
-    body.entry.forEach(function(entry) {
-      if (entry.messaging) {
-        // Gets the message. entry.messaging is an array, but 
-        // will only ever contain one message, so we get index 0
-        let webhookEvent = entry.messaging[0];
-
-        if (webhookEvent.postback) {
-          processPostback(webhookEvent);
-        } 
-        else if (webhookEvent.message) {
-          processMessage(webhookEvent);
-        }
-      }
-    });
-    res.sendStatus(200);
-  } else {
-    // Returns a '404 Not Found' if event is not from a page subscription
-    res.sendStatus(404);
-  }
-});
+  console.log(res.body);
+  res.sendStatus(200);
+})
 
 function processStandby(event) {
   let senderId = event.sender.id;

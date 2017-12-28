@@ -1,5 +1,6 @@
 import express from "express";
 import request from "request";
+import rp from "request-promise";
 import bodyParser from "body-parser";
 import rp from "request-promise";
 import {art_data} from "./data/art_data";
@@ -107,11 +108,16 @@ function processPostback(event) {
     let schema = JSON.parse(payload);
 
     if (schema.category == "art_data") {
-      sendMessage(senderId, art_data[schema.branch], 5000);
+      sendMessage(senderId, art_data[schema.branch], 3000);
     }
     else if (schema.category == "instagram_impressions") {
       // INSTAGRAM API integration here
-      scraper.getMediaByTag("centuryoflight", "", function(error,response_json){
+      rp({
+        url: "https://www.instagram.com/explore/tags/CenturyofLight"
+        qs: {"__a": 1}
+        method: "GET"
+      })
+      .then((res) => {
         let media = response_json["media"]["nodes"];
         let list = [];
         media.forEach(picture => {
@@ -186,8 +192,11 @@ function processPostback(event) {
             }
           ]
         });  
-        sendMessage(senderId, messages);
-      });
+        sendMessage(senderId, messages);        
+      })
+      .catch((err) => {
+        console.log(err.error);
+      })
     }
     else if (schema.category == "visit") {
       sendMessage(senderId, visit[schema.branch]);
@@ -257,7 +266,12 @@ function processMessage(event) {
     }
 
     else if (schema.category == "instagram_impressions") {
-      scraper.getMediaByTag("centuryoflight", "", function(error,response_json){
+      rp({
+        url: "https://www.instagram.com/explore/tags/CenturyofLight"
+        qs: {"__a": 1}
+        method: "GET"
+      })
+      .then((res) => {
         let media = response_json["media"]["nodes"];
         let list = [];
         media.forEach(picture => {
@@ -332,8 +346,11 @@ function processMessage(event) {
             }
           ]
         });  
-        sendMessage(senderId, messages);
-      });
+        sendMessage(senderId, messages);        
+      })
+      .catch((err) => {
+        console.log(err.error);
+      })
     }
 
     else if (schema.category == "visit") {

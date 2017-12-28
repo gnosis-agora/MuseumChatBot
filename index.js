@@ -707,7 +707,7 @@ const processInsta = (senderId, retries = 0) => {
     method: "GET"
   })
   .then((response_json) => {
-    let media = response_json["media"]["nodes"];
+    let media = response_json["tag"]["media"]["nodes"];
     let list = [];
     media.forEach(picture => {
       let item = {

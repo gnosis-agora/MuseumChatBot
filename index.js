@@ -784,8 +784,8 @@ const processInsta = (senderId, retries = 0) => {
     sendMessage(senderId, messages);        
   })
   .catch((err) => {
-    console.log("ERROR AT INSTA PROCESSER: " + err);
-    if (retries <= 3) {
+    console.log("ERROR AT INSTA PROCESSER: " + err + " RETRYING: " + retries);
+    if (retries < 3) {
       processInsta(senderId, retries+1); 
     }
   })  

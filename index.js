@@ -51,7 +51,7 @@ app.post("/webhook", function (req, res) {
   let body = req.body;
 
   // Make sure this is a page subscription
-  var t0 = performance.now();
+  console.time("performance");
   if (body.object === "page") {
     // Iterate over each entry
     // There may be multiple entries if batched
@@ -69,8 +69,7 @@ app.post("/webhook", function (req, res) {
         }
       }
     });
-    var t1 = performance.now();
-    console.log("Time taken to process: " + (t1-t0) + " milliseconds");
+    console.timeEnd("performance");
     res.sendStatus(200);
   } else {
     // Returns a '404 Not Found' if event is not from a page subscription

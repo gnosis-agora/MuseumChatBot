@@ -12,8 +12,6 @@ import https from "https";
 import moment from "moment";
 import Chance from "chance";
 var chance = new Chance();
-var scraper = require('insta-scraper');
-
 
 // stops server from sleeping by pinging every 17min
 setInterval(() => {
@@ -111,91 +109,7 @@ function processPostback(event) {
     }
     else if (schema.category == "instagram_impressions") {
       // INSTAGRAM API integration here
-      rp({
-        url: "https://www.instagram.com/explore/tags/CenturyofLight",
-        qs: {"__a": 1},
-        method: "GET"
-      })
-      .then((res) => {
-        let media = response_json["media"]["nodes"];
-        let list = [];
-        media.forEach(picture => {
-          let item = {
-            display_src: picture["display_src"],
-            code: picture["code"],
-            caption: picture["caption"],
-            owner_id: picture["owner"]["id"],
-          }
-          list.push(item);
-        });
-        list.sort(function(a,b) {
-          let id_a = a.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
-          let id_b = b.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
-
-          id_a = parseInt(id_a.substring(0,8));
-          id_b = parseInt(id_b.substring(0,8));
-
-          return id_b - id_a;
-        });
-        
-        let messages = [{text: "Here are the most recent Instagram posts on Between Worlds and Colours of Impressionism, two exhibitions that are part of the Century of Light series. Tag your posts with #CenturyofLight to see your photos here!"}];
-        let carouselItems = [];
-        for (let i=0;i<10;i++) {
-          let obj = {
-            image_url: list[i].display_src,
-            title: list[i].caption,
-            default_action: {
-              type: "web_url",
-              url: "https://www.instagram.com/p/" + list[i].code + "/",
-            }
-          };
-          carouselItems.push(obj);
-        }
-        let carousel = {
-          attachment: {
-            type: "template",
-            payload: {
-              template_type: "generic",
-              image_aspect_ratio: "square",
-              elements: carouselItems
-            }
-          }
-        }
-        messages.push(carousel);
-        messages.push({
-          text: "Looking for something else? Choose another option below.",
-          quick_replies: [
-            {
-              content_type:"text",
-              title: "🎨 Art",
-              payload: JSON.stringify({
-                category: "art_data",
-                branch: "ART_START"
-              }),
-            },
-            {
-              content_type:"text",
-              title: "📷 #CenturyofLight",
-              payload: JSON.stringify({
-                category: "instagram_impressions",
-                branch: "instagram_impressions"
-              }),
-            },
-            {
-              content_type:"text",
-              title: "🖼 Visit",
-              payload: JSON.stringify({
-                category: "visit",
-                branch: "visit_start"
-              }),
-            }
-          ]
-        });  
-        sendMessage(senderId, messages);        
-      })
-      .catch((err) => {
-        console.log(err.error);
-      })
+      processInsta(senderId);
     }
     else if (schema.category == "visit") {
       sendMessage(senderId, visit[schema.branch]);
@@ -265,91 +179,7 @@ function processMessage(event) {
     }
 
     else if (schema.category == "instagram_impressions") {
-      rp({
-        url: "https://www.instagram.com/explore/tags/CenturyofLight",
-        qs: {"__a": 1},
-        method: "GET"
-      })
-      .then((res) => {
-        let media = response_json["media"]["nodes"];
-        let list = [];
-        media.forEach(picture => {
-          let item = {
-            display_src: picture["display_src"],
-            code: picture["code"],
-            caption: picture["caption"],
-            owner_id: picture["owner"]["id"],
-          }
-          list.push(item);
-        });
-        list.sort(function(a,b) {
-          let id_a = a.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
-          let id_b = b.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
-
-          id_a = parseInt(id_a.substring(0,8));
-          id_b = parseInt(id_b.substring(0,8));
-
-          return id_b - id_a;
-        });
-        
-        let messages = [{text: "Here are the most recent Instagram posts on Between Worlds and Colours of Impressionism, two exhibitions that are part of the Century of Light series. Tag your posts with #CenturyofLight to see your photos here!"}];
-        let carouselItems = [];
-        for (let i=0;i<10;i++) {
-          let obj = {
-            image_url: list[i].display_src,
-            title: list[i].caption,
-            default_action: {
-              type: "web_url",
-              url: "https://www.instagram.com/p/" + list[i].code + "/",
-            }
-          };
-          carouselItems.push(obj);
-        }
-        let carousel = {
-          attachment: {
-            type: "template",
-            payload: {
-              template_type: "generic",
-              image_aspect_ratio: "square",
-              elements: carouselItems
-            }
-          }
-        }
-        messages.push(carousel);
-        messages.push({
-          text: "Looking for something else? Choose another option below.",
-          quick_replies: [
-            {
-              content_type:"text",
-              title: "🎨 Art",
-              payload: JSON.stringify({
-                category: "art_data",
-                branch: "ART_START"
-              }),
-            },
-            {
-              content_type:"text",
-              title: "📷 #CenturyofLight",
-              payload: JSON.stringify({
-                category: "instagram_impressions",
-                branch: "instagram_impressions"
-              }),
-            },
-            {
-              content_type:"text",
-              title: "🖼 Visit",
-              payload: JSON.stringify({
-                category: "visit",
-                branch: "visit_start"
-              }),
-            }
-          ]
-        });  
-        sendMessage(senderId, messages);        
-      })
-      .catch((err) => {
-        console.log(err.error);
-      })
+      processInsta(senderId);
     }
 
     else if (schema.category == "visit") {
@@ -868,4 +698,93 @@ const startSurvey = (senderId) => {
       ]
     }]);
   }, 15*60*1000); // to be changed for production  
+}
+
+const processInsta = (senderId) => {
+  rp({
+    url: "https://www.instagram.com/explore/tags/CenturyofLight",
+    qs: {"__a": 1},
+    method: "GET"
+  })
+  .then((response_json) => {
+    let media = response_json["media"]["nodes"];
+    let list = [];
+    media.forEach(picture => {
+      let item = {
+        display_src: picture["display_src"],
+        code: picture["code"],
+        caption: picture["caption"],
+        owner_id: picture["owner"]["id"],
+      }
+      list.push(item);
+    });
+    list.sort(function(a,b) {
+      let id_a = a.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
+      let id_b = b.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
+
+      id_a = parseInt(id_a.substring(0,8));
+      id_b = parseInt(id_b.substring(0,8));
+
+      return id_b - id_a;
+    });
+    
+    let messages = [{text: "Here are the most recent Instagram posts on Between Worlds and Colours of Impressionism, two exhibitions that are part of the Century of Light series. Tag your posts with #CenturyofLight to see your photos here!"}];
+    let carouselItems = [];
+    for (let i=0;i<10;i++) {
+      let obj = {
+        image_url: list[i].display_src,
+        title: list[i].caption,
+        default_action: {
+          type: "web_url",
+          url: "https://www.instagram.com/p/" + list[i].code + "/",
+        }
+      };
+      carouselItems.push(obj);
+    }
+    let carousel = {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          image_aspect_ratio: "square",
+          elements: carouselItems
+        }
+      }
+    }
+    messages.push(carousel);
+    messages.push({
+      text: "Looking for something else? Choose another option below.",
+      quick_replies: [
+        {
+          content_type:"text",
+          title: "🎨 Art",
+          payload: JSON.stringify({
+            category: "art_data",
+            branch: "ART_START"
+          }),
+        },
+        {
+          content_type:"text",
+          title: "📷 #CenturyofLight",
+          payload: JSON.stringify({
+            category: "instagram_impressions",
+            branch: "instagram_impressions"
+          }),
+        },
+        {
+          content_type:"text",
+          title: "🖼 Visit",
+          payload: JSON.stringify({
+            category: "visit",
+            branch: "visit_start"
+          }),
+        }
+      ]
+    });  
+    sendMessage(senderId, messages);        
+  })
+  .catch((err) => {
+    console.log("ERROR AT INSTA PROCESSER: " + err.error);
+    processInsta(senderId);
+  })  
 }

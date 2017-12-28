@@ -49,7 +49,6 @@ app.post("/webhook", function (req, res) {
   let body = req.body;
 
   // Make sure this is a page subscription
-  console.time("performance");
   if (body.object === "page") {
     // Iterate over each entry
     // There may be multiple entries if batched
@@ -67,7 +66,6 @@ app.post("/webhook", function (req, res) {
         }
       }
     });
-    console.timeEnd("performance");
     res.sendStatus(200);
   } else {
     // Returns a '404 Not Found' if event is not from a page subscription

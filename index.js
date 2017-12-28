@@ -113,8 +113,8 @@ function processPostback(event) {
     else if (schema.category == "instagram_impressions") {
       // INSTAGRAM API integration here
       rp({
-        url: "https://www.instagram.com/explore/tags/CenturyofLight"
-        qs: {"__a": 1}
+        url: "https://www.instagram.com/explore/tags/CenturyofLight",
+        qs: {"__a": 1},
         method: "GET"
       })
       .then((res) => {
@@ -267,8 +267,8 @@ function processMessage(event) {
 
     else if (schema.category == "instagram_impressions") {
       rp({
-        url: "https://www.instagram.com/explore/tags/CenturyofLight"
-        qs: {"__a": 1}
+        url: "https://www.instagram.com/explore/tags/CenturyofLight",
+        qs: {"__a": 1},
         method: "GET"
       })
       .then((res) => {

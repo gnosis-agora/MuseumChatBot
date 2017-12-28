@@ -789,5 +789,8 @@ const processInsta = (senderId, retries = 0, error = false) => {
     if (retries < 3) {
       processInsta(senderId, retries+1, true); 
     }
+    else {
+      console.log("UNRESOLVED :(")
+    }
   })  
 }

@@ -46,45 +46,34 @@ app.get("/webhook", function (req, res) {
   }
 });
 
-//All callbacks for Messenger will be POST-ed here
-// app.post("/webhook", function (req, res) {
-//   let body = req.body;
-
-//   // Make sure this is a page subscription
-//   if (body.object === "page") {
-//     // Iterate over each entry
-//     // There may be multiple entries if batched
-//     body.entry.forEach(function(entry) {
-//       if (entry.messaging) {
-//         // Gets the message. entry.messaging is an array, but 
-//         // will only ever contain one message, so we get index 0
-//         let webhookEvent = entry.messaging[0];
-
-//         if (webhookEvent.postback) {
-//           processPostback(webhookEvent);
-//         } 
-//         else if (webhookEvent.message) {
-//           processMessage(webhookEvent);
-//         }
-//       }
-//     });
-//     res.sendStatus(200);
-//   } else {
-//     // Returns a '404 Not Found' if event is not from a page subscription
-//     res.sendStatus(404);
-//   }
-// });
-
+// All callbacks for Messenger will be POST-ed here
 app.post("/webhook", function (req, res) {
-  console.log(res.body);
-  res.sendStatus(200);
-})
+  let body = req.body;
 
-function processStandby(event) {
-  let senderId = event.sender.id;
-  let postback = event.postback;
+  // Make sure this is a page subscription
+  if (body.object === "page") {
+    // Iterate over each entry
+    // There may be multiple entries if batched
+    body.entry.forEach(function(entry) {
+      if (entry.messaging) {
+        // Gets the message. entry.messaging is an array, but 
+        // will only ever contain one message, so we get index 0
+        let webhookEvent = entry.messaging[0];
 
-}
+        if (webhookEvent.postback) {
+          processPostback(webhookEvent);
+        } 
+        else if (webhookEvent.message) {
+          processMessage(webhookEvent);
+        }
+      }
+    });
+    res.sendStatus(200);
+  } else {
+    // Returns a '404 Not Found' if event is not from a page subscription
+    res.sendStatus(404);
+  }
+});
 
 function processPostback(event) {
   let senderId = event.sender.id;
@@ -205,548 +194,529 @@ function processPostback(event) {
 }
 
 function processMessage(event) {
-    if (!event.message.is_echo) {
-        var message = event.message;
-        var senderId = event.sender.id;
+  var message = event.message;
+  var senderId = event.sender.id;
 
-        // You may get a text or attachment but not both
-        if (message.quick_reply) {
-          let schema = JSON.parse(message.quick_reply.payload);
+  // You may get a text or attachment but not both
+  if (message.quick_reply) {
+    let schema = JSON.parse(message.quick_reply.payload);
 
-          if (schema.category == "art_data") {
-            sendMessage(senderId, art_data[schema.branch]);
-          }
-
-          else if (schema.category == "pick_a_card") {
-            if (schema.branch == "pick_a_card_start") {
-              console.log("card number: " + cardNumber);
-              sendMessage(senderId, [card_questions[cardNumber]]);
-              cardNumber += 1;
-              if (cardNumber > 9) {
-                cardNumber = cardNumber % 10;
-              }
-            }
-            else {
-              let answer = card_answers[schema.branch];
-              answer["quick_replies"] = [
-                {
-                  content_type: "text",
-                  title: "🎨 Back to highlights",
-                  payload: JSON.stringify({
-                    category: "art_data",
-                    branch: "ART_START"
-                  }),
-                },
-                {
-                  content_type: "text",
-                  title: "👀 Next question",
-                  payload: JSON.stringify({
-                    category: "pick_a_card",
-                    branch: "pick_a_card_start"
-                  }),
-                },
-                {
-                  content_type: "text",
-                  title: "🎧 Audio guide",
-                  payload: JSON.stringify({
-                    category: "faq_helpers",
-                    branch: "AUDIO_GUIDE"
-                  }),          
-                },
-                {
-                  content_type: "text",
-                  title: "🙋 Tours",
-                  payload: JSON.stringify({
-                    category: "faq_helpers",
-                    branch: "NEXT_TOUR"
-                  }),
-                }
-              ];
-              sendMessage(senderId, [answer], 3000);
-            }           
-          }
-
-          else if (schema.category == "instagram_impressions") {
-            scraper.getMediaByTag("centuryoflight", "", function(error,response_json){
-              let media = response_json["media"]["nodes"];
-              let list = [];
-              media.forEach(picture => {
-                let item = {
-                  display_src: picture["display_src"],
-                  code: picture["code"],
-                  caption: picture["caption"],
-                  owner_id: picture["owner"]["id"],
-                }
-                list.push(item);
-              });
-              list.sort(function(a,b) {
-                let id_a = a.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
-                let id_b = b.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
-
-                id_a = parseInt(id_a.substring(0,8));
-                id_b = parseInt(id_b.substring(0,8));
-
-                return id_b - id_a;
-              });
-              
-              let messages = [{text: "Here are the most recent Instagram posts on Between Worlds and Colours of Impressionism, two exhibitions that are part of the Century of Light series. Tag your posts with #CenturyofLight to see your photos here!"}];
-              let carouselItems = [];
-              for (let i=0;i<10;i++) {
-                let obj = {
-                  image_url: list[i].display_src,
-                  title: list[i].caption,
-                  default_action: {
-                    type: "web_url",
-                    url: "https://www.instagram.com/p/" + list[i].code + "/",
-                  }
-                };
-                carouselItems.push(obj);
-              }
-              let carousel = {
-                attachment: {
-                  type: "template",
-                  payload: {
-                    template_type: "generic",
-                    image_aspect_ratio: "square",
-                    elements: carouselItems
-                  }
-                }
-              }
-              messages.push(carousel);
-              messages.push({
-                text: "Looking for something else? Choose another option below.",
-                quick_replies: [
-                  {
-                    content_type:"text",
-                    title: "🎨 Art",
-                    payload: JSON.stringify({
-                      category: "art_data",
-                      branch: "ART_START"
-                    }),
-                  },
-                  {
-                    content_type:"text",
-                    title: "📷 #CenturyofLight",
-                    payload: JSON.stringify({
-                      category: "instagram_impressions",
-                      branch: "instagram_impressions"
-                    }),
-                  },
-                  {
-                    content_type:"text",
-                    title: "🖼 Visit",
-                    payload: JSON.stringify({
-                      category: "visit",
-                      branch: "visit_start"
-                    }),
-                  }
-                ]
-              });  
-              sendMessage(senderId, messages);
-            });
-          }
-
-          else if (schema.category == "visit") {
-            if (schema.branch == "visit_tickets") {
-              sendMessage(senderId, visit[schema.branch])
-            }
-            else if (schema.branch == "visit_opening_hours"){
-              let timeNow = new moment().add(8,'hours');
-              sendMessage(senderId, [
-                {
-                  text: getOpeningHourMessage(timeNow),
-                },
-                {
-                  text: "Colours of Impressionism opens from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. This exhibition ends 11 March 2018.",
-                  quick_replies: [
-                    {
-                      content_type: "text",
-                      title: "🎟 Tickets",
-                      payload: JSON.stringify({
-                        category: "visit",
-                        branch: "visit_tickets"
-                      }),     
-                    },
-                    {
-                      content_type: "text",
-                      title: "🙋 Tours",
-                      payload: JSON.stringify({
-                        category: "faq_helpers",
-                        branch: "NEXT_TOUR",
-                        entry_point: "visit"
-                      }),
-                    },
-                    {
-                      content_type: "text",
-                      title: "🎨 Back to highlights",
-                      payload: JSON.stringify({
-                        category: "art_data",
-                        branch: "ART_START"
-                      }),
-                    },
-                    {
-                      content_type:"text",
-                      title: "📷 #CenturyofLight",
-                      payload: JSON.stringify({
-                        category: "instagram_impressions",
-                        branch: "instagram_impressions"
-                      }),
-                    }
-                  ]
-                },
-              ]);
-            }
-            else {
-              sendMessage(senderId, visit[schema.branch]);
-            }
-          }
-
-          else if (schema.category == "faq_helpers") {
-            let messages;
-            if (schema.branch == "NEXT_TOUR") {
-              
-              let timeNow = new moment().add(8,'hours'); // offset the timezone difference on server and SG
-              if (timeNow.hours() < 14) {
-                messages = faq_helpers["NEXT_TOUR_AVAILABLE_1"];
-              }
-              else if (timeNow.hours() >= 14 && timeNow.hours() < 16) {
-                messages = faq_helpers["NEXT_TOUR_AVAILABLE_2"];
-              }
-              else {
-                messages = faq_helpers["NEXT_TOUR_UNAVAILABLE"];
-              }
-              if (schema.entry_point == "visit") {
-                messages[messages.length-1]["quick_replies"] = [
-                  {
-                    content_type: "text",
-                    title: "🕰 Opening hours",
-                    payload: JSON.stringify({
-                      category: "visit",
-                      branch: "visit_opening_hours"
-                    }),
-                  },
-                  {
-                    content_type: "text",
-                    title: "🎟 Tickets",
-                    payload: JSON.stringify({
-                      category: "visit",
-                      branch: "visit_tickets"
-                    }),     
-                  },
-                  {
-                    content_type: "text",
-                    title: "🎨 Back to highlights",
-                    payload: JSON.stringify({
-                      category: "art_data",
-                      branch: "ART_START"
-                    }),
-                  },
-                  {
-                    content_type:"text",
-                    title: "📷 #CenturyofLight",
-                    payload: JSON.stringify({
-                      category: "instagram_impressions",
-                      branch: "instagram_impressions"
-                    }),
-                  }
-                ];
-              }
-              else {
-                messages[messages.length-1]["quick_replies"] = [
-                  {
-                    content_type: "text",
-                    title: "🎨 Back to highlights",
-                    payload: JSON.stringify({
-                      category: "art_data",
-                      branch: "ART_START"
-                    }),
-                  },
-                  {
-                    content_type: "text",
-                    title: "👀 Art of seeing art",
-                    payload: JSON.stringify({
-                      category: "pick_a_card",
-                      branch: "pick_a_card_start"
-                    }),
-                  },
-                  {
-                    content_type: "text",
-                    title: "🎧 Audio guide",
-                    payload: JSON.stringify({
-                      category: "faq_helpers",
-                      branch: "AUDIO_GUIDE"
-                    }),          
-                  },
-                ];
-              }
-            }
-            else {
-              messages = faq_helpers[schema.branch];
-              messages[messages.length-1]["quick_replies"] = [
-                {
-                  content_type: "text",
-                  title: "🎨 Back to highlights",
-                  payload: JSON.stringify({
-                    category: "art_data",
-                    branch: "ART_START"
-                  }),
-                },
-                {
-                  content_type: "text",
-                  title: "👀 Art of seeing art",
-                  payload: JSON.stringify({
-                    category: "pick_a_card",
-                    branch: "pick_a_card_start"
-                  }),
-                },
-                {
-                  content_type: "text",
-                  title: "🙋 Tours",
-                  payload: JSON.stringify({
-                    category: "faq_helpers",
-                    branch: "NEXT_TOUR"
-                  }),          
-                },
-              ];
-            }
-            sendMessage(senderId, messages);
-          }          
-
-          else if (schema.category == "survey") {
-            if (schema.branch == "question_1") {
-              updateQuestion1(schema.choice);
-              sendMessage(senderId, [{
-                text: "Which feature would be most useful to you?",
-                quick_replies: [
-                  {
-                    content_type: "text",
-                    title: "Artwork information",
-                    payload: JSON.stringify({
-                      category: "survey",
-                      branch: "question_2",
-                      choice: "artwork_information"
-                    }),
-                  },
-                  {
-                    content_type: "text",
-                    title: "Things to see and do",
-                    payload: JSON.stringify({
-                      category: "survey",
-                      branch: "question_2",
-                      choice: "things_to_see_and_do"
-                    }),
-                  },
-                  {
-                    content_type: "text",
-                    title: "Buy tickets",
-                    payload: JSON.stringify({
-                      category: "survey",
-                      branch: "question_2",
-                      choice: "buy_tickets"
-                    }),
-                  },
-                  {
-                    content_type: "text",
-                    title: "Get directions",
-                    payload: JSON.stringify({
-                      category: "survey",
-                      branch: "question_2",
-                      choice: "get_directions"
-                    }),
-                  },
-                  {
-                    content_type: "text",
-                    title: "Register for events",
-                    payload: JSON.stringify({
-                      category: "survey",
-                      branch: "question_2",
-                      choice: "register_for_events"
-                    }),
-                  },
-                  {
-                    content_type: "text",
-                    title: "Promos",
-                    payload: JSON.stringify({
-                      category: "survey",
-                      branch: "question_2",
-                      choice: "promos"
-                    }),
-                  },     
-                  {
-                    content_type: "text",
-                    title: "Games",
-                    payload: JSON.stringify({
-                      category: "survey",
-                      branch: "question_2",
-                      choice: "games"
-                    }),
-                  },              
-                ]
-              }]);
-            }
-            else if (schema.branch == "question_2") {
-              updateQuestion2(schema.choice);
-              sendMessage(senderId, [
-                {
-                  text: "Thank you for your feedback! ☺️"
-                },
-                {
-                  text: "Shall we continue with the fun stuff?",
-                  quick_replies: [
-                    {
-                      content_type:"text",
-                      title: "🎨 Art",
-                      payload: JSON.stringify({
-                        category: "art_data",
-                        branch: "ART_START"
-                      }),
-                    },
-                    {
-                      content_type:"text",
-                      title: "📷 #CenturyofLight",
-                      payload: JSON.stringify({
-                        category: "instagram_impressions",
-                        branch: "instagram_impressions"
-                      }),
-                    },
-                    {
-                      content_type:"text",
-                      title: "🖼 Visit",
-                      payload: JSON.stringify({
-                        category: "visit",
-                        branch: "visit_tickets"
-                      }),
-                    },
-                  ]
-                }
-              ]);
-            }
-          }
-
-          else if (schema.category == "wrong_words") {
-            sendMessage(senderId, [{
-              text: "Looking for something else? Choose another option below.",
-              quick_replies: [
-                {
-                  content_type:"text",
-                  title: "🎨 Art",
-                  payload: JSON.stringify({
-                    category: "art_data",
-                    branch: "ART_START"
-                  }),
-                },
-                {
-                  content_type:"text",
-                  title: "📷 #CenturyofLight",
-                  payload: JSON.stringify({
-                    category: "instagram_impressions",
-                    branch: "instagram_impressions"
-                  }),
-                },
-                {
-                  content_type:"text",
-                  title: "🖼 Visit",
-                  payload: JSON.stringify({
-                    category: "visit",
-                    branch: "visit_start"
-                  }),
-                }
-              ]              
-            }]);
-          }
-        }
-
-        else if (message.text) {
-        	// If user were to restart the conversation
-          let prompts = ["hello","hi","yo","what up","hey","hey there","get started"];
-          let potentialStart = message.text.toLowerCase().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-          if (prompts.indexOf(potentialStart) != -1) {
-            // Get user's first name from the User Profile API
-            // and include it in the greeting
-            request({
-              url: "https://graph.facebook.com/v2.6/" + senderId,
-              qs: {
-                access_token: process.env.PAGE_ACCESS_TOKEN,
-                fields: "first_name"
-              },
-              method: "GET"
-            }, function(error, response, body) {
-              let greeting = "";
-              if (error) {
-                console.log("Error getting user's name: " +  error);
-              } else {
-                let bodyObj = JSON.parse(body);
-                let name = bodyObj.first_name;
-                sendMessage(senderId, generateWelcomeMessage(name));
-              }
-            });            
-          }
-          else {
-            let sentence = message.text.toLowerCase().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(" ");
-            sendMessage(senderId, getReply(sentence));
-          }
-          
-        } else if (message.attachments) {
-            sendMessage(senderId, getUnhandledRequest());
-        }
+    if (schema.category == "art_data") {
+      sendMessage(senderId, art_data[schema.branch]);
     }
+
+    else if (schema.category == "pick_a_card") {
+      if (schema.branch == "pick_a_card_start") {
+        console.log("card number: " + cardNumber);
+        sendMessage(senderId, [card_questions[cardNumber]]);
+        cardNumber += 1;
+        if (cardNumber > 9) {
+          cardNumber = cardNumber % 10;
+        }
+      }
+      else {
+        let answer = card_answers[schema.branch];
+        answer["quick_replies"] = [
+          {
+            content_type: "text",
+            title: "🎨 Back to highlights",
+            payload: JSON.stringify({
+              category: "art_data",
+              branch: "ART_START"
+            }),
+          },
+          {
+            content_type: "text",
+            title: "👀 Next question",
+            payload: JSON.stringify({
+              category: "pick_a_card",
+              branch: "pick_a_card_start"
+            }),
+          },
+          {
+            content_type: "text",
+            title: "🎧 Audio guide",
+            payload: JSON.stringify({
+              category: "faq_helpers",
+              branch: "AUDIO_GUIDE"
+            }),          
+          },
+          {
+            content_type: "text",
+            title: "🙋 Tours",
+            payload: JSON.stringify({
+              category: "faq_helpers",
+              branch: "NEXT_TOUR"
+            }),
+          }
+        ];
+        sendMessage(senderId, [answer], 3000);
+      }           
+    }
+
+    else if (schema.category == "instagram_impressions") {
+      scraper.getMediaByTag("centuryoflight", "", function(error,response_json){
+        let media = response_json["media"]["nodes"];
+        let list = [];
+        media.forEach(picture => {
+          let item = {
+            display_src: picture["display_src"],
+            code: picture["code"],
+            caption: picture["caption"],
+            owner_id: picture["owner"]["id"],
+          }
+          list.push(item);
+        });
+        list.sort(function(a,b) {
+          let id_a = a.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
+          let id_b = b.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
+
+          id_a = parseInt(id_a.substring(0,8));
+          id_b = parseInt(id_b.substring(0,8));
+
+          return id_b - id_a;
+        });
+        
+        let messages = [{text: "Here are the most recent Instagram posts on Between Worlds and Colours of Impressionism, two exhibitions that are part of the Century of Light series. Tag your posts with #CenturyofLight to see your photos here!"}];
+        let carouselItems = [];
+        for (let i=0;i<10;i++) {
+          let obj = {
+            image_url: list[i].display_src,
+            title: list[i].caption,
+            default_action: {
+              type: "web_url",
+              url: "https://www.instagram.com/p/" + list[i].code + "/",
+            }
+          };
+          carouselItems.push(obj);
+        }
+        let carousel = {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              image_aspect_ratio: "square",
+              elements: carouselItems
+            }
+          }
+        }
+        messages.push(carousel);
+        messages.push({
+          text: "Looking for something else? Choose another option below.",
+          quick_replies: [
+            {
+              content_type:"text",
+              title: "🎨 Art",
+              payload: JSON.stringify({
+                category: "art_data",
+                branch: "ART_START"
+              }),
+            },
+            {
+              content_type:"text",
+              title: "📷 #CenturyofLight",
+              payload: JSON.stringify({
+                category: "instagram_impressions",
+                branch: "instagram_impressions"
+              }),
+            },
+            {
+              content_type:"text",
+              title: "🖼 Visit",
+              payload: JSON.stringify({
+                category: "visit",
+                branch: "visit_start"
+              }),
+            }
+          ]
+        });  
+        sendMessage(senderId, messages);
+      });
+    }
+
+    else if (schema.category == "visit") {
+      if (schema.branch == "visit_tickets") {
+        sendMessage(senderId, visit[schema.branch])
+      }
+      else if (schema.branch == "visit_opening_hours"){
+        let timeNow = new moment().add(8,'hours');
+        sendMessage(senderId, [
+          {
+            text: getOpeningHourMessage(timeNow),
+          },
+          {
+            text: "Colours of Impressionism opens from 10am to 7pm from Saturday to Thursday, and 10am to 9pm on Friday. This exhibition ends 11 March 2018.",
+            quick_replies: [
+              {
+                content_type: "text",
+                title: "🎟 Tickets",
+                payload: JSON.stringify({
+                  category: "visit",
+                  branch: "visit_tickets"
+                }),     
+              },
+              {
+                content_type: "text",
+                title: "🙋 Tours",
+                payload: JSON.stringify({
+                  category: "faq_helpers",
+                  branch: "NEXT_TOUR",
+                  entry_point: "visit"
+                }),
+              },
+              {
+                content_type: "text",
+                title: "🎨 Back to highlights",
+                payload: JSON.stringify({
+                  category: "art_data",
+                  branch: "ART_START"
+                }),
+              },
+              {
+                content_type:"text",
+                title: "📷 #CenturyofLight",
+                payload: JSON.stringify({
+                  category: "instagram_impressions",
+                  branch: "instagram_impressions"
+                }),
+              }
+            ]
+          },
+        ]);
+      }
+      else {
+        sendMessage(senderId, visit[schema.branch]);
+      }
+    }
+
+    else if (schema.category == "faq_helpers") {
+      let messages;
+      if (schema.branch == "NEXT_TOUR") {
+        
+        let timeNow = new moment().add(8,'hours'); // offset the timezone difference on server and SG
+        if (timeNow.hours() < 14) {
+          messages = faq_helpers["NEXT_TOUR_AVAILABLE_1"];
+        }
+        else if (timeNow.hours() >= 14 && timeNow.hours() < 16) {
+          messages = faq_helpers["NEXT_TOUR_AVAILABLE_2"];
+        }
+        else {
+          messages = faq_helpers["NEXT_TOUR_UNAVAILABLE"];
+        }
+        if (schema.entry_point == "visit") {
+          messages[messages.length-1]["quick_replies"] = [
+            {
+              content_type: "text",
+              title: "🕰 Opening hours",
+              payload: JSON.stringify({
+                category: "visit",
+                branch: "visit_opening_hours"
+              }),
+            },
+            {
+              content_type: "text",
+              title: "🎟 Tickets",
+              payload: JSON.stringify({
+                category: "visit",
+                branch: "visit_tickets"
+              }),     
+            },
+            {
+              content_type: "text",
+              title: "🎨 Back to highlights",
+              payload: JSON.stringify({
+                category: "art_data",
+                branch: "ART_START"
+              }),
+            },
+            {
+              content_type:"text",
+              title: "📷 #CenturyofLight",
+              payload: JSON.stringify({
+                category: "instagram_impressions",
+                branch: "instagram_impressions"
+              }),
+            }
+          ];
+        }
+        else {
+          messages[messages.length-1]["quick_replies"] = [
+            {
+              content_type: "text",
+              title: "🎨 Back to highlights",
+              payload: JSON.stringify({
+                category: "art_data",
+                branch: "ART_START"
+              }),
+            },
+            {
+              content_type: "text",
+              title: "👀 Art of seeing art",
+              payload: JSON.stringify({
+                category: "pick_a_card",
+                branch: "pick_a_card_start"
+              }),
+            },
+            {
+              content_type: "text",
+              title: "🎧 Audio guide",
+              payload: JSON.stringify({
+                category: "faq_helpers",
+                branch: "AUDIO_GUIDE"
+              }),          
+            },
+          ];
+        }
+      }
+      else {
+        messages = faq_helpers[schema.branch];
+        messages[messages.length-1]["quick_replies"] = [
+          {
+            content_type: "text",
+            title: "🎨 Back to highlights",
+            payload: JSON.stringify({
+              category: "art_data",
+              branch: "ART_START"
+            }),
+          },
+          {
+            content_type: "text",
+            title: "👀 Art of seeing art",
+            payload: JSON.stringify({
+              category: "pick_a_card",
+              branch: "pick_a_card_start"
+            }),
+          },
+          {
+            content_type: "text",
+            title: "🙋 Tours",
+            payload: JSON.stringify({
+              category: "faq_helpers",
+              branch: "NEXT_TOUR"
+            }),          
+          },
+        ];
+      }
+      sendMessage(senderId, messages);
+    }          
+
+    else if (schema.category == "survey") {
+      if (schema.branch == "question_1") {
+        updateQuestion1(schema.choice);
+        sendMessage(senderId, [{
+          text: "Which feature would be most useful to you?",
+          quick_replies: [
+            {
+              content_type: "text",
+              title: "Artwork information",
+              payload: JSON.stringify({
+                category: "survey",
+                branch: "question_2",
+                choice: "artwork_information"
+              }),
+            },
+            {
+              content_type: "text",
+              title: "Things to see and do",
+              payload: JSON.stringify({
+                category: "survey",
+                branch: "question_2",
+                choice: "things_to_see_and_do"
+              }),
+            },
+            {
+              content_type: "text",
+              title: "Buy tickets",
+              payload: JSON.stringify({
+                category: "survey",
+                branch: "question_2",
+                choice: "buy_tickets"
+              }),
+            },
+            {
+              content_type: "text",
+              title: "Get directions",
+              payload: JSON.stringify({
+                category: "survey",
+                branch: "question_2",
+                choice: "get_directions"
+              }),
+            },
+            {
+              content_type: "text",
+              title: "Register for events",
+              payload: JSON.stringify({
+                category: "survey",
+                branch: "question_2",
+                choice: "register_for_events"
+              }),
+            },
+            {
+              content_type: "text",
+              title: "Promos",
+              payload: JSON.stringify({
+                category: "survey",
+                branch: "question_2",
+                choice: "promos"
+              }),
+            },     
+            {
+              content_type: "text",
+              title: "Games",
+              payload: JSON.stringify({
+                category: "survey",
+                branch: "question_2",
+                choice: "games"
+              }),
+            },              
+          ]
+        }]);
+      }
+      else if (schema.branch == "question_2") {
+        updateQuestion2(schema.choice);
+        sendMessage(senderId, [
+          {
+            text: "Thank you for your feedback! ☺️"
+          },
+          {
+            text: "Shall we continue with the fun stuff?",
+            quick_replies: [
+              {
+                content_type:"text",
+                title: "🎨 Art",
+                payload: JSON.stringify({
+                  category: "art_data",
+                  branch: "ART_START"
+                }),
+              },
+              {
+                content_type:"text",
+                title: "📷 #CenturyofLight",
+                payload: JSON.stringify({
+                  category: "instagram_impressions",
+                  branch: "instagram_impressions"
+                }),
+              },
+              {
+                content_type:"text",
+                title: "🖼 Visit",
+                payload: JSON.stringify({
+                  category: "visit",
+                  branch: "visit_tickets"
+                }),
+              },
+            ]
+          }
+        ]);
+      }
+    }
+  }
+
+  else if (message.text) {
+  	// If user were to restart the conversation
+    let prompts = ["hello","hi","yo","what up","hey","hey there","get started"];
+    let potentialStart = message.text.toLowerCase().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+    if (prompts.indexOf(potentialStart) != -1) {
+      // Get user's first name from the User Profile API
+      // and include it in the greeting
+      request({
+        url: "https://graph.facebook.com/v2.6/" + senderId,
+        qs: {
+          access_token: process.env.PAGE_ACCESS_TOKEN,
+          fields: "first_name"
+        },
+        method: "GET"
+      }, function(error, response, body) {
+        let greeting = "";
+        if (error) {
+          console.log("Error getting user's name: " +  error);
+        } else {
+          let bodyObj = JSON.parse(body);
+          let name = bodyObj.first_name;
+          sendMessage(senderId, generateWelcomeMessage(name));
+        }
+      });            
+    }
+    else {
+      let sentence = message.text.toLowerCase().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(" ");
+      sendMessage(senderId, getReply(sentence));
+    }
+    
+  } else if (message.attachments) {
+      sendMessage(senderId, getUnhandledRequest());
+  }
 }
 
 // sends messages to user
 const wait = time => new Promise((resolve) => setTimeout(resolve, time));
 
-var sendMessage = (recipientId, messages, delay=3000, index=0) => {
+// var sendMessage = (recipientId, messages, delay=1800, index=0) => {
+//   if (messages === undefined || !messages) {
+//     return;
+//   }
+//   if (index < messages.length) {
+//     var options1 = {
+//       url: "https://graph.facebook.com/v2.6/me/messages",
+//       qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+//       method: "POST",
+//       json: {
+//         recipient: {id: recipientId},
+//         sender_action: "typing_on" // typing display
+//       }
+//     };
+
+//     var options2 = {
+//       url: "https://graph.facebook.com/v2.6/me/messages",
+//       qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+//       method: "POST",
+//       json: {
+//         recipient: {id: recipientId},
+//         message: messages[index],
+//       }
+//     }
+
+//     rp(options1)
+//       .then(body => {
+//         // console.log("starting process for message: " + JSON.stringify(messages[index]));
+//       })
+//       .then(() => {
+//         // console.log("Now displaying typing animation");
+//         return wait(delay);
+//       })
+//       .then(() => {
+//         // console.log("Sending message");
+//         return rp(options2);
+        
+//       })
+//       .then((something) => {
+//         // console.log("Moving on to next message");
+
+//         sendMessage(recipientId,messages,delay,index+1); // send next message
+//       })
+//       .catch(err => {
+//         console.log("error: " + err.error);
+//         sendMessage(recipientId,messages,delay,index);
+//       })  
+//   }
+//   else {
+//     return;
+//   }  
+// }
+
+var sendMessage = (recipientId, messages, delay=1800, index=0) => {
   if (messages === undefined || !messages) {
     return;
   }
   if (index < messages.length) {
-    var options1 = {
-      url: "https://graph.facebook.com/v2.6/me/messages",
-      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-      method: "POST",
-      json: {
-        recipient: {id: recipientId},
-        sender_action: "typing_on" // typing display
-      }
-    };
 
-    var options2 = {
-      url: "https://graph.facebook.com/v2.6/me/messages",
-      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-      method: "POST",
-      json: {
-        recipient: {id: recipientId},
-        message: messages[index],
-      }
-    }
-
-    rp(options1)
-      .then(body => {
-        // console.log("starting process for message: " + JSON.stringify(messages[index]));
-      })
-      .then(() => {
-        // console.log("Now displaying typing animation");
-        return wait(delay);
-      })
-      .then(() => {
-        // console.log("Sending message");
-        return rp(options2);
-        
-      })
-      .then((something) => {
-        // console.log("Moving on to next message");
-
-        sendMessage(recipientId,messages,delay,index+1); // send next message
-      })
-      .catch(err => {
-        console.log("error: " + err.error);
-        sendMessage(recipientId,messages,delay,index);
-      })  
+    console.log("Sending JSON: " + JSON.stringify(messages[index]));
+    sendMessage(recipientId,messages,index+1);
   }
   else {
     return;
   }  
 }
+
 
 const generateWelcomeMessage = (name) => {
   let messages = [];

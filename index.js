@@ -2,7 +2,6 @@ import express from "express";
 import request from "request";
 import rp from "request-promise";
 import bodyParser from "body-parser";
-import rp from "request-promise";
 import {art_data} from "./data/art_data";
 import {faq_helpers} from "./data/faq_helpers";
 import {card_questions, card_answers} from "./data/card_questions";

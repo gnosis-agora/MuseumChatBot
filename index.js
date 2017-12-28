@@ -700,7 +700,7 @@ const startSurvey = (senderId) => {
   }, 15*60*1000); // to be changed for production  
 }
 
-const processInsta = (senderId, retries = 0) => {
+const processInsta = (senderId, retries = 0, error = false) => {
   rp({
     url: "https://www.instagram.com/explore/tags/CenturyofLight",
     qs: {"__a": 1},
@@ -781,7 +781,10 @@ const processInsta = (senderId, retries = 0) => {
         }
       ]
     });  
-    sendMessage(senderId, messages);        
+    sendMessage(senderId, messages);      
+    if (error) {
+      console.log("RESOLVED AT " + retries);
+    }  
   })
   .catch((err) => {
     console.log("ERROR AT INSTA PROCESSER: " + err + " RETRYING: " + retries);

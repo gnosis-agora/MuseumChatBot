@@ -706,8 +706,8 @@ const processInsta = (senderId, retries = 0) => {
     qs: {"__a": 1},
     method: "GET"
   })
-  .then((response_json) => {
-    let media = response_json["tag"]["media"]["nodes"];
+  .then((res) => {
+    let media = JSON.parse(res)["tag"]["media"]["nodes"];
     let list = [];
     media.forEach(picture => {
       let item = {

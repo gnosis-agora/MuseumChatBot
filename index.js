@@ -700,7 +700,7 @@ const startSurvey = (senderId) => {
   }, 15*60*1000); // to be changed for production  
 }
 
-const processInsta = (senderId) => {
+const processInsta = (senderId, retries = 0) => {
   rp({
     url: "https://www.instagram.com/explore/tags/CenturyofLight",
     qs: {"__a": 1},
@@ -784,7 +784,9 @@ const processInsta = (senderId) => {
     sendMessage(senderId, messages);        
   })
   .catch((err) => {
-    console.log("ERROR AT INSTA PROCESSER: " + err.error);
-    processInsta(senderId);
+    console.log("ERROR AT INSTA PROCESSER: " + err);
+    if (retries <= 3) {
+      processInsta(senderId, retries+1); 
+    }
   })  
 }

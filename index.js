@@ -710,7 +710,7 @@ var sendMessage = (recipientId, messages, delay=1800, index=0) => {
   if (index < messages.length) {
 
     console.log("Sending JSON: " + JSON.stringify(messages[index]));
-    sendMessage(recipientId,messages,index+1);
+    sendMessage(recipientId,messages,delay,index+1);
   }
   else {
     return;

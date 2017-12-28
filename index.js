@@ -789,7 +789,7 @@ const processInsta = (senderId, retries = 0, error = false) => {
   .catch((err) => {
     console.log("ERROR AT INSTA PROCESSER: " + err + " RETRYING: " + retries);
     if (retries < 3) {
-      processInsta(senderId, retries+1); 
+      processInsta(senderId, retries+1, true); 
     }
   })  
 }

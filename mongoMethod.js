@@ -58,6 +58,6 @@ export const updateInstagram = (list) => {
 export const getInstagram = async () => {
   const db = await MongoClient.connect(url);
   let docs = await db.collection('instagram').find({}).toArray();
-  doc = docs[0];
+  let doc = docs[0];
   return doc;
 }

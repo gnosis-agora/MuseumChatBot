@@ -103,7 +103,7 @@ function processPostback(event) {
     let schema = JSON.parse(payload);
 
     if (schema.category == "art_data") {
-      sendMessage(senderId, art_data[schema.branch], 3000);
+      sendMessage(senderId, art_data[schema.branch]);
     }
     else if (schema.category == "instagram_impressions") {
       // INSTAGRAM API integration here

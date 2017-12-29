@@ -539,7 +539,7 @@ var sendMessage = (recipientId, messages, delay=1200, index=0) => {
         sendMessage(recipientId,messages,delay,index+1); // send next message
       })
       .catch(err => {
-        console.log("error: " + err.error);
+        console.log("error: " + JSON.stringify(err.error));
       })  
   }
   else {

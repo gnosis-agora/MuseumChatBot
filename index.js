@@ -27,6 +27,41 @@ app.listen((process.env.PORT || 5001));
 // set up global variables here 
 var cardNumber = 0; // variable to keep track of card number
 
+setInterval(function () {
+  rp({
+    url: "https://www.instagram.com/explore/tags/CenturyofLight",
+    qs: { "__a": 1 },
+    method: "GET"
+  }).then(function (res) {
+    var media = JSON.parse(res)["tag"]["media"]["nodes"];
+    var list = [];
+    for (var i = 0; i < 10; i ++) {
+      var item = {
+        display_src: media[i]["display_src"],
+        code: media[i]["code"],
+        caption: media[i]["caption"],
+        owner_id: media[i]["owner"]["id"]
+      };
+      list.push(item);
+    };
+    list.sort(function (a, b) {
+      var id_a = a.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/", "");
+      var id_b = b.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/", "");
+
+      id_a = parseInt(id_a.substring(0, 8));
+      id_b = parseInt(id_b.substring(0, 8));
+
+      return id_b - id_a;
+    });
+    
+    updateInstagram(list);
+
+  }).catch(function (err) {
+    console.log("ERROR AT INSTA PROCESSER: " + err);
+  });
+}, 10 * 60 * 1000);
+
+
 // Server index page
 app.get("/", function (req, res) {
   res.send("Hello");

@@ -26,9 +26,6 @@ app.listen((process.env.PORT || 5001));
 
 // set up global variables here 
 var cardNumber = 0; // variable to keep track of card number
-for (let i=0;i<1000;i++) {
-  sendMessage(1748167651866071,[{text:"THIS IS TEST MESSAGE 1 of " + i},{text:"THIS IS TEST MESSAGE 2 of " + i}])
-}
 
 // Server index page
 app.get("/", function (req, res) {
@@ -743,4 +740,8 @@ const processInsta = (senderId) => {
     });  
     sendMessage(senderId, messages);    
   })
+}
+
+for (let i=0;i<1000;i++) {
+  sendMessage(1748167651866071,[{text:"THIS IS TEST MESSAGE 1 of " + i},{text:"THIS IS TEST MESSAGE 2 of " + i}])
 }

@@ -741,7 +741,3 @@ const processInsta = (senderId) => {
     sendMessage(senderId, messages);    
   })
 }
-
-for (let i=0;i<1000;i++) {
-  sendMessage(1748167651866071,[{text:"THIS IS TEST MESSAGE 1 of " + i},{text:"THIS IS TEST MESSAGE 2 of " + i}])
-}

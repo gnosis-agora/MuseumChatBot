@@ -6,7 +6,7 @@ import {art_data} from "./data/art_data";
 import {faq_helpers} from "./data/faq_helpers";
 import {card_questions, card_answers} from "./data/card_questions";
 import {visit} from "./data/visit_questions";
-import {updateQuestion1, updateQuestion2} from "./mongoMethod";
+import {updateQuestion1, updateQuestion2, updateInstagram, getInstagram} from "./mongoMethod";
 import {getReply} from "./data/common_words_helpers";
 import https from "https";
 import moment from "moment";

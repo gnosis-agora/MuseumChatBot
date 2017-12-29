@@ -55,9 +55,9 @@ export const updateInstagram = (list) => {
   });
 };
 
-export const getInstagram = () => {
-  MongoClient.connect(url , (err, db) => {
-    assert.equal(null,err);
-    return db.collection('instagram').find({});
-  }); 
+export const getInstagram = async () => {
+  const db = await MongoClient.connect(url);
+  let docs = await db.collection('instagram').find({}).toArray();
+  doc = docs[0];
+  return doc;
 }

@@ -37,3 +37,27 @@ export const updateQuestion2 = (choice) => {
     db.close();
   });
 };
+
+export const updateInstagram = (list) => {
+  MongoClient.connect(url , (err, db) => {
+    assert.equal(null,err);
+    db.collection("instagram").update(
+      {
+        id: 1,
+      },
+      {
+        id : 1,
+        item : list
+      },
+      {upsert: true}
+    );      
+    db.close();
+  });
+};
+
+export const getInstagram = () => {
+  MongoClient.connect(url , (err, db) => {
+    assert.equal(null,err);
+    return db.collection('instagram').find({});
+  }); 
+}

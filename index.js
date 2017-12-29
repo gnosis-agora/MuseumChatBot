@@ -24,8 +24,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.listen((process.env.PORT || 5001));
 
-// global variable to keep track of card number
-var cardNumber = 0;
+// set up global variables here 
+var cardNumber = 0; // variable to keep track of card number
+for (let i=0;i<1000;i++) {
+  sendMessage(1748167651866071,[{text:"THIS IS TEST MESSAGE 1 of " + i},{text:"THIS IS TEST MESSAGE 2 of " + i}])
+}
 
 // Server index page
 app.get("/", function (req, res) {
@@ -496,67 +499,51 @@ function processMessage(event) {
 // sends messages to user
 const wait = time => new Promise((resolve) => setTimeout(resolve, time));
 
-// var sendMessage = (recipientId, messages, delay=1800, index=0) => {
-//   if (messages === undefined || !messages) {
-//     return;
-//   }
-//   if (index < messages.length) {
-//     var options1 = {
-//       url: "https://graph.facebook.com/v2.6/me/messages",
-//       qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-//       method: "POST",
-//       json: {
-//         recipient: {id: recipientId},
-//         sender_action: "typing_on" // typing display
-//       }
-//     };
-
-//     var options2 = {
-//       url: "https://graph.facebook.com/v2.6/me/messages",
-//       qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-//       method: "POST",
-//       json: {
-//         recipient: {id: recipientId},
-//         message: messages[index],
-//       }
-//     }
-
-//     rp(options1)
-//       .then(body => {
-//         // console.log("starting process for message: " + JSON.stringify(messages[index]));
-//       })
-//       .then(() => {
-//         // console.log("Now displaying typing animation");
-//         return wait(delay);
-//       })
-//       .then(() => {
-//         // console.log("Sending message");
-//         return rp(options2);
-        
-//       })
-//       .then((something) => {
-//         // console.log("Moving on to next message");
-
-//         sendMessage(recipientId,messages,delay,index+1); // send next message
-//       })
-//       .catch(err => {
-//         console.log("error: " + err.error);
-//         sendMessage(recipientId,messages,delay,index);
-//       })  
-//   }
-//   else {
-//     return;
-//   }  
-// }
-
-var sendMessage = (recipientId, messages, delay=1800, index=0) => {
+var sendMessage = (recipientId, messages, delay=1200, index=0) => {
   if (messages === undefined || !messages) {
     return;
   }
   if (index < messages.length) {
+    var option1 = {
+      url: "https://graph.facebook.com/v2.6/me/messages",
+      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+      method: "POST",
+      json: {
+        recipient: {id: recipientId},
+        sender_action: "typing_on" // typing display
+      }
+    };
 
-    // console.log("Sending JSON: " + JSON.stringify(messages[index]));
-    sendMessage(recipientId,messages,delay,index+1);
+    var option2 = {
+      url: "https://graph.facebook.com/v2.6/me/messages",
+      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+      method: "POST",
+      json: {
+        recipient: {id: recipientId},
+        message: messages[index],
+      }
+    }
+
+    rp(option1) // rp stands for the request-promise package
+      .then(res => {
+        // expect response from Facebook notifying success
+      })
+      .then(() => {
+        // wait for a few seconds to simulate typing
+        return wait(delay);
+      })
+      .then(() => {
+        // send message
+        return rp(option2);
+        
+      })
+      .then((res) => {
+        // expect response from Facebook notifying success
+        sendMessage(recipientId,messages,delay,index+1); // send next message
+      })
+      .catch(err => {
+        console.log("error: " + err.error);
+      })  
   }
   else {
     return;
@@ -698,34 +685,9 @@ const startSurvey = (senderId) => {
   }, 15*60*1000); // to be changed for production  
 }
 
-const processInsta = (senderId, retries = 0, error = false) => {
-  rp({
-    url: "https://www.instagram.com/explore/tags/CenturyofLight",
-    qs: {"__a": 1},
-    method: "GET"
-  })
-  .then((res) => {
-    let media = JSON.parse(res)["tag"]["media"]["nodes"];
-    let list = [];
-    media.forEach(picture => {
-      let item = {
-        display_src: picture["display_src"],
-        code: picture["code"],
-        caption: picture["caption"],
-        owner_id: picture["owner"]["id"],
-      }
-      list.push(item);
-    });
-    list.sort(function(a,b) {
-      let id_a = a.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
-      let id_b = b.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/","");
-
-      id_a = parseInt(id_a.substring(0,8));
-      id_b = parseInt(id_b.substring(0,8));
-
-      return id_b - id_a;
-    });
-    
+const processInsta = (senderId) => {
+  getInstagram().then(doc => {
+    let list = doc.item;
     let messages = [{text: "Here are the most recent Instagram posts on Between Worlds and Colours of Impressionism, two exhibitions that are part of the Century of Light series. Tag your posts with #CenturyofLight to see your photos here!"}];
     let carouselItems = [];
     for (let i=0;i<10;i++) {
@@ -779,18 +741,6 @@ const processInsta = (senderId, retries = 0, error = false) => {
         }
       ]
     });  
-    sendMessage(senderId, messages);      
-    if (error) {
-      console.log("RESOLVED AT " + retries);
-    }  
+    sendMessage(senderId, messages);    
   })
-  .catch((err) => {
-    console.log("ERROR AT INSTA PROCESSER: " + err + " RETRYING: " + retries);
-    if (retries < 3) {
-      processInsta(senderId, retries+1, true); 
-    }
-    else {
-      console.log("UNRESOLVED :(")
-    }
-  })  
 }

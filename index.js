@@ -531,7 +531,7 @@ function processMessage(event) {
 // sends messages to user
 const wait = time => new Promise((resolve) => setTimeout(resolve, time));
 
-var sendMessage = (recipientId, messages, delay=1200, index=0) => {
+var sendMessage = (recipientId, messages, delay=1500, index=0) => {
   if (messages === undefined || !messages) {
     return;
   }
@@ -586,7 +586,7 @@ var sendMessage = (recipientId, messages, delay=1200, index=0) => {
 const generateWelcomeMessage = (name) => {
   let messages = [];
   messages.push({
-    text: "Hi " + name + "! Welcome to National Gallery Singapore! I'm your virtual guide 🤖 to Colours of Impressionism. \
+    text: "Hi " + name + "! Welcome to National Gallery Singapore! I'm your virtual guide 🤖 to Colours of Impressionism: Masterpieces from the Musée d'Orsay. \
 This exhibition is part of Century of Light, a showcase of art from the 19th century that brings together two exhibitions — Between Worlds and Colours of Impressionism."
   });
   messages.push({

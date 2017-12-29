@@ -552,6 +552,16 @@ var sendMessage = (recipientId, messages, delay=1500, index=0) => {
       method: "POST",
       json: {
         recipient: {id: recipientId},
+        sender_action: "typing_off" // typing display
+      }
+    };
+
+    var option3 = {
+      url: "https://graph.facebook.com/v2.6/me/messages",
+      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+      method: "POST",
+      json: {
+        recipient: {id: recipientId},
         message: messages[index],
       }
     }
@@ -567,7 +577,9 @@ var sendMessage = (recipientId, messages, delay=1500, index=0) => {
       .then(() => {
         // send message
         return rp(option2);
-        
+      })
+      .then(() => {
+        return rp(option3);
       })
       .then((res) => {
         // expect response from Facebook notifying success

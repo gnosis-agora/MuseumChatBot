@@ -60,7 +60,7 @@ setInterval(function () {
   }).catch(function (err) {
     console.log("ERROR AT INSTA PROCESSER: " + err);
   });
-}, 1 * 60 * 1000);
+}, 10 * 60 * 1000);
 
 
 // Server index page

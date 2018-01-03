@@ -54,12 +54,13 @@ setInterval(function () {
       return id_b - id_a;
     });
     
+    console.log("Updated Instagram.");
     updateInstagram(list);
 
   }).catch(function (err) {
     console.log("ERROR AT INSTA PROCESSER: " + err);
   });
-}, 10 * 60 * 1000);
+}, 1 * 60 * 1000);
 
 
 // Server index page

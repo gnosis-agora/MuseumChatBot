@@ -33,20 +33,20 @@ setInterval(function () {
     qs: { "__a": 1 },
     method: "GET"
   }).then(function (res) {
-    var media = JSON.parse(res)["tag"]["media"]["nodes"];
+    var media = JSON.parse(res)["graphql"]["hashtag"]["edge_hashtag_to_media"]["edges"];
     var list = [];
     for (var i = 0; i < 10; i ++) {
       var item = {
-        display_src: media[i]["display_src"],
-        code: media[i]["code"],
-        caption: media[i]["caption"],
-        owner_id: media[i]["owner"]["id"]
+        display_src: picture["node"]["display_url"],
+        code: picture["node"]["shortcode"],
+        caption: picture["node"]["edge_media_to_caption"]["edges"][0]["node"]["text"],
+        owner_id: picture["node"]["id"],
       };
       list.push(item);
     };
     list.sort(function (a, b) {
-      var id_a = a.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/", "");
-      var id_b = b.display_src.replace("https://scontent-sin6-1.cdninstagram.com/t51.2885-15/e35/", "");
+      var id_a = a.display_src.replace("https://instagram.fsin3-1.fna.fbcdn.net/t51.2885-15/e35/","");
+      var id_b = b.display_src.replace("https://instagram.fsin3-1.fna.fbcdn.net/t51.2885-15/e35/","");
 
       id_a = parseInt(id_a.substring(0, 8));
       id_b = parseInt(id_b.substring(0, 8));

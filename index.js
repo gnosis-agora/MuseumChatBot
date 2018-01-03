@@ -37,10 +37,10 @@ setInterval(function () {
     var list = [];
     for (var i = 0; i < 10; i ++) {
       var item = {
-        display_src: picture["node"]["display_url"],
-        code: picture["node"]["shortcode"],
-        caption: picture["node"]["edge_media_to_caption"]["edges"][0]["node"]["text"],
-        owner_id: picture["node"]["id"],
+        display_src: media[i]["node"]["display_url"],
+        code: media[i]["node"]["shortcode"],
+        caption: media[i]["node"]["edge_media_to_caption"]["edges"][0]["node"]["text"],
+        owner_id: media[i]["node"]["id"],
       };
       list.push(item);
     };

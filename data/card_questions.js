@@ -310,7 +310,7 @@ export const card_answers = {
   question_2: {
     text: "Many Impressionists painted everyday scenes of the Parisian middle class relaxing in cafés,\
  cabarets and parks. Instead of formal poses and staged settings, they strove to make their paintings as\
- candid as possible.. Consider how this compares to the way you see and document the world you live in."
+ candid as possible. Consider how this compares to the way you see and document the world you live in."
   },
 
   question_3: {

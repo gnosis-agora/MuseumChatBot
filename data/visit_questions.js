@@ -59,7 +59,7 @@ export const visit = {
 
   singaporean_tickets: [
     {
-      text: "Century of Light only* - $15\nConcessions - $10\n\n*Includes a General Admission ticket.\n\nCentury of Light is a showcase of art from the 19th century that brings together two exhibitions—Between Worlds and Colours of Impressionism.",
+      text: "Century of Light only - $15\nConcessions - $10\n\nCentury of Light is a showcase of art from the 19th century that brings together two exhibitions—Between Worlds and Colours of Impressionism.",
       quick_replies: [
         {
           content_type: "text",
@@ -83,7 +83,7 @@ export const visit = {
 
   non_singaporean_tickets: [
     {
-      text: "Century of Light only - $25\nConcessions - $20\n\nAll-access pass* - $30\nConcessions - $25\n\n*Includes a General Admission ticket.\n\nCentury of Light is a showcase of art from the 19th century that brings together two exhibitions—Between Worlds and Colours of Impressionism.",
+      text: "Century of Light only - $25\nConcessions - $20\n\nAll-access pass - $30*\nConcessions - $25\n\n*Includes a General Admission ticket.\n\nCentury of Light is a showcase of art from the 19th century that brings together two exhibitions—Between Worlds and Colours of Impressionism.",
       quick_replies: [
         {
           content_type: "text",

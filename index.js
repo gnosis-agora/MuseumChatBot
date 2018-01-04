@@ -15,7 +15,7 @@ var chance = new Chance();
 
 // stops server from sleeping by pinging every 17min
 setInterval(() => {
-  https.get("https://pacific-lake-62804.herokuapp.com/");
+  https.get("https://gallery-chatbot.herokuapp.com//");
 }, 17 * 60 * 1000 );
 
 // start express

@@ -105,7 +105,7 @@ app.post("/webhook", function (req, res) {
     res.sendStatus(200);
   } else {
     // Returns a '404 Not Found' if event is not from a page subscription
-    res.sendStatus(200);
+    res.sendStatus(404);
   }
 });
 
@@ -159,7 +159,39 @@ function processMessage(event) {
   if (message.quick_reply) {
     let schema = JSON.parse(message.quick_reply.payload);
 
-    if (schema.category == "art_data") {
+    if (scheme.category == "restart") {
+      sendMessage(senderId, [{
+        text: "Would you like to learn about artworks, discover what other people have posted on Instagram, or find out about ticketing and opening hours to prepare for your visit? Tap one of the options below."
+        quick_replies: [
+          {
+            content_type:"text",
+            title: "🎨 Art",
+            payload: JSON.stringify({
+              category: "art_data",
+              branch: "ART_START"
+            }),
+          },
+          {
+            content_type:"text",
+            title: "📷 #CenturyofLight",
+            payload: JSON.stringify({
+              category: "instagram_impressions",
+              branch: "instagram_impressions"
+            }),
+          },
+          {
+            content_type:"text",
+            title: "🖼 Visit",
+            payload: JSON.stringify({
+              category: "visit",
+              branch: "visit_start"
+            }),
+          }
+        ]
+      }])
+    }
+
+    else if (schema.category == "art_data") {
       sendMessage(senderId, art_data[schema.branch]);
     }
 

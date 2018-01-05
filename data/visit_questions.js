@@ -28,6 +28,13 @@ export const visit = {
             branch: "NEXT_TOUR",
             entry_point: "visit"
           }),
+        },
+        {
+          content_type: "text",
+          title: "🔙 Home",
+          payload: JSON.stringify({
+            category: "restart"
+          }),
         }
       ]
     },   

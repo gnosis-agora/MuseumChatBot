@@ -152,8 +152,8 @@ export const art_data = {
       }
     }
   }, {
-    text: "Clair de lune sur le port de Boulogne (Moonlight over the Port of Boulogne)\n\n\
-Édouard Manet\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 1993. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
+    text: "Artwork: Clair de lune sur le port de Boulogne (Moonlight over the Port of Boulogne)\n\n\
+Artist: Édouard Manet\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 1993. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
   }, {
     text: "Manet’s friend and fellow painter Alfred Stevens kept this painting in his Paris studio for a few years. \
 The art dealer Paul Durand-Ruel discovered it there and loved it so much that he bought 20 works by Manet 😱"
@@ -187,6 +187,12 @@ The art dealer Paul Durand-Ruel discovered it there and loved it so much that he
         category: "faq_helpers",
         branch: "NEXT_TOUR"
       })
+    }, {
+      content_type: "text",
+      title: "🔙 Home",
+      payload: JSON.stringify({
+        category: "restart"
+      }),
     }]
   }],
 
@@ -198,8 +204,8 @@ The art dealer Paul Durand-Ruel discovered it there and loved it so much that he
       }
     }
   }, {
-    text: "La Serveuse de bocks (The Beer Maid)\n\n\
-Édouard Manet\n\nFormerly in the Matsukata collection, entered the Musée du Louvre as part of the peace treaty with Japan, 1959. Collection of Musée d’Orsay, Paris, France. RF 1959 4. Photo © RMN-Grand Palais (Musée d’Orsay)/Martine Beck-Coppola."
+    text: "Artwork: La Serveuse de bocks (The Beer Maid)\n\n\
+Artist: Édouard Manet\n\nFormerly in the Matsukata collection, entered the Musée du Louvre as part of the peace treaty with Japan, 1959. Collection of Musée d’Orsay, Paris, France. RF 1959 4. Photo © RMN-Grand Palais (Musée d’Orsay)/Martine Beck-Coppola."
   }, {
     text: "Because Manet often captured scenes of Parisian nightlife, a number of his paintings have beer in them. 💁🍻",
     quick_replies: [{
@@ -230,6 +236,12 @@ The art dealer Paul Durand-Ruel discovered it there and loved it so much that he
         category: "faq_helpers",
         branch: "NEXT_TOUR"
       })
+    }, {
+      content_type: "text",
+      title: "🔙 Home",
+      payload: JSON.stringify({
+        category: "restart"
+      }),
     }]
   }],
 
@@ -241,8 +253,8 @@ The art dealer Paul Durand-Ruel discovered it there and loved it so much that he
       }
     }
   }, {
-    text: "La Pie (The Magpie)\n\n\
-Claude Manet\n\nPurchased by the French state, 1984. Collection of Musée d’Orsay, Paris, France. RF 1984 164. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
+    text: "Artwork: La Pie (The Magpie)\n\n\
+Artist: Claude Manet\n\nPurchased by the French state, 1984. Collection of Musée d’Orsay, Paris, France. RF 1984 164. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
   }, {
     text: "Did you know that the white snow in this painting is actually made up of dabs of blue, pink and yellow as well?",
     quick_replies: [{
@@ -273,6 +285,12 @@ Claude Manet\n\nPurchased by the French state, 1984. Collection of Musée d’Or
         category: "faq_helpers",
         branch: "NEXT_TOUR"
       })
+    }, {
+      content_type: "text",
+      title: "🔙 Home",
+      payload: JSON.stringify({
+        category: "restart"
+      }),
     }]
   }],
 
@@ -284,8 +302,8 @@ Claude Manet\n\nPurchased by the French state, 1984. Collection of Musée d’Or
       }
     }
   }, {
-    text: "Le Berceau (The Cradle)\n\n\
-Berthe Morisot\n\nPurchased 1930. Collection of Musée d’Orsay, Paris, France. RF 2849. Photo © RMN-Grand Palais (Musée d’Orsay)/Michel Urtado."
+    text: "Artwork: Le Berceau (The Cradle)\n\n\
+Artist: Berthe Morisot\n\nPurchased 1930. Collection of Musée d’Orsay, Paris, France. RF 2849. Photo © RMN-Grand Palais (Musée d’Orsay)/Michel Urtado."
   }, {
     text: "Morisot led a double life of sorts! She loved painting, but because it was still not acceptable for women to be artists, when visitors came over,\
  she would hide her paintings and present herself as a fancy high society lady 👩‍🎨➡👸",
@@ -317,6 +335,12 @@ Berthe Morisot\n\nPurchased 1930. Collection of Musée d’Orsay, Paris, France.
         category: "faq_helpers",
         branch: "NEXT_TOUR"
       })
+    }, {
+      content_type: "text",
+      title: "🔙 Home",
+      payload: JSON.stringify({
+        category: "restart"
+      }),
     }]
   }],
 
@@ -328,8 +352,8 @@ Berthe Morisot\n\nPurchased 1930. Collection of Musée d’Orsay, Paris, France.
       }
     }
   }, {
-    text: "Claude Monet\n\n\
-Auguste Renoir\n\nBequest of Mr and Mrs Raymond Koechlin, 1931. Collection of Musée d’Orsay, Paris, France.  RF 3666. Photo © RMN-Grand Palais (Musée d’Orsay)/Jean-Gilles Berizzi."
+    text: "Artwork: Claude Monet\n\n\
+Artist: Auguste Renoir\n\nBequest of Mr and Mrs Raymond Koechlin, 1931. Collection of Musée d’Orsay, Paris, France.  RF 3666. Photo © RMN-Grand Palais (Musée d’Orsay)/Jean-Gilles Berizzi."
   }, {
     text: "Can you guess what Monet is painting and how the artwork looks based on his palette?\
  As Monet rarely painted figures indoors, some people think that he may have been working on a painting\
@@ -362,6 +386,12 @@ Auguste Renoir\n\nBequest of Mr and Mrs Raymond Koechlin, 1931. Collection of Mu
         category: "faq_helpers",
         branch: "NEXT_TOUR"
       })
+    }, {
+      content_type: "text",
+      title: "🔙 Home",
+      payload: JSON.stringify({
+        category: "restart"
+      }),
     }]
   }],
 
@@ -373,8 +403,8 @@ Auguste Renoir\n\nBequest of Mr and Mrs Raymond Koechlin, 1931. Collection of Mu
       }
     }
   }, {
-    text: "Le Bassin aux nymphéas, harmonie rose (Water Lily Pond, Pink Harmony)\n\n\
-Claude Monet\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 2005. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
+    text: "Artwork: Le Bassin aux nymphéas, harmonie rose (Water Lily Pond, Pink Harmony)\n\n\
+Artist: Claude Monet\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 2005. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
   }, {
     text: "Monet was an avid botanist. He once said, “My garden is my most beautiful masterpiece.”🌾🌿🍀🌲",
     quick_replies: [{
@@ -405,6 +435,12 @@ Claude Monet\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d�
         category: "faq_helpers",
         branch: "NEXT_TOUR"
       })
+    }, {
+      content_type: "text",
+      title: "🔙 Home",
+      payload: JSON.stringify({
+        category: "restart"
+      }),
     }]
   }],
 
@@ -416,8 +452,8 @@ Claude Monet\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d�
       }
     }
   }, {
-    text: "Le Golfe de Marseille vu de l’Estaque (The Gulf of Marseilles Seen from L’Estaque)\n\n\
-Paul Cézanne\n\nBequest of Gustave Caillebotte, 1894. Collection of Musée d’Orsay, Paris, France.  RF 2761. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage."
+    text: "Artwork: Le Golfe de Marseille vu de l’Estaque (The Gulf of Marseilles Seen from L’Estaque)\n\n\
+Artist: Paul Cézanne\n\nBequest of Gustave Caillebotte, 1894. Collection of Musée d’Orsay, Paris, France.  RF 2761. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage."
   }, {
     text: "L’Estaque was a Mediterranean fishing village that Cézanne escaped to when family life got a\
  little too complicated. It inspired some of his grandest landscape paintings.",
@@ -449,6 +485,12 @@ Paul Cézanne\n\nBequest of Gustave Caillebotte, 1894. Collection of Musée d’
         category: "faq_helpers",
         branch: "NEXT_TOUR"
       })
+    }, {
+      content_type: "text",
+      title: "🔙 Home",
+      payload: JSON.stringify({
+        category: "restart"
+      }),
     }]
   }],
 
@@ -460,8 +502,8 @@ Paul Cézanne\n\nBequest of Gustave Caillebotte, 1894. Collection of Musée d’
       }
     }
   }, {
-    text: "La Bouée rouge (The Red Buoy)\n\n\
-Paul Signac\n\nGift of Dr Pierre Hébert, 1957. Collection of Musée d’Orsay, Paris, France. RF 1957 12. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
+    text: "Artwork: La Bouée rouge (The Red Buoy)\n\n\
+Artist: Paul Signac\n\nGift of Dr Pierre Hébert, 1957. Collection of Musée d’Orsay, Paris, France. RF 1957 12. Photo © RMN-Grand Palais (Musée d’Orsay)/Hervé Lewandowski."
   }, {
     text: "Signac was an enthusiastic sailor who painted landscapes along the coasts of Europe. In 2010,\
  a hotel by a lake in the Netherlands, Hotel Spaander, discovered that one of the works hanging on its walls was by Signac, which the artist supposedly gave them to pay for his stay. ⛵",
@@ -493,6 +535,12 @@ Paul Signac\n\nGift of Dr Pierre Hébert, 1957. Collection of Musée d’Orsay, 
         category: "faq_helpers",
         branch: "NEXT_TOUR"
       })
+    }, {
+      content_type: "text",
+      title: "🔙 Home",
+      payload: JSON.stringify({
+        category: "restart"
+      }),
     }]
   }],
 
@@ -504,8 +552,8 @@ Paul Signac\n\nGift of Dr Pierre Hébert, 1957. Collection of Musée d’Orsay, 
       }
     }
   }, {
-    text: "La Cathédrale de Rouen. Le portail et la tour Saint-Romain, plein soleil (Rouen Cathedral: The Portal and Saint-Romain Tower, Full Sunlight)\n\n\
-Claude Monet\n\nBequest of Count Isaac de Camondo, 1911.Collection of Musée d’Orsay, Paris, France.  RF 2002. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage."
+    text: "Artwork: La Cathédrale de Rouen. Le portail et la tour Saint-Romain, plein soleil (Rouen Cathedral: The Portal and Saint-Romain Tower, Full Sunlight)\n\n\
+Artist: Claude Monet\n\nBequest of Count Isaac de Camondo, 1911.Collection of Musée d’Orsay, Paris, France.  RF 2002. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage."
   }, {
     text: "Monet painted over 30 paintings of Rouen Cathedral, to capture the light that changed from day to day.\
  He had vivid nightmares of the cathedral, in various hues of pinks, blues and yellows, falling on him.✨",
@@ -537,6 +585,12 @@ Claude Monet\n\nBequest of Count Isaac de Camondo, 1911.Collection of Musée d�
         category: "faq_helpers",
         branch: "NEXT_TOUR"
       })
+    }, {
+      content_type: "text",
+      title: "🔙 Home",
+      payload: JSON.stringify({
+        category: "restart"
+      }),
     }]
   }],
 
@@ -548,8 +602,8 @@ Claude Monet\n\nBequest of Count Isaac de Camondo, 1911.Collection of Musée d�
       }
     }
   }, {
-    text: "Gabrielle à la rose (Gabrielle with a Rose)_\n\n\
-Auguste Renoir\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 2002. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage."
+    text: "Artwork: Gabrielle à la rose (Gabrielle with a Rose)_\n\n\
+Artist: Auguste Renoir\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée d’Orsay, Paris, France. RF 2002. Photo © RMN-Grand Palais (Musée d’Orsay)/Thierry Le Mage."
   }, {
     text: "Gabrielle was a cousin of Renoir’s wife.\
  Apart from babysitting the young Renoir children, she also often posed half-clothed or nude for Renoir’s paintings 🙈",
@@ -581,6 +635,12 @@ Auguste Renoir\n\nBequest of Count Isaac de Camondo, 1911. Collection of Musée 
         category: "faq_helpers",
         branch: "NEXT_TOUR"
       })
+    }, {
+      content_type: "text",
+      title: "🔙 Home",
+      payload: JSON.stringify({
+        category: "restart"
+      }),
     }]
   }]
 };

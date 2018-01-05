@@ -159,7 +159,7 @@ function processMessage(event) {
   if (message.quick_reply) {
     let schema = JSON.parse(message.quick_reply.payload);
 
-    if (scheme.category == "restart") {
+    if (schema.category == "restart") {
       sendMessage(senderId, [{
         text: "Would you like to learn about artworks, discover what other people have posted on Instagram, or find out about ticketing and opening hours to prepare for your visit? Tap one of the options below.",
         quick_replies: [

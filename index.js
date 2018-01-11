@@ -737,7 +737,7 @@ const getOpeningHourMessage = (timeNow) => {
 const startSurvey = (senderId) => {
   setTimeout(() => {
     sendMessage(senderId, [{
-      text: "I'm still a bot-in-training at the moment. Would you like to see an upgraded version with more features in future? ☺️",
+      text: "Thanks for chatting with me. What would you like to see more of me in the future? ☺️",
       quick_replies: [
         {
           content_type: "text",

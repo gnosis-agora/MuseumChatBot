@@ -13,16 +13,12 @@ import moment from "moment";
 import Chance from "chance";
 var chance = new Chance();
 
-// stops server from sleeping by pinging every 17min
-setInterval(() => {
-  https.get("https://gallery-chatbot.herokuapp.com/");
-}, 17 * 60 * 1000 );
 
 // start express
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.listen((process.env.PORT || 5001));
+app.listen((process.env.PORT || 5000));
 
 // set up global variables here 
 var cardNumber = 0; // variable to keep track of card number
